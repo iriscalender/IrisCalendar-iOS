@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */; };
+		373BF6AA22F9C8AF003AB8A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6A922F9C8AF003AB8A9 /* ViewController.swift */; };
+		373BF6AD22F9C8AF003AB8A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6AB22F9C8AF003AB8A9 /* Main.storyboard */; };
+		373BF6AF22F9C8B1003AB8A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6AE22F9C8B1003AB8A9 /* Assets.xcassets */; };
+		373BF6B222F9C8B1003AB8A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6B022F9C8B1003AB8A9 /* LaunchScreen.storyboard */; };
+		373BF6BD22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */; };
+		373BF6C822F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		373BF6B922F9C8B1003AB8A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 373BF69C22F9C8AF003AB8A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 373BF6A322F9C8AF003AB8A9;
+			remoteInfo = IrisCalendarApp;
+		};
+		373BF6C422F9C8B2003AB8A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 373BF69C22F9C8AF003AB8A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 373BF6A322F9C8AF003AB8A9;
+			remoteInfo = IrisCalendarApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		373BF6A422F9C8AF003AB8A9 /* IrisCalendarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrisCalendarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		373BF6A922F9C8AF003AB8A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		373BF6AC22F9C8AF003AB8A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		373BF6AE22F9C8B1003AB8A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		373BF6B122F9C8B1003AB8A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		373BF6B322F9C8B1003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		373BF6B822F9C8B1003AB8A9 /* IrisCalendarAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrisCalendarAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarAppTests.swift; sourceTree = "<group>"; };
+		373BF6BE22F9C8B2003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		373BF6C322F9C8B2003AB8A9 /* IrisCalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrisCalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarAppUITests.swift; sourceTree = "<group>"; };
+		373BF6C922F9C8B2003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		373BF6A122F9C8AF003AB8A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6B522F9C8B1003AB8A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6C022F9C8B2003AB8A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		373BF69B22F9C8AF003AB8A9 = {
+			isa = PBXGroup;
+			children = (
+				373BF6A622F9C8AF003AB8A9 /* IrisCalendarApp */,
+				373BF6BB22F9C8B1003AB8A9 /* IrisCalendarAppTests */,
+				373BF6C622F9C8B2003AB8A9 /* IrisCalendarAppUITests */,
+				373BF6A522F9C8AF003AB8A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		373BF6A522F9C8AF003AB8A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				373BF6A422F9C8AF003AB8A9 /* IrisCalendarApp.app */,
+				373BF6B822F9C8B1003AB8A9 /* IrisCalendarAppTests.xctest */,
+				373BF6C322F9C8B2003AB8A9 /* IrisCalendarAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		373BF6A622F9C8AF003AB8A9 /* IrisCalendarApp */ = {
+			isa = PBXGroup;
+			children = (
+				373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */,
+				373BF6A922F9C8AF003AB8A9 /* ViewController.swift */,
+				373BF6AB22F9C8AF003AB8A9 /* Main.storyboard */,
+				373BF6AE22F9C8B1003AB8A9 /* Assets.xcassets */,
+				373BF6B022F9C8B1003AB8A9 /* LaunchScreen.storyboard */,
+				373BF6B322F9C8B1003AB8A9 /* Info.plist */,
+			);
+			path = IrisCalendarApp;
+			sourceTree = "<group>";
+		};
+		373BF6BB22F9C8B1003AB8A9 /* IrisCalendarAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */,
+				373BF6BE22F9C8B2003AB8A9 /* Info.plist */,
+			);
+			path = IrisCalendarAppTests;
+			sourceTree = "<group>";
+		};
+		373BF6C622F9C8B2003AB8A9 /* IrisCalendarAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */,
+				373BF6C922F9C8B2003AB8A9 /* Info.plist */,
+			);
+			path = IrisCalendarAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		373BF6A322F9C8AF003AB8A9 /* IrisCalendarApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 373BF6CC22F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarApp" */;
+			buildPhases = (
+				373BF6A022F9C8AF003AB8A9 /* Sources */,
+				373BF6A122F9C8AF003AB8A9 /* Frameworks */,
+				373BF6A222F9C8AF003AB8A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IrisCalendarApp;
+			productName = IrisCalendarApp;
+			productReference = 373BF6A422F9C8AF003AB8A9 /* IrisCalendarApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		373BF6B722F9C8B1003AB8A9 /* IrisCalendarAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 373BF6CF22F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarAppTests" */;
+			buildPhases = (
+				373BF6B422F9C8B1003AB8A9 /* Sources */,
+				373BF6B522F9C8B1003AB8A9 /* Frameworks */,
+				373BF6B622F9C8B1003AB8A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				373BF6BA22F9C8B1003AB8A9 /* PBXTargetDependency */,
+			);
+			name = IrisCalendarAppTests;
+			productName = IrisCalendarAppTests;
+			productReference = 373BF6B822F9C8B1003AB8A9 /* IrisCalendarAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		373BF6C222F9C8B2003AB8A9 /* IrisCalendarAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 373BF6D222F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarAppUITests" */;
+			buildPhases = (
+				373BF6BF22F9C8B2003AB8A9 /* Sources */,
+				373BF6C022F9C8B2003AB8A9 /* Frameworks */,
+				373BF6C122F9C8B2003AB8A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				373BF6C522F9C8B2003AB8A9 /* PBXTargetDependency */,
+			);
+			name = IrisCalendarAppUITests;
+			productName = IrisCalendarAppUITests;
+			productReference = 373BF6C322F9C8B2003AB8A9 /* IrisCalendarAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		373BF69C22F9C8AF003AB8A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = baby1234;
+				TargetAttributes = {
+					373BF6A322F9C8AF003AB8A9 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					373BF6B722F9C8B1003AB8A9 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 373BF6A322F9C8AF003AB8A9;
+					};
+					373BF6C222F9C8B2003AB8A9 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 373BF6A322F9C8AF003AB8A9;
+					};
+				};
+			};
+			buildConfigurationList = 373BF69F22F9C8AF003AB8A9 /* Build configuration list for PBXProject "IrisCalendarApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 373BF69B22F9C8AF003AB8A9;
+			productRefGroup = 373BF6A522F9C8AF003AB8A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				373BF6A322F9C8AF003AB8A9 /* IrisCalendarApp */,
+				373BF6B722F9C8B1003AB8A9 /* IrisCalendarAppTests */,
+				373BF6C222F9C8B2003AB8A9 /* IrisCalendarAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		373BF6A222F9C8AF003AB8A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				373BF6B222F9C8B1003AB8A9 /* LaunchScreen.storyboard in Resources */,
+				373BF6AF22F9C8B1003AB8A9 /* Assets.xcassets in Resources */,
+				373BF6AD22F9C8AF003AB8A9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6B622F9C8B1003AB8A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6C122F9C8B2003AB8A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		373BF6A022F9C8AF003AB8A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				373BF6AA22F9C8AF003AB8A9 /* ViewController.swift in Sources */,
+				373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6B422F9C8B1003AB8A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				373BF6BD22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		373BF6BF22F9C8B2003AB8A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				373BF6C822F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		373BF6BA22F9C8B1003AB8A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 373BF6A322F9C8AF003AB8A9 /* IrisCalendarApp */;
+			targetProxy = 373BF6B922F9C8B1003AB8A9 /* PBXContainerItemProxy */;
+		};
+		373BF6C522F9C8B2003AB8A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 373BF6A322F9C8AF003AB8A9 /* IrisCalendarApp */;
+			targetProxy = 373BF6C422F9C8B2003AB8A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		373BF6AB22F9C8AF003AB8A9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				373BF6AC22F9C8AF003AB8A9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		373BF6B022F9C8B1003AB8A9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				373BF6B122F9C8B1003AB8A9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		373BF6CA22F9C8B2003AB8A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		373BF6CB22F9C8B2003AB8A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		373BF6CD22F9C8B2003AB8A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		373BF6CE22F9C8B2003AB8A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		373BF6D022F9C8B2003AB8A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IrisCalendarApp.app/IrisCalendarApp";
+			};
+			name = Debug;
+		};
+		373BF6D122F9C8B2003AB8A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IrisCalendarApp.app/IrisCalendarApp";
+			};
+			name = Release;
+		};
+		373BF6D322F9C8B2003AB8A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IrisCalendarApp;
+			};
+			name = Debug;
+		};
+		373BF6D422F9C8B2003AB8A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VY4FNTH9C6;
+				INFOPLIST_FILE = IrisCalendarAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.macnpc.IrisCalendarAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IrisCalendarApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		373BF69F22F9C8AF003AB8A9 /* Build configuration list for PBXProject "IrisCalendarApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				373BF6CA22F9C8B2003AB8A9 /* Debug */,
+				373BF6CB22F9C8B2003AB8A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		373BF6CC22F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				373BF6CD22F9C8B2003AB8A9 /* Debug */,
+				373BF6CE22F9C8B2003AB8A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		373BF6CF22F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				373BF6D022F9C8B2003AB8A9 /* Debug */,
+				373BF6D122F9C8B2003AB8A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		373BF6D222F9C8B2003AB8A9 /* Build configuration list for PBXNativeTarget "IrisCalendarAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				373BF6D322F9C8B2003AB8A9 /* Debug */,
+				373BF6D422F9C8B2003AB8A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 373BF69C22F9C8AF003AB8A9 /* Project object */;
+}
