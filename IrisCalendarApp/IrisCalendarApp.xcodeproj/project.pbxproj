@@ -20,6 +20,14 @@
 		373BF6E322FF2A31003AB8A9 /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6DC22FF2976003AB8A9 /* NanumSquareRegular.ttf */; };
 		373BF6E422FF2A35003AB8A9 /* Machineat_Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6DF22FF298A003AB8A9 /* Machineat_Demo.ttf */; };
 		37F35716230B8FF400415686 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F35715230B8FF400415686 /* Auth.storyboard */; };
+		37F35718230D195400415686 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F35717230D195400415686 /* SignInVC.swift */; };
+		37F3571A230D197600415686 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F35719230D197600415686 /* SignUpVC.swift */; };
+		37F3571C230D19AB00415686 /* TimeSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3571B230D19AB00415686 /* TimeSettingVC.swift */; };
+		37F3571E230F7FD700415686 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3571D230F7FD700415686 /* MainVC.swift */; };
+		37F35720230F800100415686 /* MenubarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3571F230F800100415686 /* MenubarVC.swift */; };
+		37F35722230F801600415686 /* TimeResettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F35721230F801600415686 /* TimeResettingVC.swift */; };
+		37F35724230F802C00415686 /* AddScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F35723230F802C00415686 /* AddScheduleVC.swift */; };
+		37F35726230F804100415686 /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F35725230F804100415686 /* EditCategoryVC.swift */; };
 		8F78E2BF355987639125D151 /* Pods_IrisCalendarAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5827BCBE570C0E4C22F99206 /* Pods_IrisCalendarAppUITests.framework */; };
 		A76A2BAA0EF6CADE3F9C2302 /* Pods_IrisCalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46C45F2D33296FBC328B822 /* Pods_IrisCalendarApp.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +71,14 @@
 		373BF6DE22FF2976003AB8A9 /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
 		373BF6DF22FF298A003AB8A9 /* Machineat_Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Machineat_Demo.ttf; sourceTree = "<group>"; };
 		37F35715230B8FF400415686 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		37F35717230D195400415686 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		37F35719230D197600415686 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		37F3571B230D19AB00415686 /* TimeSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingVC.swift; sourceTree = "<group>"; };
+		37F3571D230F7FD700415686 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		37F3571F230F800100415686 /* MenubarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarVC.swift; sourceTree = "<group>"; };
+		37F35721230F801600415686 /* TimeResettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeResettingVC.swift; sourceTree = "<group>"; };
+		37F35723230F802C00415686 /* AddScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleVC.swift; sourceTree = "<group>"; };
+		37F35725230F804100415686 /* EditCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
 		5827BCBE570C0E4C22F99206 /* Pods_IrisCalendarAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IrisCalendarAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D81056B2259690D2A5C3D9F /* Pods_IrisCalendarAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IrisCalendarAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		932A91530852592782D34338 /* Pods-IrisCalendarAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IrisCalendarAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-IrisCalendarAppUITests/Pods-IrisCalendarAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,12 +140,13 @@
 		373BF6A622F9C8AF003AB8A9 /* IrisCalendarApp */ = {
 			isa = PBXGroup;
 			children = (
-				373BF6DA22FF294F003AB8A9 /* Fonts */,
 				373BF6D622FB09B3003AB8A9 /* UI */,
+				37F35728230F81C100415686 /* Networking */,
 				373BF6D822FB09D5003AB8A9 /* ViewModel */,
 				373BF6D522FB09A7003AB8A9 /* Model */,
-				373BF6D722FB09C6003AB8A9 /* Controllers */,
+				373BF6D722FB09C6003AB8A9 /* ViewControllers */,
 				373BF6D922FB0A0A003AB8A9 /* Util */,
+				373BF6DA22FF294F003AB8A9 /* Fonts */,
 				373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */,
 				373BF6AE22F9C8B1003AB8A9 /* Assets.xcassets */,
 				373BF6B322F9C8B1003AB8A9 /* Info.plist */,
@@ -172,11 +189,19 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		373BF6D722FB09C6003AB8A9 /* Controllers */ = {
+		373BF6D722FB09C6003AB8A9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37F35717230D195400415686 /* SignInVC.swift */,
+				37F35719230D197600415686 /* SignUpVC.swift */,
+				37F3571B230D19AB00415686 /* TimeSettingVC.swift */,
+				37F3571D230F7FD700415686 /* MainVC.swift */,
+				37F3571F230F800100415686 /* MenubarVC.swift */,
+				37F35721230F801600415686 /* TimeResettingVC.swift */,
+				37F35723230F802C00415686 /* AddScheduleVC.swift */,
+				37F35725230F804100415686 /* EditCategoryVC.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		373BF6D822FB09D5003AB8A9 /* ViewModel */ = {
@@ -203,6 +228,13 @@
 				373BF6DF22FF298A003AB8A9 /* Machineat_Demo.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		37F35728230F81C100415686 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		4562F162312030B9BD64E82D /* Frameworks */ = {
@@ -455,6 +487,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F3571C230D19AB00415686 /* TimeSettingVC.swift in Sources */,
+				37F3571E230F7FD700415686 /* MainVC.swift in Sources */,
+				37F35726230F804100415686 /* EditCategoryVC.swift in Sources */,
+				37F35718230D195400415686 /* SignInVC.swift in Sources */,
+				37F35722230F801600415686 /* TimeResettingVC.swift in Sources */,
+				37F35720230F800100415686 /* MenubarVC.swift in Sources */,
+				37F35724230F802C00415686 /* AddScheduleVC.swift in Sources */,
+				37F3571A230D197600415686 /* SignUpVC.swift in Sources */,
 				373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

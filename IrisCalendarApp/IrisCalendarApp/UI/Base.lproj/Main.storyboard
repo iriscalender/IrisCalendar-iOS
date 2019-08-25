@@ -24,7 +24,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cr2-kZ-I6O">
             <objects>
-                <navigationController id="CgP-SB-2Cn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNC" id="CgP-SB-2Cn" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TCU-uA-Oks">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -40,7 +40,7 @@
         <!--Main-->
         <scene sceneID="w1N-PW-hdJ">
             <objects>
-                <viewController title="Main" id="v2N-8h-BJq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" title="Main" id="v2N-8h-BJq" customClass="MainVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xlz-mg-wfB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="251" y="-1079"/>
         </scene>
-        <!--View Controller-->
+        <!--MenubarVC-->
         <scene sceneID="VWF-jq-vCd">
             <objects>
-                <viewController id="kII-Ls-WcE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenubarVC" title="MenubarVC" id="kII-Ls-WcE" customClass="MenubarVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wpJ-c1-cf9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="747"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +272,7 @@
         <!--TimeResetting-->
         <scene sceneID="uU1-To-X3w">
             <objects>
-                <viewController title="TimeResetting" id="CxE-Gp-L1n" sceneMemberID="viewController">
+                <viewController title="TimeResetting" id="CxE-Gp-L1n" customClass="TimeResettingVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lkp-JJ-z5l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,20 +286,21 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Xsy-ac-bUS">
-                                        <rect key="frame" x="357" y="16" width="33" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDS-cX-OiG">
+                                        <rect key="frame" x="357" y="16" width="33" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="완료">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nDS-cX-OiG" secondAttribute="trailing" constant="24" id="0hf-iE-r6M"/>
                                     <constraint firstItem="93J-M3-Nqt" firstAttribute="top" secondItem="SKK-RE-Mar" secondAttribute="top" constant="16" id="8YN-Zn-7Pf"/>
                                     <constraint firstItem="93J-M3-Nqt" firstAttribute="centerX" secondItem="SKK-RE-Mar" secondAttribute="centerX" id="EfA-WU-nCW"/>
-                                    <constraint firstItem="Xsy-ac-bUS" firstAttribute="top" secondItem="SKK-RE-Mar" secondAttribute="top" constant="16" id="HsC-w6-Vdf"/>
                                     <constraint firstAttribute="height" constant="132" id="Xno-Be-hbQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xsy-ac-bUS" secondAttribute="trailing" constant="24" id="vWc-6B-WdK"/>
+                                    <constraint firstItem="nDS-cX-OiG" firstAttribute="top" secondItem="SKK-RE-Mar" secondAttribute="top" constant="16" id="oOj-HS-fc4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfL-JB-UOM">
@@ -403,7 +404,7 @@
         <!--Auth-->
         <scene sceneID="z6Q-Tu-sZh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Auth" id="Cc5-3s-HEr" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="AuthNC" storyboardName="Auth" id="Cc5-3s-HEr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9R-zz-k7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-778" y="-648"/>
@@ -411,7 +412,7 @@
         <!--AddSchedule-->
         <scene sceneID="PBg-A3-M30">
             <objects>
-                <viewController title="AddSchedule" id="9c6-pE-E7L" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleVC" title="AddSchedule" id="9c6-pE-E7L" customClass="AddScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Adj-tz-BfI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,28 +426,30 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="NmM-Uv-ghp">
-                                        <rect key="frame" x="357" y="16" width="33" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-mZ-Qh1">
+                                        <rect key="frame" x="24" y="16" width="33" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="취소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Z8n-VY-piG">
-                                        <rect key="frame" x="24" y="16" width="33" height="20"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-WF-xjx">
+                                        <rect key="frame" x="357" y="16" width="33" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="완료">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="NmM-Uv-ghp" secondAttribute="trailing" constant="24" id="9A1-JZ-1h8"/>
+                                    <constraint firstItem="NC8-mZ-Qh1" firstAttribute="top" secondItem="sbz-7o-Nd7" secondAttribute="top" constant="16" id="6dF-WG-bp3"/>
+                                    <constraint firstItem="NC8-mZ-Qh1" firstAttribute="leading" secondItem="sbz-7o-Nd7" secondAttribute="leading" constant="24" id="6uc-i4-2cF"/>
                                     <constraint firstAttribute="height" constant="132" id="9Q4-Nv-l4X"/>
-                                    <constraint firstItem="Z8n-VY-piG" firstAttribute="leading" secondItem="sbz-7o-Nd7" secondAttribute="leading" constant="24" id="EGr-mx-0GP"/>
                                     <constraint firstItem="n62-5J-yRs" firstAttribute="top" secondItem="sbz-7o-Nd7" secondAttribute="top" constant="16" id="Ig5-2V-s5i"/>
+                                    <constraint firstItem="ZEm-WF-xjx" firstAttribute="top" secondItem="sbz-7o-Nd7" secondAttribute="top" constant="16" id="KvI-z5-d17"/>
                                     <constraint firstItem="n62-5J-yRs" firstAttribute="centerX" secondItem="sbz-7o-Nd7" secondAttribute="centerX" id="Q7a-TG-ela"/>
-                                    <constraint firstItem="Z8n-VY-piG" firstAttribute="top" secondItem="sbz-7o-Nd7" secondAttribute="top" constant="16" id="gtr-7s-QFc"/>
-                                    <constraint firstItem="NmM-Uv-ghp" firstAttribute="top" secondItem="sbz-7o-Nd7" secondAttribute="top" constant="16" id="qEO-Wg-ilQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZEm-WF-xjx" secondAttribute="trailing" constant="24" id="m2A-Qh-fI9"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-BU-qDH">
@@ -822,7 +825,7 @@
         <!--EditCategory-->
         <scene sceneID="GON-EQ-yKg">
             <objects>
-                <viewController title="EditCategory" id="tda-tL-bCB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditCategoryVC" title="EditCategory" id="tda-tL-bCB" customClass="EditCategoryVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qTc-SG-c2B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -836,28 +839,30 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rX3-M1-pfy">
-                                        <rect key="frame" x="357" y="16" width="33" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-Ln-zVz">
+                                        <rect key="frame" x="24" y="16" width="33" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="취소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hMc-H4-Exz">
-                                        <rect key="frame" x="24" y="16" width="33" height="20"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-aI-bYg">
+                                        <rect key="frame" x="357" y="16" width="33" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="완료">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rX3-M1-pfy" secondAttribute="trailing" constant="24" id="6cS-Vd-b53"/>
-                                    <constraint firstItem="hMc-H4-Exz" firstAttribute="top" secondItem="nzF-y9-lQe" secondAttribute="top" constant="16" id="7uJ-Fe-GxE"/>
-                                    <constraint firstItem="hMc-H4-Exz" firstAttribute="leading" secondItem="nzF-y9-lQe" secondAttribute="leading" constant="24" id="9Pw-La-dpt"/>
                                     <constraint firstItem="POt-wZ-Fuf" firstAttribute="top" secondItem="nzF-y9-lQe" secondAttribute="top" constant="16" id="MAS-QY-7Hq"/>
+                                    <constraint firstItem="cdl-Ln-zVz" firstAttribute="leading" secondItem="nzF-y9-lQe" secondAttribute="leading" constant="24" id="P3h-GX-Gik"/>
                                     <constraint firstAttribute="height" constant="132" id="PXS-Ht-vm4"/>
-                                    <constraint firstItem="rX3-M1-pfy" firstAttribute="top" secondItem="nzF-y9-lQe" secondAttribute="top" constant="16" id="jVi-Uo-MtV"/>
+                                    <constraint firstItem="cdl-Ln-zVz" firstAttribute="top" secondItem="nzF-y9-lQe" secondAttribute="top" constant="16" id="k09-9C-RdP"/>
+                                    <constraint firstAttribute="trailing" secondItem="vsl-aI-bYg" secondAttribute="trailing" constant="24" id="kz3-6D-29w"/>
                                     <constraint firstItem="POt-wZ-Fuf" firstAttribute="centerX" secondItem="nzF-y9-lQe" secondAttribute="centerX" id="lYo-Me-Fg7"/>
+                                    <constraint firstItem="vsl-aI-bYg" firstAttribute="top" secondItem="nzF-y9-lQe" secondAttribute="top" constant="16" id="vzO-ZJ-oPB"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-EW-fNx">
