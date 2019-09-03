@@ -13,6 +13,9 @@
         <array key="Machineat_Demo.ttf">
             <string>MachineatDemo</string>
         </array>
+        <array key="NanumSquareBold.ttf">
+            <string>NanumSquareB</string>
+        </array>
         <array key="NanumSquareExtraBold.ttf">
             <string>NanumSquareEB</string>
         </array>
@@ -110,7 +113,7 @@
                                     <constraint firstItem="h3v-jH-cX8" firstAttribute="bottom" secondItem="YW3-BC-961" secondAttribute="bottom" constant="-8" id="nOh-Op-VV4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-EE-PaZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-EE-PaZ" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                 <rect key="frame" x="60" y="570" width="294" height="40"/>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -125,16 +128,16 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-FD-tQF">
-                                <rect key="frame" x="127" y="630" width="160.5" height="28"/>
+                                <rect key="frame" x="127" y="630" width="160" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 회원이 아니신가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXQ-Vn-NCJ">
-                                        <rect key="frame" x="0.0" y="8" width="101.5" height="12"/>
+                                        <rect key="frame" x="0.0" y="8" width="101" height="12"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="10"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-OS-pzE">
-                                        <rect key="frame" x="109.5" y="0.0" width="51" height="28"/>
+                                        <rect key="frame" x="109" y="0.0" width="51" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                         <state key="normal" title="회원가입">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -182,6 +185,7 @@
                         <outlet property="idUnderlineView" destination="q8t-qN-XKb" id="OkF-Mf-m36"/>
                         <outlet property="pwTxtField" destination="amG-Mm-nab" id="Rtb-nF-iHY"/>
                         <outlet property="pwUnderlineView" destination="YW3-BC-961" id="svD-5r-s3g"/>
+                        <segue destination="eD0-o1-Eaw" kind="show" id="dp9-f0-oN1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEI-ts-GEg" sceneMemberID="firstResponder"/>
@@ -230,13 +234,13 @@
                                     <constraint firstItem="nFy-3L-dEN" firstAttribute="leading" secondItem="RpT-D1-sLM" secondAttribute="leading" constant="24" id="qnC-tL-SHN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imh-sU-nsT">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imh-sU-nsT" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="374" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btH-To-fyo">
                                         <rect key="frame" x="40" y="227" width="294" height="20"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-PV-tjT">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-PV-tjT">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
@@ -244,7 +248,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jf-An-n3Y">
                                                 <rect key="frame" x="0.0" y="19.5" width="294" height="0.5"/>
-                                                <color key="backgroundColor" red="0.63529411759999999" green="0.84313725490000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.65098039220000004" green="0.85098039219999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="FmX-27-Wbw"/>
                                                 </constraints>
@@ -264,7 +268,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-gJ-GAn">
                                         <rect key="frame" x="40" y="327" width="294" height="20"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFU-b7-FFL">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFU-b7-FFL">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
@@ -292,7 +296,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhh-rH-Kj7">
                                         <rect key="frame" x="40" y="427" width="294" height="20"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 재확인" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lG2-Ir-rnp">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lG2-Ir-rnp">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
@@ -317,7 +321,7 @@
                                             <constraint firstItem="lG2-Ir-rnp" firstAttribute="leading" secondItem="bl1-sO-v2S" secondAttribute="leading" constant="4" id="ihb-1M-V5N"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-3q-cvJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-3q-cvJ" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                         <rect key="frame" x="40" y="666" width="294" height="40"/>
                                         <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -327,6 +331,9 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneBtnAction:" destination="4B6-KN-Kln" eventType="touchUpInside" id="g5S-J8-sEm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -358,6 +365,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kZ6-4u-g7j"/>
                     </view>
+                    <connections>
+                        <outlet property="backBtn" destination="nFy-3L-dEN" id="TV5-xz-uLt"/>
+                        <outlet property="idTxtField" destination="vYz-PV-tjT" id="AOP-DE-W1Z"/>
+                        <outlet property="idUnderlineView" destination="8Jf-An-n3Y" id="88X-8n-iGa"/>
+                        <outlet property="pwTxtField" destination="EFU-b7-FFL" id="qK5-rv-G5H"/>
+                        <outlet property="pwUnderlineView" destination="iTY-Qk-ZUg" id="D2i-xV-Jn3"/>
+                        <outlet property="reTypeTxtField" destination="lG2-Ir-rnp" id="VSh-1u-cvd"/>
+                        <outlet property="retypeUnderlineView" destination="bl1-sO-v2S" id="fCr-xP-0CP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WA8-kn-xmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,128 +396,121 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJU-w2-w68">
-                                        <rect key="frame" x="357" y="16" width="33" height="32"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="GJU-w2-w68" firstAttribute="top" secondItem="wLO-hZ-lfo" secondAttribute="top" constant="16" id="UdW-tU-GfL"/>
-                                    <constraint firstAttribute="trailing" secondItem="GJU-w2-w68" secondAttribute="trailing" constant="24" id="WqM-jN-Ljn"/>
                                     <constraint firstAttribute="height" constant="132" id="fuk-I8-gUv"/>
                                     <constraint firstItem="y06-eN-rKD" firstAttribute="centerX" secondItem="wLO-hZ-lfo" secondAttribute="centerX" id="jru-GD-TP9"/>
                                     <constraint firstItem="y06-eN-rKD" firstAttribute="top" secondItem="wLO-hZ-lfo" secondAttribute="top" constant="16" id="lD7-72-58B"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4X-pl-Sge">
-                                <rect key="frame" x="20" y="108" width="374" height="567"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4X-pl-Sge" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="108" width="374" height="734"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-KC-mzb">
-                                        <rect key="frame" x="143" y="351" width="88" height="29"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsU-Qe-2iW">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="29"/>
-                                                <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="15"/>
-                                                <state key="normal" title="오전">
-                                                    <color key="titleColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMw-ft-UDs">
-                                                <rect key="frame" x="58" y="0.0" width="30" height="29"/>
-                                                <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="15"/>
-                                                <state key="normal" title="오후">
-                                                    <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="HsU-Qe-2iW" firstAttribute="leading" secondItem="U5R-KC-mzb" secondAttribute="leading" id="1kc-rs-mOD"/>
-                                            <constraint firstItem="HsU-Qe-2iW" firstAttribute="top" secondItem="U5R-KC-mzb" secondAttribute="top" id="Q8H-99-cNc"/>
-                                            <constraint firstAttribute="trailing" secondItem="VMw-ft-UDs" secondAttribute="trailing" id="TAB-2m-qD2"/>
-                                            <constraint firstAttribute="bottom" secondItem="VMw-ft-UDs" secondAttribute="bottom" id="gR6-ff-PNQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="HsU-Qe-2iW" secondAttribute="bottom" id="jmV-mR-8Z2"/>
-                                            <constraint firstItem="VMw-ft-UDs" firstAttribute="top" secondItem="U5R-KC-mzb" secondAttribute="top" id="oCv-hS-Rbq"/>
-                                            <constraint firstItem="VMw-ft-UDs" firstAttribute="leading" secondItem="HsU-Qe-2iW" secondAttribute="trailing" constant="28" id="rs5-JB-Pmy"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PYd-zR-POu">
-                                        <rect key="frame" x="20" y="180.5" width="334" height="126.5"/>
-                                        <attributedString key="attributedText">
-                                            <fragment>
-                                                <string key="content">여러분의 24시간 중 일정을 위해 사용할 수 있는 시간은 언제부터 언제입니까? 한시간 기준으로 시간을 설정할 수 있습니다. 원하는 시간대를 체크해 주세요. 세모 버튼을 클릭한 후 시계를 시계방향으로 돌리면 시간이 선택되고 다시 세모 버튼을 누르면 고정됩니다.</string>
-                                                <attributes>
-                                                    <color key="NSColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="10" name="NanumSquareEB"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFk-93-WBU">
+                                        <rect key="frame" x="187" y="236" width="187" height="32"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
+                                        <state key="normal" title="Set End Time">
+                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaq-I2-gn7">
+                                        <rect key="frame" x="0.0" y="236" width="187" height="32"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
+                                        <state key="normal" title="Set Start Time">
+                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-vr-hQw">
+                                        <rect key="frame" x="20" y="367" width="334" height="239"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="588647514.80225801">
+                                            <!--2019-08-28 01:11:54 +0000-->
+                                        </date>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a-hh-mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aue-9C-gmG">
+                                        <rect key="frame" x="57" y="288" width="73" height="19"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a-hh-mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydy-xo-hH7">
+                                        <rect key="frame" x="244" y="288" width="73" height="19"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmG-b8-ImR" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="666" width="294" height="40"/>
+                                        <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Qyq-3Q-w8v"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
+                                        <state key="normal" title="완료">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneBtnAction:" destination="eD0-o1-Eaw" eventType="touchUpInside" id="sN3-6Y-Xjt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="PYd-zR-POu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="C4X-pl-Sge" secondAttribute="top" constant="4" id="JOj-VZ-UGF"/>
-                                    <constraint firstItem="U5R-KC-mzb" firstAttribute="centerX" secondItem="C4X-pl-Sge" secondAttribute="centerX" id="Nye-gt-7gf"/>
-                                    <constraint firstItem="PYd-zR-POu" firstAttribute="centerX" secondItem="C4X-pl-Sge" secondAttribute="centerX" id="rAc-pg-Ozf"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="PYd-zR-POu" secondAttribute="trailing" constant="20" id="ueo-gN-r65"/>
-                                    <constraint firstItem="PYd-zR-POu" firstAttribute="bottom" secondItem="U5R-KC-mzb" secondAttribute="top" constant="-44" id="z4A-lY-jK7"/>
-                                    <constraint firstItem="PYd-zR-POu" firstAttribute="leading" relation="lessThanOrEqual" secondItem="C4X-pl-Sge" secondAttribute="leading" constant="20" id="zv2-D2-NF7"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLL-Xo-kgk">
-                                <rect key="frame" x="32" y="500" width="350" height="350"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IrisCalendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Psi-gD-jXp">
-                                        <rect key="frame" x="68" y="100" width="214" height="150"/>
-                                        <fontDescription key="fontDescription" name="MachineatDemo" family="MachineatDemo" pointSize="30"/>
-                                        <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Psi-gD-jXp" secondAttribute="bottom" constant="100" id="43c-Q3-nDE"/>
-                                    <constraint firstItem="Psi-gD-jXp" firstAttribute="top" secondItem="CLL-Xo-kgk" secondAttribute="top" constant="100" id="Ekv-r1-LKN"/>
-                                    <constraint firstAttribute="width" secondItem="CLL-Xo-kgk" secondAttribute="height" id="WSF-gz-l11"/>
-                                    <constraint firstAttribute="trailing" secondItem="Psi-gD-jXp" secondAttribute="trailing" constant="68" id="iCc-dL-PFd"/>
-                                    <constraint firstItem="Psi-gD-jXp" firstAttribute="leading" secondItem="CLL-Xo-kgk" secondAttribute="leading" constant="68" id="vfK-Oa-GLn"/>
+                                    <constraint firstItem="Bdg-vr-hQw" firstAttribute="leading" secondItem="C4X-pl-Sge" secondAttribute="leading" constant="20" id="3yu-Vv-vzK"/>
+                                    <constraint firstItem="Bdg-vr-hQw" firstAttribute="trailing" secondItem="C4X-pl-Sge" secondAttribute="trailing" constant="-20" id="6iv-G1-rwH"/>
+                                    <constraint firstItem="yFk-93-WBU" firstAttribute="centerX" secondItem="ydy-xo-hH7" secondAttribute="centerX" id="7XK-9Z-3EG"/>
+                                    <constraint firstItem="qaq-I2-gn7" firstAttribute="centerX" secondItem="aue-9C-gmG" secondAttribute="centerX" id="SY0-bC-Eed"/>
+                                    <constraint firstItem="qaq-I2-gn7" firstAttribute="trailing" secondItem="C4X-pl-Sge" secondAttribute="centerX" id="Sdm-1O-g0E"/>
+                                    <constraint firstItem="zmG-b8-ImR" firstAttribute="top" secondItem="Bdg-vr-hQw" secondAttribute="bottom" constant="60" id="TH3-AJ-bJm"/>
+                                    <constraint firstAttribute="trailing" secondItem="zmG-b8-ImR" secondAttribute="trailing" constant="40" id="U2N-5E-9AJ"/>
+                                    <constraint firstItem="Bdg-vr-hQw" firstAttribute="top" secondItem="C4X-pl-Sge" secondAttribute="centerY" id="WgZ-0g-4KV"/>
+                                    <constraint firstItem="yFk-93-WBU" firstAttribute="leading" secondItem="C4X-pl-Sge" secondAttribute="centerX" id="YX0-Bx-yfa"/>
+                                    <constraint firstItem="Bdg-vr-hQw" firstAttribute="top" secondItem="ydy-xo-hH7" secondAttribute="bottom" constant="60" id="Z7w-hu-bUA"/>
+                                    <constraint firstItem="Bdg-vr-hQw" firstAttribute="top" secondItem="aue-9C-gmG" secondAttribute="bottom" constant="60" id="bu5-gO-Jhs"/>
+                                    <constraint firstItem="qaq-I2-gn7" firstAttribute="leading" secondItem="C4X-pl-Sge" secondAttribute="leading" id="crD-D1-ofn"/>
+                                    <constraint firstAttribute="trailing" secondItem="yFk-93-WBU" secondAttribute="trailing" id="f9i-Sl-LxW"/>
+                                    <constraint firstItem="zmG-b8-ImR" firstAttribute="leading" secondItem="C4X-pl-Sge" secondAttribute="leading" constant="40" id="fNg-Iq-oDD"/>
+                                    <constraint firstItem="aue-9C-gmG" firstAttribute="top" secondItem="qaq-I2-gn7" secondAttribute="bottom" constant="20" id="ge2-Vo-bnT"/>
+                                    <constraint firstItem="ydy-xo-hH7" firstAttribute="top" secondItem="yFk-93-WBU" secondAttribute="bottom" constant="20" id="o3K-4H-hrH"/>
+                                    <constraint firstAttribute="bottom" secondItem="zmG-b8-ImR" secondAttribute="bottom" constant="28" id="uII-zz-BjM"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="U5R-KC-mzb" firstAttribute="bottom" secondItem="CLL-Xo-kgk" secondAttribute="top" constant="-12" id="8eH-kM-ChD"/>
                             <constraint firstItem="99M-wT-37W" firstAttribute="trailing" secondItem="C4X-pl-Sge" secondAttribute="trailing" constant="20" id="CfI-78-FKS"/>
                             <constraint firstItem="wLO-hZ-lfo" firstAttribute="trailing" secondItem="99M-wT-37W" secondAttribute="trailing" id="FSV-9K-VYx"/>
                             <constraint firstItem="C4X-pl-Sge" firstAttribute="leading" secondItem="99M-wT-37W" secondAttribute="leading" constant="20" id="Oby-tn-dZF"/>
                             <constraint firstItem="wLO-hZ-lfo" firstAttribute="top" secondItem="99M-wT-37W" secondAttribute="top" id="RPi-Lr-9if"/>
-                            <constraint firstItem="CLL-Xo-kgk" firstAttribute="leading" secondItem="99M-wT-37W" secondAttribute="leading" constant="32" id="SY6-md-MSQ"/>
-                            <constraint firstItem="99M-wT-37W" firstAttribute="bottom" secondItem="CLL-Xo-kgk" secondAttribute="bottom" constant="12" id="XQN-WS-O7U"/>
-                            <constraint firstItem="C4X-pl-Sge" firstAttribute="bottom" secondItem="CLL-Xo-kgk" secondAttribute="centerY" id="b1m-hf-yyC"/>
-                            <constraint firstItem="99M-wT-37W" firstAttribute="trailing" secondItem="CLL-Xo-kgk" secondAttribute="trailing" constant="32" id="dVM-Gk-Igv"/>
+                            <constraint firstItem="99M-wT-37W" firstAttribute="bottom" secondItem="C4X-pl-Sge" secondAttribute="bottom" constant="20" id="ftb-LI-eRi"/>
                             <constraint firstItem="C4X-pl-Sge" firstAttribute="top" secondItem="y06-eN-rKD" secondAttribute="bottom" constant="28" id="w7q-xv-Acg"/>
                             <constraint firstItem="wLO-hZ-lfo" firstAttribute="leading" secondItem="99M-wT-37W" secondAttribute="leading" id="yc0-yg-gnZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="99M-wT-37W"/>
                     </view>
+                    <connections>
+                        <outlet property="datePrickerView" destination="Bdg-vr-hQw" id="mTd-MS-T5P"/>
+                        <outlet property="endTimeLbl" destination="ydy-xo-hH7" id="g1n-aX-P24"/>
+                        <outlet property="setEndTimeBtn" destination="yFk-93-WBU" id="Zjt-a6-NZC"/>
+                        <outlet property="setStartTimeBtn" destination="qaq-I2-gn7" id="rlH-Ek-lUo"/>
+                        <outlet property="startTimeLbl" destination="aue-9C-gmG" id="rxv-Hx-rbE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feC-jb-3WI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="-8"/>
+            <point key="canvasLocation" x="1163.768115942029" y="-8.0357142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tkQ-7L-esV">
             <objects>
-                <navigationController storyboardIdentifier="AuthNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Jt-9l-aWa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="6Jt-9l-aWa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QrB-CS-kDX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
