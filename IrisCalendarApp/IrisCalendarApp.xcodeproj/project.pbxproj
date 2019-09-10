@@ -146,9 +146,9 @@
 			children = (
 				373BF6D622FB09B3003AB8A9 /* UI */,
 				37F35728230F81C100415686 /* Networking */,
-				373BF6D822FB09D5003AB8A9 /* ViewModel */,
 				373BF6D522FB09A7003AB8A9 /* Model */,
-				373BF6D722FB09C6003AB8A9 /* ViewControllers */,
+				373BF6D822FB09D5003AB8A9 /* ViewModel */,
+				373BF6D722FB09C6003AB8A9 /* ViewController */,
 				373BF6D922FB0A0A003AB8A9 /* Util */,
 				373BF6DA22FF294F003AB8A9 /* Fonts */,
 				373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */,
@@ -193,7 +193,7 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		373BF6D722FB09C6003AB8A9 /* ViewControllers */ = {
+		373BF6D722FB09C6003AB8A9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				37F35717230D195400415686 /* SignInVC.swift */,
@@ -205,7 +205,7 @@
 				37F35723230F802C00415686 /* AddScheduleVC.swift */,
 				37F35725230F804100415686 /* EditCategoryVC.swift */,
 			);
-			path = ViewControllers;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		373BF6D822FB09D5003AB8A9 /* ViewModel */ = {

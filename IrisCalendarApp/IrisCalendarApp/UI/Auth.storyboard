@@ -123,9 +123,6 @@
                                 <state key="normal" title="완료">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="doneBtnAction:" destination="9VR-GM-Icd" eventType="touchUpInside" id="h9U-hy-pzJ"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-FD-tQF">
                                 <rect key="frame" x="127" y="630" width="160" height="28"/>
@@ -181,6 +178,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iiA-Tk-2Tc"/>
                     <connections>
+                        <outlet property="doneBtn" destination="vLP-EE-PaZ" id="tty-v0-4Hn"/>
                         <outlet property="idTxtField" destination="Otj-wc-vE5" id="xse-FD-UWp"/>
                         <outlet property="idUnderlineView" destination="q8t-qN-XKb" id="OkF-Mf-m36"/>
                         <outlet property="pwTxtField" destination="amG-Mm-nab" id="Rtb-nF-iHY"/>
@@ -366,12 +364,14 @@
                         <viewLayoutGuide key="safeArea" id="kZ6-4u-g7j"/>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="nFy-3L-dEN" id="TV5-xz-uLt"/>
-                        <outlet property="idTxtField" destination="vYz-PV-tjT" id="AOP-DE-W1Z"/>
-                        <outlet property="idUnderlineView" destination="8Jf-An-n3Y" id="88X-8n-iGa"/>
-                        <outlet property="pwTxtField" destination="EFU-b7-FFL" id="qK5-rv-G5H"/>
-                        <outlet property="pwUnderlineView" destination="iTY-Qk-ZUg" id="D2i-xV-Jn3"/>
-                        <outlet property="reTypeTxtField" destination="lG2-Ir-rnp" id="VSh-1u-cvd"/>
+                        <outlet property="backBtn" destination="nFy-3L-dEN" id="TJW-lg-bpC"/>
+                        <outlet property="doneBtn" destination="zQb-3q-cvJ" id="P3c-C9-8iJ"/>
+                        <outlet property="idTxtField" destination="vYz-PV-tjT" id="OWx-aF-Tdp"/>
+                        <outlet property="idUnderlineView" destination="8Jf-An-n3Y" id="O7U-8Y-mAt"/>
+                        <outlet property="pwTxtField" destination="EFU-b7-FFL" id="zMV-fM-mpG"/>
+                        <outlet property="pwUnderlineView" destination="iTY-Qk-ZUg" id="Wdw-Nl-cX8"/>
+                        <outlet property="reTypeTxtField" destination="lG2-Ir-rnp" id="NZP-a6-lLj"/>
+                        <outlet property="reTypeUnderlineView" destination="bl1-sO-v2S" id="yq8-Qn-ZAq"/>
                         <outlet property="retypeUnderlineView" destination="bl1-sO-v2S" id="fCr-xP-0CP"/>
                     </connections>
                 </viewController>
@@ -410,28 +410,17 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFk-93-WBU">
                                         <rect key="frame" x="187" y="236" width="187" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="Set End Time">
-                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="종료시간설정">
+                                            <color key="titleColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaq-I2-gn7">
                                         <rect key="frame" x="0.0" y="236" width="187" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="Set Start Time">
+                                        <state key="normal" title="시작시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-vr-hQw">
-                                        <rect key="frame" x="20" y="367" width="334" height="239"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="588647514.80225801">
-                                            <!--2019-08-28 01:11:54 +0000-->
-                                        </date>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a-hh-mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aue-9C-gmG">
                                         <rect key="frame" x="57" y="288" width="73" height="19"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="17"/>
@@ -444,6 +433,17 @@
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-vr-hQw">
+                                        <rect key="frame" x="20" y="367" width="334" height="239"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="588647514.80225801">
+                                            <!--2019-08-28 01:11:54 +0000-->
+                                        </date>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmG-b8-ImR" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                         <rect key="frame" x="40" y="666" width="294" height="40"/>
                                         <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
@@ -494,11 +494,13 @@
                         <viewLayoutGuide key="safeArea" id="99M-wT-37W"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="Bdg-vr-hQw" id="c42-5F-dJ5"/>
                         <outlet property="datePrickerView" destination="Bdg-vr-hQw" id="mTd-MS-T5P"/>
-                        <outlet property="endTimeLbl" destination="ydy-xo-hH7" id="g1n-aX-P24"/>
-                        <outlet property="setEndTimeBtn" destination="yFk-93-WBU" id="Zjt-a6-NZC"/>
-                        <outlet property="setStartTimeBtn" destination="qaq-I2-gn7" id="rlH-Ek-lUo"/>
-                        <outlet property="startTimeLbl" destination="aue-9C-gmG" id="rxv-Hx-rbE"/>
+                        <outlet property="doneBtn" destination="zmG-b8-ImR" id="uSb-vy-5BF"/>
+                        <outlet property="endTimeLbl" destination="ydy-xo-hH7" id="HDJ-Pv-PxR"/>
+                        <outlet property="setEndTimeBtn" destination="yFk-93-WBU" id="BcJ-Kd-dwe"/>
+                        <outlet property="setStartTimeBtn" destination="qaq-I2-gn7" id="imo-Ob-ctk"/>
+                        <outlet property="startTimeLbl" destination="aue-9C-gmG" id="wsu-hv-g2Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feC-jb-3WI" userLabel="First Responder" sceneMemberID="firstResponder"/>

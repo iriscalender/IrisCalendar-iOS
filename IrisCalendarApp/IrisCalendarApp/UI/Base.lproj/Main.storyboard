@@ -45,22 +45,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qut-DO-kFD">
-                                <rect key="frame" x="24" y="52" width="19" height="14"/>
+                                <rect key="frame" x="24" y="52" width="15" height="11"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                 <state key="normal" image="menuBar"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-YA-H2w">
-                                <rect key="frame" x="372" y="52" width="18" height="22"/>
+                                <rect key="frame" x="376" y="52" width="14" height="22"/>
                                 <state key="normal" image="addSchedul"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CALENDAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giY-Rm-RbP">
-                                <rect key="frame" x="167.5" y="50.5" width="79" height="17"/>
+                                <rect key="frame" x="167.5" y="49" width="79" height="17"/>
                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="15"/>
                                 <color key="textColor" red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMf-Kx-xHb" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="79.5" width="414" height="428.5"/>
+                                <rect key="frame" x="0.0" y="78" width="414" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
@@ -165,8 +165,8 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="categoryView" destination="hCV-O2-2R2" id="SxX-Fp-iyd"/>
-                                                    <outlet property="timeLbl" destination="wo3-q6-P8o" id="xPd-dk-a7f"/>
-                                                    <outlet property="titleLbl" destination="c0M-0v-Bde" id="Sve-g4-LCq"/>
+                                                    <outlet property="timeLbl" destination="wo3-q6-P8o" id="tym-Cf-vgt"/>
+                                                    <outlet property="titleLbl" destination="c0M-0v-Bde" id="cUG-2z-TaA"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -206,11 +206,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="iDI-Wr-8Go"/>
                     <connections>
-                        <outlet property="addScheduleBtn" destination="y4S-YA-H2w" id="2E1-7B-4HX"/>
-                        <outlet property="calendarView" destination="bMf-Kx-xHb" id="yYE-0d-dRK"/>
-                        <outlet property="menuBtn" destination="qut-DO-kFD" id="QbT-rg-3bR"/>
-                        <outlet property="tableView" destination="gPh-fh-O5p" id="ReS-w0-ZYs"/>
-                        <outlet property="todayDateLbl" destination="dIa-Jf-Gl8" id="Ads-Pk-o5Y"/>
+                        <outlet property="addScheduleBtn" destination="y4S-YA-H2w" id="bfh-Bv-3QR"/>
+                        <outlet property="calendarView" destination="bMf-Kx-xHb" id="BmK-YX-83L"/>
+                        <outlet property="menuBtn" destination="qut-DO-kFD" id="Gd5-XK-tFy"/>
+                        <outlet property="tableView" destination="gPh-fh-O5p" id="aGM-Dw-Ksl"/>
+                        <outlet property="todayDateLbl" destination="dIa-Jf-Gl8" id="YS3-4b-aAI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buw-j0-Bi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,7 +225,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="747"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-j5-OkG">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-j5-OkG" customClass="RoundView" customModule="IrisCalendarApp" customModuleProvider="target">
                                 <rect key="frame" x="-24" y="-28" width="100" height="100"/>
                                 <color key="backgroundColor" red="0.65098039220000004" green="0.85098039219999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -246,9 +246,6 @@
                                 <state key="normal" title="할당 시간 재설정하기">
                                     <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="timeResettingBtnAction:" destination="kII-Ls-WcE" eventType="touchUpInside" id="uMy-oy-ele"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmM-cj-gmt">
                                 <rect key="frame" x="50" y="300.5" width="113" height="29"/>
@@ -256,9 +253,6 @@
                                 <state key="normal" title="카테고리 수정하기">
                                     <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="editCategoryBtnAction:" destination="kII-Ls-WcE" eventType="touchUpInside" id="STe-TP-jdf"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWU-dy-j3c">
                                 <rect key="frame" x="50" y="393.5" width="55" height="29"/>
@@ -266,9 +260,6 @@
                                 <state key="normal" title="로그아웃">
                                     <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="logoutBtnAction:" destination="kII-Ls-WcE" eventType="touchUpInside" id="xAu-Z0-3lw"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -288,11 +279,11 @@
                     </view>
                     <size key="freeformSize" width="414" height="747"/>
                     <connections>
-                        <outlet property="EditCategoryBtn" destination="OmM-cj-gmt" id="NPx-6w-41m"/>
-                        <outlet property="logoutBtn" destination="dWU-dy-j3c" id="AVL-qT-f21"/>
-                        <outlet property="menuBtn" destination="hKr-er-eWb" id="urG-Or-PMA"/>
-                        <outlet property="menuBtnBackgroundView" destination="H5M-j5-OkG" id="YEk-D4-0qB"/>
-                        <outlet property="timeResettingBtn" destination="XOB-kA-lNK" id="J6w-82-YCj"/>
+                        <outlet property="editCategoryBtn" destination="OmM-cj-gmt" id="dFk-he-aNt"/>
+                        <outlet property="logoutBtn" destination="dWU-dy-j3c" id="Lgg-uT-eaT"/>
+                        <outlet property="menuBtn" destination="hKr-er-eWb" id="vME-kd-xka"/>
+                        <outlet property="menuBtnBackgroundView" destination="H5M-j5-OkG" id="roL-xx-j0a"/>
+                        <outlet property="timeResettingBtn" destination="XOB-kA-lNK" id="fsb-Tk-NOy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lb-h9-Rph" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -330,9 +321,6 @@
                                         <state key="normal" title="취소">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cancelBtnAction:" destination="9c6-pE-E7L" eventType="touchUpInside" id="CZS-PL-dZ0"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-WF-xjx">
                                         <rect key="frame" x="357" y="16" width="33" height="32"/>
@@ -340,9 +328,6 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="9c6-pE-E7L" eventType="touchUpInside" id="JKf-TQ-YUX"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
@@ -722,20 +707,26 @@
                         <viewLayoutGuide key="safeArea" id="142-rY-SCb"/>
                     </view>
                     <connections>
-                        <outlet property="endDayTxtField" destination="o8p-GB-EJY" id="fOU-Lb-Ytl"/>
-                        <outlet property="endDayUnderlineView" destination="i7c-mS-8kj" id="3rA-UI-3G3"/>
-                        <outlet property="endMonthTxtField" destination="Nos-SP-jH3" id="dGd-zT-cJg"/>
-                        <outlet property="endMonthUnderlineView" destination="I8P-vq-Meg" id="bu8-4i-wtE"/>
-                        <outlet property="endYearTxtField" destination="N1z-Vh-TLM" id="bgW-4r-r3B"/>
-                        <outlet property="endYearUnderlineView" destination="jek-gT-zd8" id="Eg4-q7-7TR"/>
-                        <outlet property="pinkBtn" destination="2xI-yQ-r7d" id="lhP-yl-AQX"/>
-                        <outlet property="purpleBtn" destination="YC8-jR-Oxd" id="qr1-3l-Chr"/>
-                        <outlet property="skyblueBtn" destination="ikw-t9-p1X" id="a2Q-7m-7uC"/>
-                        <outlet property="theTimeRequiredTxtField" destination="y2i-Hh-fiH" id="CQN-6t-Yuj"/>
-                        <outlet property="theTimeRequiredUnderlineView" destination="UKH-2u-DUI" id="8Iq-15-NlH"/>
-                        <outlet property="titleTxtField" destination="dqt-i9-XRk" id="eIs-I4-L0L"/>
-                        <outlet property="titleUnderlineView" destination="eun-6X-Uhf" id="IJ9-n3-oef"/>
-                        <outlet property="yellowBtn" destination="sPi-HO-VPp" id="vM0-Ai-YhP"/>
+                        <outlet property="cancelBtn" destination="NC8-mZ-Qh1" id="QeP-xz-KP9"/>
+                        <outlet property="doneBtn" destination="ZEm-WF-xjx" id="Ua6-3F-3pR"/>
+                        <outlet property="endDayTxtField" destination="o8p-GB-EJY" id="hLz-Sw-P76"/>
+                        <outlet property="endDayUnderlineView" destination="i7c-mS-8kj" id="sKU-nw-M9g"/>
+                        <outlet property="endMonthTxtField" destination="Nos-SP-jH3" id="KBL-s7-ZD0"/>
+                        <outlet property="endMonthUnderlineView" destination="I8P-vq-Meg" id="idm-0G-OuY"/>
+                        <outlet property="endYearTxtField" destination="N1z-Vh-TLM" id="gQS-3w-8Xa"/>
+                        <outlet property="endYearUnderlineView" destination="jek-gT-zd8" id="gMj-MH-Wa3"/>
+                        <outlet property="pinkBtn" destination="2xI-yQ-r7d" id="fd7-bv-lwI"/>
+                        <outlet property="pinkLbl" destination="A2H-f5-CTh" id="gZo-9c-mj9"/>
+                        <outlet property="purpleBtn" destination="YC8-jR-Oxd" id="Iom-ut-Mhg"/>
+                        <outlet property="purpleLbl" destination="Lov-oZ-Yz0" id="ORg-cq-ygi"/>
+                        <outlet property="scheduleNameTxtField" destination="dqt-i9-XRk" id="LSx-AU-OST"/>
+                        <outlet property="scheduleNameUnderlineView" destination="eun-6X-Uhf" id="3ye-qi-FPN"/>
+                        <outlet property="skyblueBtn" destination="ikw-t9-p1X" id="8ZM-Hv-P6g"/>
+                        <outlet property="skyblueLbl" destination="uwj-7j-jEJ" id="5Kt-fO-92z"/>
+                        <outlet property="theTimeRequiredTxtField" destination="y2i-Hh-fiH" id="bBq-Py-KOA"/>
+                        <outlet property="theTimeRequiredUnderlineView" destination="UKH-2u-DUI" id="v7M-HJ-oQF"/>
+                        <outlet property="yellowBtn" destination="sPi-HO-VPp" id="A5e-Xo-1ci"/>
+                        <outlet property="yellowLbl" destination="QcM-eE-WR7" id="olr-IX-k6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESL-dn-lDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -765,9 +756,6 @@
                                         <state key="normal" title="취소">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cancelBtnAction:" destination="tda-tL-bCB" eventType="touchUpInside" id="Awk-QD-wkX"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-aI-bYg">
                                         <rect key="frame" x="357" y="16" width="33" height="32"/>
@@ -775,9 +763,6 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="tda-tL-bCB" eventType="touchUpInside" id="uVr-Z8-xul"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
@@ -914,10 +899,16 @@
                         <viewLayoutGuide key="safeArea" id="SdT-h2-q10"/>
                     </view>
                     <connections>
-                        <outlet property="pinkTxtView" destination="TIK-mG-N4j" id="abY-1x-gJC"/>
-                        <outlet property="purpleTxtView" destination="iIw-jc-YPF" id="tCf-WQ-OhX"/>
-                        <outlet property="skyBlueTxtView" destination="J8E-2f-Qn1" id="efd-gU-l8M"/>
-                        <outlet property="yellowTxtView" destination="5qf-iS-DCQ" id="dro-18-jmg"/>
+                        <outlet property="cancelBtn" destination="cdl-Ln-zVz" id="DGy-7c-282"/>
+                        <outlet property="doneBtn" destination="vsl-aI-bYg" id="sVn-Mu-eNr"/>
+                        <outlet property="pinkBtn" destination="vyP-1N-Y1Z" id="a8i-cM-7z5"/>
+                        <outlet property="pinkTxtView" destination="TIK-mG-N4j" id="etP-cO-Pee"/>
+                        <outlet property="purpleBtn" destination="77w-nK-Qfd" id="zjw-b5-CTJ"/>
+                        <outlet property="purpleTxtView" destination="iIw-jc-YPF" id="RSH-ld-Rjn"/>
+                        <outlet property="skyblueBtn" destination="k5E-2L-YTR" id="hFo-cZ-BBF"/>
+                        <outlet property="skyblueTxtView" destination="J8E-2f-Qn1" id="OAA-vR-s3F"/>
+                        <outlet property="yellowBtn" destination="Ibm-Gm-KVe" id="F4h-xs-L6e"/>
+                        <outlet property="yellowTxtField" destination="5qf-iS-DCQ" id="oKS-07-Cge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnB-oY-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -955,9 +946,6 @@
                                 <state key="normal" title="취소">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="backBtnAction:" destination="snd-Tx-9KD" eventType="touchUpInside" id="V7i-nb-LEe"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9C-Vf-H52" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="374" height="734"/>
@@ -965,7 +953,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmb-s0-TtO">
                                         <rect key="frame" x="0.0" y="236" width="187" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="Set Start Time">
+                                        <state key="normal" title="시작시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -978,7 +966,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-e6-0at">
                                         <rect key="frame" x="187" y="236" width="187" height="32"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="Set EndTime">
+                                        <state key="normal" title="종료시간설정">
                                             <color key="titleColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
@@ -1009,9 +997,6 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="snd-Tx-9KD" eventType="touchUpInside" id="fPz-LV-lt2"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1051,11 +1036,13 @@
                         <viewLayoutGuide key="safeArea" id="8C5-AB-ehR"/>
                     </view>
                     <connections>
-                        <outlet property="datePickerView" destination="o6P-tN-f4x" id="lsg-d3-xqj"/>
-                        <outlet property="endTimeLbl" destination="O57-08-33C" id="Qd2-Yq-wLh"/>
-                        <outlet property="setEndTimeBtn" destination="fJ8-e6-0at" id="8gy-5w-HIJ"/>
-                        <outlet property="setStartTimeBtn" destination="jmb-s0-TtO" id="xwr-yT-FLP"/>
-                        <outlet property="startTimeLbl" destination="CbU-qg-TEG" id="nr9-gy-ofD"/>
+                        <outlet property="cancelBtn" destination="EXW-as-9Ku" id="rw1-Pe-YDT"/>
+                        <outlet property="datePicker" destination="o6P-tN-f4x" id="Bbg-1R-Df2"/>
+                        <outlet property="doneBtn" destination="p8c-dV-E1b" id="kHP-QO-VAK"/>
+                        <outlet property="endTimeLbl" destination="O57-08-33C" id="iNv-GS-mE3"/>
+                        <outlet property="setEndTimeBtn" destination="fJ8-e6-0at" id="lbB-3J-waS"/>
+                        <outlet property="setStartTimeBtn" destination="jmb-s0-TtO" id="S16-nm-YhR"/>
+                        <outlet property="startTimeLbl" destination="CbU-qg-TEG" id="mbd-Oz-GtG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOK-dF-6hD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1064,9 +1051,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addSchedul" width="18" height="18"/>
-        <image name="menuBar" width="19" height="14"/>
+        <image name="addSchedul" width="14" height="14"/>
+        <image name="menuBar" width="15" height="11"/>
         <image name="selectSchedulRightArrow" width="5.5" height="9.5"/>
-        <image name="selectedMenuBar" width="19" height="14"/>
+        <image name="selectedMenuBar" width="15" height="11"/>
     </resources>
 </document>
