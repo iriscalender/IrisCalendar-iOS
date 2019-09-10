@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class SignInVC: UIViewController {
     
     @IBOutlet weak var idTxtField: UITextField!
@@ -18,14 +21,46 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var doneBtn: RoundButton!
     
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        txtFieldEffectActivation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func txtFieldEffectActivation() {
+        idTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
+                UIView.animate(withDuration: 0.5, animations: {[unowned self] in
+                    self.idUnderlineView.backgroundColor = Color.main
+                    self.idUnderlineView.tintColor = Color.main
+                })
+            }.disposed(by: disposeBag)
+        
+        idTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
+            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
+                self.idUnderlineView.backgroundColor = Color.authTxtField
+                self.idUnderlineView.tintColor = Color.authTxtField
+            })
+            }.disposed(by: disposeBag)
+        
+        pwTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
+            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
+                self.pwUnderlineView.backgroundColor = Color.main
+                self.pwUnderlineView.tintColor = Color.main
+            })
+            }.disposed(by: disposeBag)
+        
+        pwTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
+            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
+                self.pwUnderlineView.backgroundColor = Color.authTxtField
+                self.pwUnderlineView.tintColor = Color.authTxtField
+            })
+            }.disposed(by: disposeBag)
     }
     
 }
