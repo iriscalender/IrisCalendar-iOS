@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.2)
+  - Alamofire (4.9.0)
   - FSCalendar (2.8.0)
   - RxAlamofire (5.0.0):
     - RxAlamofire/Core (= 5.0.0)
@@ -29,7 +29,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   RxAlamofire: e7875a012aff55345672d0f70a2a9cd6aeb0f211
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
