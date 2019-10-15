@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareBold.ttf">
+            <string>NanumSquareB</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectTimeModalView" customModule="IrisCalendarApp" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="5rs-Dc-irf" id="piC-Q4-PN9"/>
+                <outlet property="titleLbl" destination="gt0-hy-m3d" id="0tj-dH-LSp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rfQ-pu-ifH">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="258"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5rs-Dc-irf">
+                    <rect key="frame" x="12" y="84" width="305" height="162"/>
+                </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작시간설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt0-hy-m3d">
+                    <rect key="frame" x="120.5" y="34" width="88" height="18"/>
+                    <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="16"/>
+                    <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="ZMN-eb-NM0" firstAttribute="trailing" secondItem="5rs-Dc-irf" secondAttribute="trailing" constant="12" id="2XR-Wb-88y"/>
+                <constraint firstItem="5rs-Dc-irf" firstAttribute="top" secondItem="gt0-hy-m3d" secondAttribute="bottom" constant="32" id="UoC-RL-7TE"/>
+                <constraint firstItem="gt0-hy-m3d" firstAttribute="centerX" secondItem="ZMN-eb-NM0" secondAttribute="centerX" id="gg0-f4-zgX"/>
+                <constraint firstItem="5rs-Dc-irf" firstAttribute="leading" secondItem="rfQ-pu-ifH" secondAttribute="leading" constant="12" id="q3U-6R-FZl"/>
+                <constraint firstItem="ZMN-eb-NM0" firstAttribute="bottom" secondItem="5rs-Dc-irf" secondAttribute="bottom" constant="12" id="zxD-NQ-8RF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="ZMN-eb-NM0"/>
+            <point key="canvasLocation" x="-836.95652173913049" y="-29.464285714285712"/>
+        </view>
+    </objects>
+</document>

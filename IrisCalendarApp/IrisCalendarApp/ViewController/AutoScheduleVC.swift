@@ -8,18 +8,21 @@
 
 import UIKit
 
-class AddScheduleVC: UIViewController {
+import RxSwift
+import RxCocoa
+
+class AutoScheduleVC: UIViewController {
 
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     
-    @IBOutlet weak var purpleBtn: RoundButton!
+    @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleLbl: UILabel!
-    @IBOutlet weak var skyblueBtn: RoundButton!
+    @IBOutlet weak var skyblueBtn: HeightRoundButton!
     @IBOutlet weak var skyblueLbl: UILabel!
-    @IBOutlet weak var pinkBtn: RoundButton!
+    @IBOutlet weak var pinkBtn: HeightRoundButton!
     @IBOutlet weak var pinkLbl: UILabel!
-    @IBOutlet weak var yellowBtn: RoundButton!
+    @IBOutlet weak var yellowBtn: HeightRoundButton!
     @IBOutlet weak var yellowLbl: UILabel!
     
     @IBOutlet weak var scheduleNameTxtField: UITextField!
@@ -34,13 +37,16 @@ class AddScheduleVC: UIViewController {
     
     @IBOutlet weak var theTimeRequiredTxtField: UITextField!
     @IBOutlet weak var theTimeRequiredUnderlineView: UIView!
+    @IBOutlet weak var moreImportantScheduleBtn: BorderAndRound8Button!
     
-    
-    
+    @IBOutlet weak var theTimeRequiredLbl: UILabel!
+    @IBOutlet weak var theTimeRequiredView: UIView!
+
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 

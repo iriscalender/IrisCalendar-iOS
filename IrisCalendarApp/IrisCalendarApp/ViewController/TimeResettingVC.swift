@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class TimeResettingVC: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
@@ -19,13 +22,13 @@ class TimeResettingVC: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var doneBtn: RoundButton!
+    @IBOutlet weak var doneBtn: HeightRoundButton!
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
 
 }

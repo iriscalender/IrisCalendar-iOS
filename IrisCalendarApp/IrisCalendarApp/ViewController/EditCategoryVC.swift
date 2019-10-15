@@ -8,24 +8,28 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class EditCategoryVC: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     
-    @IBOutlet weak var purpleBtn: RoundButton!
+    @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleTxtView: UITextView!
-    @IBOutlet weak var skyblueBtn: RoundButton!
+    @IBOutlet weak var skyblueBtn: HeightRoundButton!
     @IBOutlet weak var skyblueTxtView: UITextView!
-    @IBOutlet weak var pinkBtn: RoundButton!
+    @IBOutlet weak var pinkBtn: HeightRoundButton!
     @IBOutlet weak var pinkTxtView: UITextView!
-    @IBOutlet weak var yellowBtn: RoundButton!
+    @IBOutlet weak var yellowBtn: HeightRoundButton!
     @IBOutlet weak var yellowTxtField: UITextView!
+
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
 }

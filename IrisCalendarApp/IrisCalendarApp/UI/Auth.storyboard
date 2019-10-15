@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Jt-9l-aWa">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Jt-9l-aWa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,7 +55,6 @@
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Otj-wc-vE5">
                                         <rect key="frame" x="48" y="4" width="246" height="16"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -94,7 +91,6 @@
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amG-Mm-nab">
                                         <rect key="frame" x="48" y="0.0" width="246" height="20"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -113,7 +109,7 @@
                                     <constraint firstItem="h3v-jH-cX8" firstAttribute="bottom" secondItem="YW3-BC-961" secondAttribute="bottom" constant="-8" id="nOh-Op-VV4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-EE-PaZ" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-EE-PaZ" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                 <rect key="frame" x="60" y="570" width="294" height="40"/>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -125,16 +121,16 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-FD-tQF">
-                                <rect key="frame" x="127" y="630" width="160" height="28"/>
+                                <rect key="frame" x="127" y="630" width="160.5" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 회원이 아니신가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXQ-Vn-NCJ">
-                                        <rect key="frame" x="0.0" y="8" width="101" height="12"/>
+                                        <rect key="frame" x="0.0" y="8" width="101.5" height="12"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="10"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDr-OS-pzE">
-                                        <rect key="frame" x="109" y="0.0" width="51" height="28"/>
+                                        <rect key="frame" x="109.5" y="0.0" width="51" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                         <state key="normal" title="회원가입">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -183,7 +179,6 @@
                         <outlet property="idUnderlineView" destination="q8t-qN-XKb" id="OkF-Mf-m36"/>
                         <outlet property="pwTxtField" destination="amG-Mm-nab" id="Rtb-nF-iHY"/>
                         <outlet property="pwUnderlineView" destination="YW3-BC-961" id="svD-5r-s3g"/>
-                        <segue destination="eD0-o1-Eaw" kind="show" id="dp9-f0-oN1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEI-ts-GEg" sceneMemberID="firstResponder"/>
@@ -193,7 +188,9 @@
         <!--Main-->
         <scene sceneID="gIV-fO-Bkv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="ATB-iw-oZv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="ATB-iw-oZv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6Vf-gC-ht8"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhc-yD-ep7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1690" y="-48"/>
@@ -203,11 +200,11 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpVC" title="SignUp" id="4B6-KN-Kln" customClass="SignUpVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Nd-CI-eD7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpT-D1-sLM">
-                                <rect key="frame" x="0.0" y="44" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0d-qd-S4J">
                                         <rect key="frame" x="174" y="16" width="66" height="20"/>
@@ -215,32 +212,22 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFy-3L-dEN">
-                                        <rect key="frame" x="24" y="16" width="66" height="32"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
-                                        <state key="normal" title="돌아가기">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="1Gm-BJ-rkf"/>
                                     <constraint firstItem="O0d-qd-S4J" firstAttribute="centerX" secondItem="RpT-D1-sLM" secondAttribute="centerX" id="Hys-Tl-hQK"/>
                                     <constraint firstItem="O0d-qd-S4J" firstAttribute="top" secondItem="RpT-D1-sLM" secondAttribute="top" constant="16" id="W2C-6v-pHr"/>
-                                    <constraint firstItem="nFy-3L-dEN" firstAttribute="top" secondItem="RpT-D1-sLM" secondAttribute="top" constant="16" id="ipe-sF-C7A"/>
-                                    <constraint firstItem="nFy-3L-dEN" firstAttribute="leading" secondItem="RpT-D1-sLM" secondAttribute="leading" constant="24" id="qnC-tL-SHN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imh-sU-nsT" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="108" width="374" height="734"/>
+                                <rect key="frame" x="20" y="64" width="374" height="724"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btH-To-fyo">
-                                        <rect key="frame" x="40" y="227" width="294" height="20"/>
+                                        <rect key="frame" x="40" y="222" width="294" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-PV-tjT">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -264,11 +251,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-gJ-GAn">
-                                        <rect key="frame" x="40" y="327" width="294" height="20"/>
+                                        <rect key="frame" x="40" y="322" width="294" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFU-b7-FFL">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -292,11 +278,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhh-rH-Kj7">
-                                        <rect key="frame" x="40" y="427" width="294" height="20"/>
+                                        <rect key="frame" x="40" y="422" width="294" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lG2-Ir-rnp">
                                                 <rect key="frame" x="4" y="0.0" width="290" height="16"/>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -319,8 +304,8 @@
                                             <constraint firstItem="lG2-Ir-rnp" firstAttribute="leading" secondItem="bl1-sO-v2S" secondAttribute="leading" constant="4" id="ihb-1M-V5N"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-3q-cvJ" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="666" width="294" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQb-3q-cvJ" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="656" width="294" height="40"/>
                                         <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Nti-QS-duS"/>
@@ -329,9 +314,6 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="4B6-KN-Kln" eventType="touchUpInside" id="g5S-J8-sEm"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -364,15 +346,13 @@
                         <viewLayoutGuide key="safeArea" id="kZ6-4u-g7j"/>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="nFy-3L-dEN" id="TJW-lg-bpC"/>
                         <outlet property="doneBtn" destination="zQb-3q-cvJ" id="P3c-C9-8iJ"/>
                         <outlet property="idTxtField" destination="vYz-PV-tjT" id="OWx-aF-Tdp"/>
                         <outlet property="idUnderlineView" destination="8Jf-An-n3Y" id="O7U-8Y-mAt"/>
                         <outlet property="pwTxtField" destination="EFU-b7-FFL" id="zMV-fM-mpG"/>
                         <outlet property="pwUnderlineView" destination="iTY-Qk-ZUg" id="Wdw-Nl-cX8"/>
-                        <outlet property="reTypeTxtField" destination="lG2-Ir-rnp" id="NZP-a6-lLj"/>
-                        <outlet property="reTypeUnderlineView" destination="bl1-sO-v2S" id="yq8-Qn-ZAq"/>
-                        <outlet property="retypeUnderlineView" destination="bl1-sO-v2S" id="fCr-xP-0CP"/>
+                        <outlet property="rePWTxtField" destination="lG2-Ir-rnp" id="SCS-zC-04c"/>
+                        <outlet property="rePWUnderlineView" destination="bl1-sO-v2S" id="yq8-Qn-ZAq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WA8-kn-xmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -435,16 +415,14 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-vr-hQw">
                                         <rect key="frame" x="20" y="367" width="334" height="239"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="588647514.80225801">
-                                            <!--2019-08-28 01:11:54 +0000-->
-                                        </date>
+                                        <locale key="locale" localeIdentifier="ko"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                 <color key="value" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmG-b8-ImR" customClass="RoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmG-b8-ImR" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                         <rect key="frame" x="40" y="666" width="294" height="40"/>
                                         <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -454,9 +432,6 @@
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="eD0-o1-Eaw" eventType="touchUpInside" id="sN3-6Y-Xjt"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -493,9 +468,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="99M-wT-37W"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uzn-JV-2cN"/>
                     <connections>
                         <outlet property="datePicker" destination="Bdg-vr-hQw" id="c42-5F-dJ5"/>
-                        <outlet property="datePrickerView" destination="Bdg-vr-hQw" id="mTd-MS-T5P"/>
                         <outlet property="doneBtn" destination="zmG-b8-ImR" id="uSb-vy-5BF"/>
                         <outlet property="endTimeLbl" destination="ydy-xo-hH7" id="HDJ-Pv-PxR"/>
                         <outlet property="setEndTimeBtn" destination="yFk-93-WBU" id="BcJ-Kd-dwe"/>

@@ -8,6 +8,10 @@
 
 import UIKit
 
+import BubbleTransition
+import RxSwift
+import RxCocoa
+
 class MenubarVC: UIViewController {
 
     @IBOutlet weak var menuBtnBackgroundView: RoundView!
@@ -16,12 +20,15 @@ class MenubarVC: UIViewController {
     @IBOutlet weak var timeResettingBtn: UIButton!
     @IBOutlet weak var editCategoryBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
-    
+    weak var interactiveTransition: BubbleInteractiveTransition?
+
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        modalPresentationCapturesStatusBarAppearance = true
     }
-    
+
+    override var prefersStatusBarHidden: Bool { return true }
+
 }

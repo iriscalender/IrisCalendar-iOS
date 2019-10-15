@@ -20,13 +20,21 @@ final class Round8View: UIView {
 
 final class RoundView: UIView {
     override func awakeFromNib() {
+        layer.cornerRadius = frame.width / 2
+    }
+}
+
+final class HeightRoundButton: UIButton {
+    override func awakeFromNib() {
         layer.cornerRadius = frame.height / 2
     }
 }
 
-final class RoundButton: UIButton {
+final class BorderAndRound8Button: UIButton {
     override func awakeFromNib() {
-        layer.cornerRadius = frame.height / 2
+        layer.cornerRadius = 8
+        layer.borderWidth = 1
+        layer.borderColor = Color.mainHalfClear.cgColor
     }
 }
 

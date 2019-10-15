@@ -12,24 +12,23 @@ import RxSwift
 import RxCocoa
 
 class SignUpVC: UIViewController {
-
-    @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var idTxtField: UITextField!
     @IBOutlet weak var pwTxtField: UITextField!
-    @IBOutlet weak var reTypeTxtField: UITextField!
+    @IBOutlet weak var rePWTxtField: UITextField!
     
     @IBOutlet weak var idUnderlineView: UIView!
     @IBOutlet weak var pwUnderlineView: UIView!
-    @IBOutlet weak var reTypeUnderlineView: UIView!
+    @IBOutlet weak var rePWUnderlineView: UIView!
     
-    @IBOutlet weak var doneBtn: RoundButton!
+    @IBOutlet weak var doneBtn: HeightRoundButton!
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtFieldEffectActivation()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,14 +64,14 @@ class SignUpVC: UIViewController {
             })
             }.disposed(by: disposeBag)
         
-        reTypeTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
+        rePWTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
             UIView.animate(withDuration: 0.5, animations: {[unowned self] in
                 self.pwUnderlineView.backgroundColor = Color.main
                 self.pwUnderlineView.tintColor = Color.main
             })
             }.disposed(by: disposeBag)
         
-        reTypeTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
+        rePWTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
             UIView.animate(withDuration: 0.5, animations: {[unowned self] in
                 self.pwUnderlineView.backgroundColor = Color.authTxtField
                 self.pwUnderlineView.tintColor = Color.authTxtField

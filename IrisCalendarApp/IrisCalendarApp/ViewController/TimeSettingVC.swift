@@ -8,17 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class TimeSettingVC: UIViewController {
 
     @IBOutlet weak var setStartTimeBtn: UIButton!
     @IBOutlet weak var setEndTimeBtn: UIButton!
-    
     @IBOutlet weak var startTimeLbl: UILabel!
     @IBOutlet weak var endTimeLbl: UILabel!
     
     @IBOutlet weak var datePicker: UIDatePicker!
-    
-    @IBOutlet weak var doneBtn: RoundButton!
+    @IBOutlet weak var doneBtn: HeightRoundButton!
+
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         
@@ -26,6 +29,5 @@ class TimeSettingVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
 }

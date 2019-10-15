@@ -19,7 +19,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var idUnderlineView: UIView!
     @IBOutlet weak var pwUnderlineView: UIView!
     
-    @IBOutlet weak var doneBtn: RoundButton!
+    @IBOutlet weak var doneBtn: HeightRoundButton!
     
     let disposeBag = DisposeBag()
     
