@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02FEA1D06020E78A15D7B750 /* Pods_IrisCalendarAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D81056B2259690D2A5C3D9F /* Pods_IrisCalendarAppTests.framework */; };
+		37021510235E8F9400CC954F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3702150F235E8F9400CC954F /* Extension.swift */; };
 		37136652231777120030F72B /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37136651231777120030F72B /* Shape.swift */; };
 		373153AC231DF3B6006A5C7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373153AB231DF3B6006A5C7C /* Color.swift */; };
 		373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		378AFB11234C684D00662754 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB10234C684D00662754 /* SignUpViewModel.swift */; };
 		378AFB13234C695200662754 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB12234C695200662754 /* ViewModelType.swift */; };
 		37B287202342EC69009C04D6 /* AddScheduleMenubarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */; };
+		37C969912362C844003F9551 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C969902362C844003F9551 /* SignInViewModel.swift */; };
 		37D62C4F234ADBDA00AB3DC3 /* IrisCalendarURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C4E234ADBDA00AB3DC3 /* IrisCalendarURL.swift */; };
 		37D62C51234ADF7100AB3DC3 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C50234ADF7100AB3DC3 /* Provider.swift */; };
 		37D62C53234AE02300AB3DC3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C52234AE02300AB3DC3 /* HTTPClient.swift */; };
@@ -71,6 +73,7 @@
 		0553EAC54D768362EC881A69 /* Pods-IrisCalendarAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IrisCalendarAppUITests.release.xcconfig"; path = "Target Support Files/Pods-IrisCalendarAppUITests/Pods-IrisCalendarAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0C70035F368B540D31F95706 /* Pods-IrisCalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IrisCalendarApp.debug.xcconfig"; path = "Target Support Files/Pods-IrisCalendarApp/Pods-IrisCalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
 		21A8E2EB79C39A644CF01A56 /* Pods-IrisCalendarAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IrisCalendarAppTests.release.xcconfig"; path = "Target Support Files/Pods-IrisCalendarAppTests/Pods-IrisCalendarAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3702150F235E8F9400CC954F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		37136651231777120030F72B /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		373153AB231DF3B6006A5C7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		373BF6A422F9C8AF003AB8A9 /* IrisCalendarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrisCalendarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +98,7 @@
 		378AFB10234C684D00662754 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		378AFB12234C695200662754 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleMenubarVC.swift; sourceTree = "<group>"; };
+		37C969902362C844003F9551 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		37D62C4E234ADBDA00AB3DC3 /* IrisCalendarURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarURL.swift; sourceTree = "<group>"; };
 		37D62C50234ADF7100AB3DC3 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		37D62C52234AE02300AB3DC3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -239,8 +243,9 @@
 		373BF6D822FB09D5003AB8A9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				378AFB10234C684D00662754 /* SignUpViewModel.swift */,
 				378AFB12234C695200662754 /* ViewModelType.swift */,
+				378AFB10234C684D00662754 /* SignUpViewModel.swift */,
+				37C969902362C844003F9551 /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			children = (
 				37136651231777120030F72B /* Shape.swift */,
 				373153AB231DF3B6006A5C7C /* Color.swift */,
+				3702150F235E8F9400CC954F /* Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 				373153AC231DF3B6006A5C7C /* Color.swift in Sources */,
 				37EBA2CB235557E100EC88B9 /* AllocationTimeAPI.swift in Sources */,
 				37EBA2C7235546F800EC88B9 /* CategoryModel.swift in Sources */,
+				37C969912362C844003F9551 /* SignInViewModel.swift in Sources */,
 				378AFB11234C684D00662754 /* SignUpViewModel.swift in Sources */,
 				378AFB0C234C1D8A00662754 /* AuthAPI.swift in Sources */,
 				37F35726230F804100415686 /* EditCategoryVC.swift in Sources */,
@@ -582,6 +589,7 @@
 				37F3571A230D197600415686 /* SignUpVC.swift in Sources */,
 				378AFB13234C695200662754 /* ViewModelType.swift in Sources */,
 				37B287202342EC69009C04D6 /* AddScheduleMenubarVC.swift in Sources */,
+				37021510235E8F9400CC954F /* Extension.swift in Sources */,
 				373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */,
 				37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */,
 			);

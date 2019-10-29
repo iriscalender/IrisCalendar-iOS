@@ -9,10 +9,15 @@
 import Foundation
 
 enum IrisCalendarURL {
-    case signIn, signUp
+    case signIn
+    case signUp
     case allocationTime
     case category
-    case calendar, particularCalendar(calendarId: Int)
+    case calendar
+    case addAutoCalendar
+    case addManualCalendar
+    case autoCalendar(calendarId: Int)
+    case manualCalendar(calendarId: Int)
 
     func getPath() -> String {
 
@@ -27,8 +32,14 @@ enum IrisCalendarURL {
             return "/category"
         case .calendar:
             return "/calendar"
-        case .particularCalendar(let id):
-            return "/calendar/\(id)"
+        case .addAutoCalendar:
+            return "/calendar/auto"
+        case .addManualCalendar:
+            return "/calendar/manual"
+        case .autoCalendar(let id):
+            return "/calendar/auto/\(id)"
+        case .manualCalendar(let id):
+            return "/calendar/manual/\(id)"
         }
     }
 }

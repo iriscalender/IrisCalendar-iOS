@@ -28,8 +28,9 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AuthNC") as! UINavigationController
-//        self.present(vc, animated: false, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AuthNC") as! UINavigationController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -17,6 +17,7 @@ struct Color {
     static let yelloCategory = UIColor().hexStringToUIColor(hex: "#FDA921")
     static let lightGray = UIColor().hexStringToUIColor(hex: "#D5D5D5")
     static let defaultGray = UIColor().hexStringToUIColor(hex: "#B4B4B4")
+    static let btnIsEnableState = UIColor().hexStringToUIColor(hex: "F2F2F7")
 }
 
 extension UIColor {

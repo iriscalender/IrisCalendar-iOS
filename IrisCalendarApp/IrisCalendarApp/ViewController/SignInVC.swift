@@ -22,45 +22,49 @@ class SignInVC: UIViewController {
     @IBOutlet weak var doneBtn: HeightRoundButton!
     
     let disposeBag = DisposeBag()
+    let viewModel = SignInViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        txtFieldEffectActivation()
+        setUpUI()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-    private func txtFieldEffectActivation() {
-        idTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
-                UIView.animate(withDuration: 0.5, animations: {[unowned self] in
-                    self.idUnderlineView.backgroundColor = Color.main
-                    self.idUnderlineView.tintColor = Color.main
-                })
-            }.disposed(by: disposeBag)
-        
-        idTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
-            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
-                self.idUnderlineView.backgroundColor = Color.authTxtField
-                self.idUnderlineView.tintColor = Color.authTxtField
-            })
-            }.disposed(by: disposeBag)
-        
-        pwTxtField.rx.controlEvent(.editingDidBegin).subscribe { [unowned self] (_) in
-            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
-                self.pwUnderlineView.backgroundColor = Color.main
-                self.pwUnderlineView.tintColor = Color.main
-            })
-            }.disposed(by: disposeBag)
-        
-        pwTxtField.rx.controlEvent(.editingDidEnd).subscribe { [unowned self] (_) in
-            UIView.animate(withDuration: 0.5, animations: {[unowned self] in
-                self.pwUnderlineView.backgroundColor = Color.authTxtField
-                self.pwUnderlineView.tintColor = Color.authTxtField
-            })
-            }.disposed(by: disposeBag)
+
+    private func setUpUI() {
+        idTxtField.configureIrisEffect(underlineView: idUnderlineView, disposeBag: disposeBag)
+        pwTxtField.configureIrisEffect(underlineView: pwUnderlineView, disposeBag: disposeBag)
+    }
+
+    private func bindViewModel() {
+        let input = SignInViewModel.Input(loginTaps: doneBtn.rx.tap.asSignal(),
+                                          id: idTxtField.rx.text.orEmpty.asDriver(),
+                                          pw: pwTxtField.rx.text.orEmpty.asDriver())
+        let output = viewModel.transform(input: input)
+
+        output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
+
+        output.isEnabled.asObservable().subscribe { [weak self] (event) in
+            guard let strongSelf = self else { return }
+            if event.element == true {
+                strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
+                strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
+                strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
+            }
+        }.disposed(by: disposeBag)
+
+        output.result.asObservable().subscribe { [weak self] (event) in
+            guard let strongSelf = self else { return }
+            guard let result = event.element else { return }
+            if result == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC"); return }
+            if result.isEmpty { strongSelf.showToast(message: "회원가입실패"); return }
+            strongSelf.showToast(message: result)
+        }.disposed(by: disposeBag)
     }
     
 }

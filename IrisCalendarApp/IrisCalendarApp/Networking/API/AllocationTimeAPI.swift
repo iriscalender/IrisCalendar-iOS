@@ -11,6 +11,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AllocationTimeAPI: AllocationTimeProvider {
+class AllocationTimeAPI {
     
 }
