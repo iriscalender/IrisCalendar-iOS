@@ -28,6 +28,7 @@
 		378AFB13234C695200662754 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB12234C695200662754 /* ViewModelType.swift */; };
 		37B287202342EC69009C04D6 /* AddScheduleMenubarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */; };
 		37C969912362C844003F9551 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C969902362C844003F9551 /* SignInViewModel.swift */; };
+		37C969972367D68C003F9551 /* TimeSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C969962367D68C003F9551 /* TimeSettingViewModel.swift */; };
 		37D62C4F234ADBDA00AB3DC3 /* IrisCalendarURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C4E234ADBDA00AB3DC3 /* IrisCalendarURL.swift */; };
 		37D62C51234ADF7100AB3DC3 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C50234ADF7100AB3DC3 /* Provider.swift */; };
 		37D62C53234AE02300AB3DC3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C52234AE02300AB3DC3 /* HTTPClient.swift */; };
@@ -99,6 +100,7 @@
 		378AFB12234C695200662754 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleMenubarVC.swift; sourceTree = "<group>"; };
 		37C969902362C844003F9551 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		37C969962367D68C003F9551 /* TimeSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingViewModel.swift; sourceTree = "<group>"; };
 		37D62C4E234ADBDA00AB3DC3 /* IrisCalendarURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarURL.swift; sourceTree = "<group>"; };
 		37D62C50234ADF7100AB3DC3 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		37D62C52234AE02300AB3DC3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				378AFB12234C695200662754 /* ViewModelType.swift */,
 				378AFB10234C684D00662754 /* SignUpViewModel.swift */,
 				37C969902362C844003F9551 /* SignInViewModel.swift */,
+				37C969962367D68C003F9551 /* TimeSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				378AFB0F234C1E3600662754 /* AuthModel.swift in Sources */,
 				37F35720230F800100415686 /* MenubarVC.swift in Sources */,
 				37D62C4F234ADBDA00AB3DC3 /* IrisCalendarURL.swift in Sources */,
+				37C969972367D68C003F9551 /* TimeSettingViewModel.swift in Sources */,
 				37F35724230F802C00415686 /* AutoScheduleVC.swift in Sources */,
 				37F3571A230D197600415686 /* SignUpVC.swift in Sources */,
 				378AFB13234C695200662754 /* ViewModelType.swift in Sources */,

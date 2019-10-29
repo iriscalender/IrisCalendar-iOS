@@ -16,14 +16,18 @@ protocol AuthProvider {
 }
 
 protocol AllocationTimeProvider{
-    func getAlloctionTime() -> Observable<(AllocationTimeModel?, NetworkingResult)>
-    func setAlloctionTime(startTime: String, endTime: String) -> Observable<(AllocationTimeModel?, NetworkingResult)>
-    func updateAlloctionTime(startTime: String, endTime: String) -> Observable<(AllocationTimeModel?, NetworkingResult)>
+    typealias AllocationTimeResult = Observable<(AllocationTimeModel?, NetworkingResult)>
+
+    func getAlloctionTime() -> AllocationTimeResult
+    func setAlloctionTime(startTime: String, endTime: String) -> AllocationTimeResult
+    func updateAlloctionTime(startTime: String, endTime: String) -> AllocationTimeResult
 }
 
 protocol CategoryProvider {
-    func getCategory() -> Observable<(CategoryModel?, NetworkingResult)>
-    func updateCategory(category: CategoryModel) -> Observable<(CategoryModel?, NetworkingResult)>
+    typealias CategoryResult = Observable<(CategoryModel?, NetworkingResult)>
+
+    func getCategory() -> CategoryResult
+    func updateCategory(category: CategoryModel) -> CategoryResult
 }
 
 protocol CalendarProvider {

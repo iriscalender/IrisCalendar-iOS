@@ -23,8 +23,8 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var doneBtn: HeightRoundButton!
     
-    let disposeBag = DisposeBag()
-    let viewModel = SignUpViewModel()
+    private let disposeBag = DisposeBag()
+    private let viewModel = SignUpViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,22 +35,22 @@ class SignUpVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
-
+    
     private func setUpUI() {
         idTxtField.configureIrisEffect(underlineView: idUnderlineView, disposeBag: disposeBag)
         pwTxtField.configureIrisEffect(underlineView: pwUnderlineView, disposeBag: disposeBag)
         rePWTxtField.configureIrisEffect(underlineView: rePWUnderlineView, disposeBag: disposeBag)
     }
-
+    
     private func bindViewModel() {
         let input = SignUpViewModel.Input(signUpTaps: doneBtn.rx.tap.asSignal(),
                                           id: idTxtField.rx.text.orEmpty.asDriver(),
                                           pw: pwTxtField.rx.text.orEmpty.asDriver(),
                                           rePW: rePWTxtField.rx.text.orEmpty.asDriver())
         let output = viewModel.transform(input: input)
-
+        
         output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
-
+        
         output.isEnabled.asObservable().subscribe { [weak self] (event) in
             guard let strongSelf = self else { return }
             if event.element == true {
@@ -61,12 +61,12 @@ class SignUpVC: UIViewController {
                 strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
             }
         }.disposed(by: disposeBag)
-
+        
         output.result.asObservable().subscribe { [weak self] (event) in
             guard let strongSelf = self else { return }
             guard let result = event.element else { return }
-            if result == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC") }
-            if result.isEmpty { strongSelf.showToast(message: "회원가입실패") }
+            if result == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC"); return }
+            if result.isEmpty { strongSelf.showToast(message: "회원가입실패"); return }
             strongSelf.showToast(message: result)
         }.disposed(by: disposeBag)
     }

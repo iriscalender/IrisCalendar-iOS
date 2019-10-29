@@ -21,8 +21,8 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var doneBtn: HeightRoundButton!
     
-    let disposeBag = DisposeBag()
-    let viewModel = SignInViewModel()
+    private let disposeBag = DisposeBag()
+    private let viewModel = SignInViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class SignInVC: UIViewController {
     }
 
     private func bindViewModel() {
-        let input = SignInViewModel.Input(loginTaps: doneBtn.rx.tap.asSignal(),
+        let input = SignInViewModel.Input(SignInTaps: doneBtn.rx.tap.asSignal(),
                                           id: idTxtField.rx.text.orEmpty.asDriver(),
                                           pw: pwTxtField.rx.text.orEmpty.asDriver())
         let output = viewModel.transform(input: input)
