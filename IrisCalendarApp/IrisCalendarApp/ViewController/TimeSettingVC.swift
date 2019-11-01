@@ -27,6 +27,21 @@ class TimeSettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
+        setUpUI()
+    }
+
+    private func setUpUI() {
+        setStartTimeBtn.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let strongSelf = self else { return }
+            strongSelf.setStartTimeBtn.setTitleColor(Color.mainHalfClear, for: .normal)
+            strongSelf.setEndTimeBtn.setTitleColor(Color.lightGray, for: .normal)
+        }.disposed(by: disposeBag)
+
+        setEndTimeBtn.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let strongSelf = self else { return }
+            strongSelf.setEndTimeBtn.setTitleColor(Color.mainHalfClear, for: .normal)
+            strongSelf.setStartTimeBtn.setTitleColor(Color.lightGray, for: .normal)
+        }.disposed(by: disposeBag)
     }
 
     private func bindViewModel() {
@@ -40,13 +55,24 @@ class TimeSettingVC: UIViewController {
         output.startTime.drive(startTimeLbl.rx.text).disposed(by: disposeBag)
         output.endTime.drive(endTimeLbl.rx.text).disposed(by: disposeBag)
 
-        output.result.asObservable().subscribe { [weak self] (event) in
+        output.isEnabled.asObservable().subscribe { [weak self] (event) in
             guard let strongSelf = self else { return }
-            guard let result = event.element else { return }
-            if result == "성공" { strongSelf.goNextVC(identifier: "MainVC") }
-            if result == "" { strongSelf.showToast(message: "할당시간 설정 실패") }
-            strongSelf.showToast(message: result)
+            if event.element == true {
+                strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
+                strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
+                strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
+            }
         }.disposed(by: disposeBag)
 
+        output.result.asObservable().subscribe(onNext: { [weak self] (message) in
+            guard let strongSelf = self else { return }
+            if message == "" { strongSelf.showToast(message: "할당시간 설정 실패") }
+            strongSelf.showToast(message: message)
+        }, onCompleted: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.goNextVC(identifier: "MainVC")
+        }).disposed(by: disposeBag)
     }
 }

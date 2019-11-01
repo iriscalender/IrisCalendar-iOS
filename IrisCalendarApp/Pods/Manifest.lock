@@ -13,6 +13,7 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - Toaster (2.2.0)
 
 DEPENDENCIES:
   - BubbleTransition (~> 3.2.0)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - RxAlamofire
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - Toaster
 
 SPEC REPOS:
   trunk:
@@ -30,6 +32,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - Toaster
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
@@ -39,7 +42,8 @@ SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Toaster: c1a81b376edcc2470157b4d1ee1e9341d3b96455
 
-PODFILE CHECKSUM: 72c70c07834dadacf0f5719f498ffee5761d7caa
+PODFILE CHECKSUM: 5b253f200d5eaa657a423b9195d54b86d3a8e6c9
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4

@@ -19,8 +19,8 @@ class SignInViewModel: ViewModelType {
     }
     
     struct Output {
-        let result: Driver<String>
         let isEnabled: Driver<Bool>
+        let result: Driver<String>
     }
     
     func transform(input: SignInViewModel.Input) -> SignInViewModel.Output {
@@ -45,7 +45,7 @@ class SignInViewModel: ViewModelType {
             }.asDriver(onErrorJustReturn: "")
         }
         
-        return Output(result: result, isEnabled: isEnabled)
+        return Output(isEnabled: isEnabled, result: result)
     }
     
     

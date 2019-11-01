@@ -21,8 +21,8 @@ class SignUpViewModel: ViewModelType {
     }
     
     struct Output {
-        let result: Driver<String>
         let isEnabled: Driver<Bool>
+        let result: Driver<String>
     }
     
     func transform(input: SignUpViewModel.Input) -> SignUpViewModel.Output {
@@ -36,7 +36,7 @@ class SignUpViewModel: ViewModelType {
             return false
         }.asDriver()
         
-        let isSucceed = input.signUpTaps.withLatestFrom(info).flatMap { (id, pw, rePw) -> Driver<String> in
+        let result = input.signUpTaps.withLatestFrom(info).flatMap { (id, pw, rePw) -> Driver<String> in
             return api.postSignUp(id: id, pw: pw, rePW: rePw).map { (result) -> String in
                 switch result {
                 case .created: return "성공"
@@ -48,7 +48,7 @@ class SignUpViewModel: ViewModelType {
             }.asDriver(onErrorJustReturn: "")
         }
         
-        return Output(result: isSucceed, isEnabled: isEnabled)
+        return Output(isEnabled: isEnabled, result: result)
     }
     
 }

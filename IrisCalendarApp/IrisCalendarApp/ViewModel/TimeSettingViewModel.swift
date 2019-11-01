@@ -24,20 +24,43 @@ class TimeSettingViewModel: ViewModelType {
     }
 
     struct Output {
-        let result: Driver<String>
         let startTime: Driver<String>
         let endTime: Driver<String>
         let isEnabled: Driver<Bool>
+        let result: Driver<String>
     }
 
     func transform(input: TimeSettingViewModel.Input) -> TimeSettingViewModel.Output {
         let api = AllocationTimeAPI()
         let startTime = BehaviorRelay<String>(value: allocationTime)
         let endTime = BehaviorRelay<String>(value: allocationTime)
+        let result = PublishSubject<String>()
         let info = Driver.combineLatest(startTime.asDriver(), endTime.asDriver())
 
         let formatter = DateFormatter()
         formatter.dateFormat = allocationTime
+
+        let isEnabled = info.map { (start, end) -> Bool in
+            if start == "HH:mm" || end == "HH:mm" { return false }
+            if start.components(separatedBy: [":"]).joined() < end.components(separatedBy: [":"]).joined() {
+                return true
+            }
+            result.onNext("종료시간이 더 빠릅니다")
+            return false
+        }.asDriver(onErrorJustReturn: false)
+
+        input.timeSettingTaps.withLatestFrom(info).asObservable().subscribe({ [weak self] (event) in
+            guard let time = event.element, let strongSelf = self else { return }
+            api.setAlloctionTime(startTime: time.0, endTime: time.1).asObservable().subscribe { (event) in
+                switch event.element?.1 {
+                case .ok: result.onCompleted()
+                case .badRequest: result.onNext("유효하지 않은 요청")
+                case .unauthorized: result.onNext("유효하지 않은 토큰")
+                case .serverError: result.onNext("서버오류")
+                default: result.onNext("")
+                }
+            }.disposed(by: strongSelf.disposeBag)
+        }).disposed(by: disposeBag)
 
         input.startTimeTaps.withLatestFrom(input.selectedTime).asObservable()
             .subscribe { (event) in
@@ -51,35 +74,9 @@ class TimeSettingViewModel: ViewModelType {
                 endTime.accept(formatter.string(from: time))
         }.disposed(by: disposeBag)
 
-        let isEnabled = input.timeSettingTaps.withLatestFrom(info)
-            .map { [weak self] (start, end) -> Bool in
-                guard let strongSelf = self else { return false}
-                if let compareResult = formatter.date(from: start)?.compare(formatter.date(from: end)!),
-                    start != strongSelf.allocationTime,
-                    end != strongSelf.allocationTime,
-                    compareResult == .orderedAscending {
-                    return true
-                }
-                return false
-        }.asDriver(onErrorJustReturn: false)
-
-        let result = input.timeSettingTaps.withLatestFrom(info)
-            .flatMap { (start, end) -> Driver<String> in
-                return api.setAlloctionTime(startTime: start, endTime: end)
-                    .map { (response) -> String in
-                        switch response.1 {
-                        case .ok: return "성공"
-                        case .badRequest: return "유효하지 않은 요청"
-                        case .unauthorized: return "유효하지 않은 토큰"
-                        case .serverError: return "서버오류"
-                        default: return ""
-                        }
-                }.asDriver(onErrorJustReturn: "")
-        }
-
-        return Output(result: result,
-                      startTime: startTime.asDriver(),
+        return Output(startTime: startTime.asDriver(),
                       endTime: endTime.asDriver(),
-                      isEnabled: isEnabled)
+                      isEnabled: isEnabled,
+                      result: result.asDriver(onErrorJustReturn: ""))
     }
 }

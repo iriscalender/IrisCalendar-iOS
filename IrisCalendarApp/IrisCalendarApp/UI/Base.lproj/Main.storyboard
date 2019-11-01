@@ -309,7 +309,7 @@
         <!--Auth-->
         <scene sceneID="z6Q-Tu-sZh">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="AuthNC" storyboardName="Auth" id="Cc5-3s-HEr" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="TimeSettingVC" storyboardName="Auth" id="Cc5-3s-HEr" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="a9v-ed-Mi1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9R-zz-k7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -613,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESL-dn-lDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2253.75" y="-1079.5774647887324"/>
+            <point key="canvasLocation" x="1564" y="-1077"/>
         </scene>
         <!--EditCategory-->
         <scene sceneID="GON-EQ-yKg">
@@ -1437,7 +1437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcz-8s-miZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3016.875" y="-1077.4647887323945"/>
+            <point key="canvasLocation" x="2531" y="-1080"/>
         </scene>
     </scenes>
     <resources>

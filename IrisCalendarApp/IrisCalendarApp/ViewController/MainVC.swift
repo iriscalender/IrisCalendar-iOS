@@ -28,7 +28,7 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AuthNC") as! UINavigationController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TimeSettingVC") as! TimeSettingVC
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false, completion: nil)
     }
