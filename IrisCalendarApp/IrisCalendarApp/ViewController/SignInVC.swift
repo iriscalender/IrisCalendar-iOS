@@ -15,10 +15,8 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var idTxtField: UITextField!
     @IBOutlet weak var pwTxtField: UITextField!
-    
     @IBOutlet weak var idUnderlineView: UIView!
     @IBOutlet weak var pwUnderlineView: UIView!
-    
     @IBOutlet weak var doneBtn: HeightRoundButton!
     
     private let disposeBag = DisposeBag()

@@ -15,7 +15,6 @@ class EditCategoryVC: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
-    
     @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleTxtView: UITextView!
     @IBOutlet weak var skyblueBtn: HeightRoundButton!
@@ -29,7 +28,13 @@ class EditCategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
+    }
 
-        // Do any additional setup after loading the view.
+    private func setUpUI() {
+        cancelBtn.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
     }
 }

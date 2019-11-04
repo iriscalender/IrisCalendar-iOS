@@ -18,7 +18,6 @@ class MainVC: UIViewController {
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var addScheduleBtn: UIButton!
     @IBOutlet weak var calendarView: FSCalendar!
-    
     @IBOutlet weak var todayDateLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -28,18 +27,18 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TimeSettingVC") as! TimeSettingVC
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        setUpUI()
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? MenubarVC {
+            controller.delegate = self
             controller.transitioningDelegate = self
             controller.modalPresentationStyle = .custom
             controller.interactiveTransition = interactiveTransition
             interactiveTransition.attach(to: controller)
         } else if let controller = segue.destination as? AddScheduleMenubarVC {
+            controller.delegate = self
             controller.transitioningDelegate = self
             controller.modalPresentationStyle = .custom
             controller.interactiveTransition = interactiveTransition
@@ -47,6 +46,18 @@ class MainVC: UIViewController {
         }
     }
 
+    private func setUpUI() {
+    }
+
+}
+
+extension MainVC: MenubarDelegate {
+    func goWhere(destination: GoWhere) {
+        switch destination {
+        case .none: return
+        default: self.goNextVC(identifier: destination.rawValue)
+        }
+    }
 }
 
 extension MainVC: UIViewControllerTransitioningDelegate {
@@ -71,4 +82,13 @@ class TodayScheduleListCell: UITableViewCell {
     @IBOutlet weak var categoryView: RoundView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+}
+
+enum GoWhere: String {
+    case none
+    case TimeResettingVC
+    case EditCategoryVC
+    case AuthNC
+    case FixScheduleVC
+    case AutoScheduleVC
 }

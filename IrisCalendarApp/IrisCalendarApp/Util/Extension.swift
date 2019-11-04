@@ -41,6 +41,9 @@ extension UIViewController {
 
     func goNextVC(identifier: String) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
-        self.navigationController?.pushViewController(vc!, animated: false)
+        vc?.modalPresentationStyle = .fullScreen
+        if let controller = navigationController {
+            controller.pushViewController(vc!, animated: false)
+        }
     }
 }

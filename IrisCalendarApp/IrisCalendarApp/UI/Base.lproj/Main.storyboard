@@ -47,7 +47,7 @@
                                 <color key="tintColor" red="0.63529411759999999" green="0.84313725490000002" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="menuBar"/>
                                 <connections>
-                                    <segue destination="kII-Ls-WcE" kind="presentation" identifier="mainToMenubar" id="FhI-sL-oIy"/>
+                                    <segue destination="kII-Ls-WcE" kind="presentation" identifier="MainToMenubar" id="FhI-sL-oIy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-YA-H2w">
@@ -58,7 +58,7 @@
                                 <color key="tintColor" red="0.98039215690000003" green="0.6588235294" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="addSchedul"/>
                                 <connections>
-                                    <segue destination="ckb-U0-bQ0" kind="presentation" identifier="mainToAddScheduleMenubar" id="izU-OQ-C1q"/>
+                                    <segue destination="ckb-U0-bQ0" kind="presentation" identifier="MainToAddScheduleMenubar" id="izU-OQ-C1q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CALENDAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giY-Rm-RbP">
@@ -316,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="-778" y="-648"/>
         </scene>
-        <!--AddFixSchedule-->
+        <!--FixSchedule-->
         <scene sceneID="PBg-A3-M30">
             <objects>
-                <viewController storyboardIdentifier="FixScheduleVC" title="AddFixSchedule" id="9c6-pE-E7L" customClass="FixScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixScheduleVC" title="FixSchedule" id="9c6-pE-E7L" customClass="FixScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Adj-tz-BfI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,18 +597,22 @@
                     </view>
                     <navigationItem key="navigationItem" id="c37-Q9-zJR"/>
                     <connections>
-                        <outlet property="cancelBtn" destination="NC8-mZ-Qh1" id="QeP-xz-KP9"/>
-                        <outlet property="doneBtn" destination="ZEm-WF-xjx" id="Ua6-3F-3pR"/>
-                        <outlet property="pinkBtn" destination="2xI-yQ-r7d" id="fd7-bv-lwI"/>
-                        <outlet property="pinkLbl" destination="A2H-f5-CTh" id="gZo-9c-mj9"/>
-                        <outlet property="purpleBtn" destination="YC8-jR-Oxd" id="Iom-ut-Mhg"/>
-                        <outlet property="purpleLbl" destination="Lov-oZ-Yz0" id="ORg-cq-ygi"/>
-                        <outlet property="scheduleNameTxtField" destination="dqt-i9-XRk" id="LSx-AU-OST"/>
-                        <outlet property="scheduleNameUnderlineView" destination="eun-6X-Uhf" id="3ye-qi-FPN"/>
-                        <outlet property="skyblueBtn" destination="ikw-t9-p1X" id="8ZM-Hv-P6g"/>
-                        <outlet property="skyblueLbl" destination="uwj-7j-jEJ" id="5Kt-fO-92z"/>
-                        <outlet property="yellowBtn" destination="sPi-HO-VPp" id="A5e-Xo-1ci"/>
-                        <outlet property="yellowLbl" destination="QcM-eE-WR7" id="olr-IX-k6z"/>
+                        <outlet property="cancelBtn" destination="NC8-mZ-Qh1" id="q9b-rI-hff"/>
+                        <outlet property="doneBtn" destination="ZEm-WF-xjx" id="ekW-Nv-7fZ"/>
+                        <outlet property="pinkBtn" destination="2xI-yQ-r7d" id="g5V-O0-Lf6"/>
+                        <outlet property="pinkLbl" destination="A2H-f5-CTh" id="QZe-Y2-lXX"/>
+                        <outlet property="purpleBtn" destination="YC8-jR-Oxd" id="7LI-jy-fiD"/>
+                        <outlet property="purpleLbl" destination="Lov-oZ-Yz0" id="VUx-X9-42M"/>
+                        <outlet property="scheduleNameTxtField" destination="dqt-i9-XRk" id="5Ly-Wf-UpR"/>
+                        <outlet property="scheduleNameUnderlineView" destination="eun-6X-Uhf" id="1lJ-l5-ber"/>
+                        <outlet property="setEndTimeBtn" destination="tM3-bj-Ccs" id="3oh-cn-Rwg"/>
+                        <outlet property="setEndTimeLbl" destination="cMw-Eg-RKi" id="SOj-Pw-gkL"/>
+                        <outlet property="setStartTimeBtn" destination="GMX-2s-vuC" id="Rmi-ZC-Q17"/>
+                        <outlet property="setStartTimeLbl" destination="TFQ-kn-nVr" id="whg-CH-NZD"/>
+                        <outlet property="skyblueBtn" destination="ikw-t9-p1X" id="QHL-pQ-xnd"/>
+                        <outlet property="skyblueLbl" destination="uwj-7j-jEJ" id="rTA-Iy-jSo"/>
+                        <outlet property="yellowBtn" destination="sPi-HO-VPp" id="3Bc-Dl-i2Y"/>
+                        <outlet property="yellowLbl" destination="QcM-eE-WR7" id="oIu-R0-tyc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESL-dn-lDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -986,19 +990,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="fcp-Wg-yGw"/>
                     <connections>
+                        <outlet property="addAutoScheduleBtn" destination="XF4-xz-gjD" id="hK5-2R-iMW"/>
                         <outlet property="addBtn" destination="wk6-Mq-Hqw" id="P7f-DP-y4P"/>
                         <outlet property="addFixScheduleBtn" destination="9KI-rr-UnJ" id="0yU-5s-4fg"/>
-                        <outlet property="addScheduleBtn" destination="XF4-xz-gjD" id="hK5-2R-iMW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrd-Hz-NBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1563.75" y="-215.49295774647888"/>
         </scene>
-        <!--AddSchedule-->
+        <!--AutoSchedule-->
         <scene sceneID="USe-RW-MI9">
             <objects>
-                <viewController storyboardIdentifier="AddScheduleVC" title="AddSchedule" id="p9l-j3-3an" customClass="AddScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutoScheduleVC" title="AutoSchedule" id="p9l-j3-3an" customClass="AutoScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OgI-a6-l0C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

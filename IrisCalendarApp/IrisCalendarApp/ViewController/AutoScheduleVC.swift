@@ -27,14 +27,12 @@ class AutoScheduleVC: UIViewController {
     
     @IBOutlet weak var scheduleNameTxtField: UITextField!
     @IBOutlet weak var scheduleNameUnderlineView: UIView!
-    
     @IBOutlet weak var endYearTxtField: UITextField!
     @IBOutlet weak var endYearUnderlineView: UIView!
     @IBOutlet weak var endMonthTxtField: UITextField!
     @IBOutlet weak var endMonthUnderlineView: UIView!
     @IBOutlet weak var endDayTxtField: UITextField!
     @IBOutlet weak var endDayUnderlineView: UIView!
-    
     @IBOutlet weak var theTimeRequiredTxtField: UITextField!
     @IBOutlet weak var theTimeRequiredUnderlineView: UIView!
     @IBOutlet weak var moreImportantScheduleBtn: BorderAndRound8Button!
@@ -46,8 +44,13 @@ class AutoScheduleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpUI()
     }
     
-
+    private func setUpUI() {
+        cancelBtn.rx.tap.asObservable().subscribe { [weak self] (_) in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }.disposed(by: disposeBag)
+    }
 }

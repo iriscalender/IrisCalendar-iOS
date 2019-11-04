@@ -26,6 +26,7 @@
 		378AFB0F234C1E3600662754 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB0E234C1E3600662754 /* AuthModel.swift */; };
 		378AFB11234C684D00662754 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB10234C684D00662754 /* SignUpViewModel.swift */; };
 		378AFB13234C695200662754 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB12234C695200662754 /* ViewModelType.swift */; };
+		379A077623701AB7004C6AE1 /* IrisDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A077523701AB7004C6AE1 /* IrisDelegate.swift */; };
 		37B287202342EC69009C04D6 /* AddScheduleMenubarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */; };
 		37C969912362C844003F9551 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C969902362C844003F9551 /* SignInViewModel.swift */; };
 		37C969972367D68C003F9551 /* TimeSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C969962367D68C003F9551 /* TimeSettingViewModel.swift */; };
@@ -98,6 +99,7 @@
 		378AFB0E234C1E3600662754 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		378AFB10234C684D00662754 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		378AFB12234C695200662754 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		379A077523701AB7004C6AE1 /* IrisDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisDelegate.swift; sourceTree = "<group>"; };
 		37B2871F2342EC69009C04D6 /* AddScheduleMenubarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleMenubarVC.swift; sourceTree = "<group>"; };
 		37C969902362C844003F9551 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		37C969962367D68C003F9551 /* TimeSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingViewModel.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				37136651231777120030F72B /* Shape.swift */,
 				373153AB231DF3B6006A5C7C /* Color.swift */,
 				3702150F235E8F9400CC954F /* Extension.swift */,
+				379A077523701AB7004C6AE1 /* IrisDelegate.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				37021510235E8F9400CC954F /* Extension.swift in Sources */,
 				373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */,
 				37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */,
+				379A077623701AB7004C6AE1 /* IrisDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
