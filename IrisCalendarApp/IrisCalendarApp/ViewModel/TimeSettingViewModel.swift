@@ -50,8 +50,8 @@ class TimeSettingViewModel: ViewModelType {
         }.asDriver(onErrorJustReturn: false)
 
         input.timeSettingTaps.withLatestFrom(info).asObservable().subscribe({ [weak self] (event) in
-            guard let time = event.element, let strongSelf = self else { return }
-            api.setAlloctionTime(startTime: time.0, endTime: time.1).asObservable().subscribe { (event) in
+            guard let (start, end) = event.element, let strongSelf = self else { return }
+            api.setAlloctionTime(startTime: start, endTime: end).asObservable().subscribe { (event) in
                 switch event.element?.1 {
                 case .ok: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")

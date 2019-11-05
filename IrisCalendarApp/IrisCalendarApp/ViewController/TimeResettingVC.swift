@@ -51,16 +51,16 @@ class TimeResettingVC: UIViewController {
         output.startTime.drive(startTimeLbl.rx.text).disposed(by: disposeBag)
         output.endTime.drive(endTimeLbl.rx.text).disposed(by: disposeBag)
 
-        output.isEnabled.asObservable().subscribe { [weak self] (event) in
+        output.isEnabled.drive(onNext: { [weak self] (result) in
             guard let strongSelf = self else { return }
-            if event.element == true {
+            if result {
                 strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
                 strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
                 strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
                 strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
             }
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
 
         output.result.drive(onNext: { [weak self] (message) in
             guard let strongSelf = self else { return }

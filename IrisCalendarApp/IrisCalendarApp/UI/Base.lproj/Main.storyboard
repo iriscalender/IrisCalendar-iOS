@@ -344,7 +344,7 @@
                                         <rect key="frame" x="266" y="16" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -363,13 +363,13 @@
                                 <rect key="frame" x="20" y="64" width="280" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0D-Mg-ojH">
-                                        <rect key="frame" x="24" y="25" width="47.5" height="14"/>
+                                        <rect key="frame" x="24" y="24" width="47.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AC-MW-kr7">
-                                        <rect key="frame" x="0.0" y="71" width="70" height="31"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="70" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC8-jR-Oxd" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="27.5" y="0.0" width="15" height="15"/>
@@ -397,7 +397,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIw-eh-SFF">
-                                        <rect key="frame" x="70" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="70" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikw-t9-p1X" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -425,7 +425,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-gR-N62">
-                                        <rect key="frame" x="140" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="140" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xI-yQ-r7d" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -453,7 +453,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-zb-d5E">
-                                        <rect key="frame" x="210" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="210" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPi-HO-VPp" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -481,7 +481,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSK-AV-8xX">
-                                        <rect key="frame" x="24" y="142" width="62.5" height="14"/>
+                                        <rect key="frame" x="24" y="141.5" width="62.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -520,27 +520,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-2s-vuC">
-                                        <rect key="frame" x="24" y="282.5" width="74" height="27"/>
+                                        <rect key="frame" x="24" y="282.5" width="74.5" height="27"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="13"/>
                                         <state key="normal" title="시작시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy.mm.dd a-hh:mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-kn-nVr">
-                                        <rect key="frame" x="130" y="289" width="118" height="14"/>
+                                        <rect key="frame" x="130.5" y="289" width="117.5" height="14"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM3-bj-Ccs">
-                                        <rect key="frame" x="24" y="329.5" width="74" height="27"/>
+                                        <rect key="frame" x="24" y="329.5" width="74.5" height="27"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="13"/>
                                         <state key="normal" title="종료시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy.mm.dd a-hh:mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMw-Eg-RKi">
-                                        <rect key="frame" x="130" y="336" width="118" height="14"/>
+                                        <rect key="frame" x="130.5" y="336" width="117.5" height="14"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -597,8 +597,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="c37-Q9-zJR"/>
                     <connections>
+                        <outlet property="blueBtn" destination="ikw-t9-p1X" id="QHL-pQ-xnd"/>
+                        <outlet property="blueLbl" destination="uwj-7j-jEJ" id="rTA-Iy-jSo"/>
                         <outlet property="cancelBtn" destination="NC8-mZ-Qh1" id="q9b-rI-hff"/>
                         <outlet property="doneBtn" destination="ZEm-WF-xjx" id="ekW-Nv-7fZ"/>
+                        <outlet property="orangeBtn" destination="sPi-HO-VPp" id="3Bc-Dl-i2Y"/>
+                        <outlet property="orangeLbl" destination="QcM-eE-WR7" id="oIu-R0-tyc"/>
                         <outlet property="pinkBtn" destination="2xI-yQ-r7d" id="g5V-O0-Lf6"/>
                         <outlet property="pinkLbl" destination="A2H-f5-CTh" id="QZe-Y2-lXX"/>
                         <outlet property="purpleBtn" destination="YC8-jR-Oxd" id="7LI-jy-fiD"/>
@@ -609,10 +613,6 @@
                         <outlet property="setEndTimeLbl" destination="cMw-Eg-RKi" id="SOj-Pw-gkL"/>
                         <outlet property="setStartTimeBtn" destination="GMX-2s-vuC" id="Rmi-ZC-Q17"/>
                         <outlet property="setStartTimeLbl" destination="TFQ-kn-nVr" id="whg-CH-NZD"/>
-                        <outlet property="skyblueBtn" destination="ikw-t9-p1X" id="QHL-pQ-xnd"/>
-                        <outlet property="skyblueLbl" destination="uwj-7j-jEJ" id="rTA-Iy-jSo"/>
-                        <outlet property="yellowBtn" destination="sPi-HO-VPp" id="3Bc-Dl-i2Y"/>
-                        <outlet property="yellowLbl" destination="QcM-eE-WR7" id="oIu-R0-tyc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESL-dn-lDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -631,23 +631,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리 수정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="POt-wZ-Fuf">
-                                        <rect key="frame" x="95" y="16" width="130" height="21"/>
+                                        <rect key="frame" x="92" y="16" width="136" height="20"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-Ln-zVz">
-                                        <rect key="frame" x="24" y="16" width="30" height="31"/>
+                                        <rect key="frame" x="24" y="16" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="취소">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-aI-bYg">
-                                        <rect key="frame" x="266" y="16" width="30" height="31"/>
+                                        <rect key="frame" x="266" y="16" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -663,10 +663,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-EW-fNx" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="65" width="280" height="479"/>
+                                <rect key="frame" x="20" y="64" width="280" height="480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc2-k8-ES5">
-                                        <rect key="frame" x="44" y="95.5" width="192" height="288"/>
+                                        <rect key="frame" x="44" y="96" width="192" height="288"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77w-nK-Qfd" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="11.5" width="10" height="10"/>
@@ -786,16 +786,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="1BF-zO-TKm"/>
                     <connections>
+                        <outlet property="blueBtn" destination="k5E-2L-YTR" id="hFo-cZ-BBF"/>
+                        <outlet property="blueTxtView" destination="J8E-2f-Qn1" id="OAA-vR-s3F"/>
                         <outlet property="cancelBtn" destination="cdl-Ln-zVz" id="DGy-7c-282"/>
                         <outlet property="doneBtn" destination="vsl-aI-bYg" id="sVn-Mu-eNr"/>
+                        <outlet property="orangeBtn" destination="Ibm-Gm-KVe" id="F4h-xs-L6e"/>
+                        <outlet property="orangeTxtView" destination="5qf-iS-DCQ" id="oKS-07-Cge"/>
                         <outlet property="pinkBtn" destination="vyP-1N-Y1Z" id="a8i-cM-7z5"/>
                         <outlet property="pinkTxtView" destination="TIK-mG-N4j" id="etP-cO-Pee"/>
                         <outlet property="purpleBtn" destination="77w-nK-Qfd" id="zjw-b5-CTJ"/>
                         <outlet property="purpleTxtView" destination="iIw-jc-YPF" id="RSH-ld-Rjn"/>
-                        <outlet property="skyblueBtn" destination="k5E-2L-YTR" id="hFo-cZ-BBF"/>
-                        <outlet property="skyblueTxtView" destination="J8E-2f-Qn1" id="OAA-vR-s3F"/>
-                        <outlet property="yellowBtn" destination="Ibm-Gm-KVe" id="F4h-xs-L6e"/>
-                        <outlet property="yellowTxtField" destination="5qf-iS-DCQ" id="oKS-07-Cge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnB-oY-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -877,13 +877,13 @@
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8c-dV-E1b" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                         <rect key="frame" x="40" y="416" width="200" height="40"/>
-                                        <color key="backgroundColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wjY-UF-DW6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
                                         <state key="normal" title="완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -1030,7 +1030,7 @@
                                         <rect key="frame" x="266" y="16" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -1049,13 +1049,13 @@
                                 <rect key="frame" x="20" y="64" width="280" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oQ-ZU-jjz">
-                                        <rect key="frame" x="24" y="25" width="47.5" height="14"/>
+                                        <rect key="frame" x="24" y="24" width="47.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-k3-03M">
-                                        <rect key="frame" x="0.0" y="71" width="70" height="31"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="70" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-RD-UFO" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="27.5" y="0.0" width="15" height="15"/>
@@ -1083,7 +1083,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cez-vt-LWg">
-                                        <rect key="frame" x="70" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="70" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8b5-9G-8xC" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -1111,7 +1111,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1R-tH-6jM">
-                                        <rect key="frame" x="140" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="140" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pt-iQ-xC0" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -1139,7 +1139,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-va-Lbc">
-                                        <rect key="frame" x="210" y="73.5" width="70" height="26"/>
+                                        <rect key="frame" x="210" y="73" width="70" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pO7-e6-eZw" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="0.0" width="10" height="10"/>
@@ -1167,7 +1167,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60x-8Z-M8d">
-                                        <rect key="frame" x="24" y="142" width="62.5" height="14"/>
+                                        <rect key="frame" x="24" y="141.5" width="62.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1200,13 +1200,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정을 끝마칠 날" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg9-Kq-5PQ">
-                                        <rect key="frame" x="24" y="240" width="89.5" height="14"/>
+                                        <rect key="frame" x="24" y="240" width="89.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jly-3g-2KW">
-                                        <rect key="frame" x="32" y="278" width="82.5" height="20"/>
+                                        <rect key="frame" x="32" y="278.5" width="82.5" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdg-eJ-E80">
                                                 <rect key="frame" x="4" y="0.0" width="59.5" height="16"/>
@@ -1241,7 +1241,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNC-BJ-AzY">
-                                        <rect key="frame" x="134.5" y="278" width="53" height="20"/>
+                                        <rect key="frame" x="134.5" y="278.5" width="53" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBv-QT-gbO">
                                                 <rect key="frame" x="4" y="0.0" width="30" height="16"/>
@@ -1276,7 +1276,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-Zc-Qgd">
-                                        <rect key="frame" x="207.5" y="276" width="52.5" height="20"/>
+                                        <rect key="frame" x="207.5" y="276.5" width="52.5" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96N-W3-jC9">
                                                 <rect key="frame" x="4" y="0.0" width="29.5" height="16"/>
@@ -1311,13 +1311,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="걸리는 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxP-KL-cyg">
-                                        <rect key="frame" x="24" y="350" width="62.5" height="14"/>
+                                        <rect key="frame" x="24" y="350.5" width="62.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0L-s8-p8q">
-                                        <rect key="frame" x="32" y="396" width="84.5" height="20"/>
+                                        <rect key="frame" x="32" y="397" width="84.5" height="20"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A55-zO-uMR">
                                                 <rect key="frame" x="4" y="0.0" width="50.5" height="16"/>
@@ -1352,7 +1352,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VjE-3M-92W" customClass="BorderAndRound8Button" customModule="IrisCalendarApp" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="436" width="83" height="26"/>
+                                        <rect key="frame" x="24" y="437" width="83" height="26"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="12"/>
                                         <color key="tintColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="특히 중요한 일정">
@@ -1417,6 +1417,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="H0w-kE-gLm"/>
                     <connections>
+                        <outlet property="blueBtn" destination="8b5-9G-8xC" id="uvr-Y9-dUG"/>
+                        <outlet property="blueLbl" destination="9s3-sm-D73" id="NDa-jN-1HS"/>
                         <outlet property="cancelBtn" destination="1Lz-Ot-784" id="Qgf-6x-TKN"/>
                         <outlet property="doneBtn" destination="NFg-V2-TwW" id="RBn-sN-NTt"/>
                         <outlet property="endDayTxtField" destination="96N-W3-jC9" id="8Uv-ms-O3l"/>
@@ -1426,20 +1428,18 @@
                         <outlet property="endYearTxtField" destination="pdg-eJ-E80" id="GVU-jK-W4i"/>
                         <outlet property="endYearUnderlineView" destination="aN1-hJ-M1J" id="HGz-7A-efQ"/>
                         <outlet property="moreImportantScheduleBtn" destination="VjE-3M-92W" id="Zdm-dM-X3g"/>
+                        <outlet property="orangeBtn" destination="pO7-e6-eZw" id="4tK-fY-ifg"/>
+                        <outlet property="orangeLbl" destination="AxS-RA-uk1" id="I1m-yN-RMe"/>
                         <outlet property="pinkBtn" destination="2Pt-iQ-xC0" id="fPk-ag-Cq5"/>
                         <outlet property="pinkLbl" destination="opQ-AS-tGT" id="SP1-1Y-1qY"/>
                         <outlet property="purpleBtn" destination="vvp-RD-UFO" id="jrb-hl-H6B"/>
                         <outlet property="purpleLbl" destination="zQw-Vm-pWe" id="rwH-Bv-rX4"/>
                         <outlet property="scheduleNameTxtField" destination="WAw-S7-GSA" id="ANN-1g-A0z"/>
                         <outlet property="scheduleNameUnderlineView" destination="V5X-Ph-R7N" id="3b6-Wt-8ey"/>
-                        <outlet property="skyblueBtn" destination="8b5-9G-8xC" id="uvr-Y9-dUG"/>
-                        <outlet property="skyblueLbl" destination="9s3-sm-D73" id="NDa-jN-1HS"/>
                         <outlet property="theTimeRequiredLbl" destination="pxP-KL-cyg" id="TNa-qE-9E2"/>
                         <outlet property="theTimeRequiredTxtField" destination="A55-zO-uMR" id="5Yr-rF-t2I"/>
                         <outlet property="theTimeRequiredUnderlineView" destination="qQZ-2B-Jg3" id="EJE-16-1Ji"/>
                         <outlet property="theTimeRequiredView" destination="E0L-s8-p8q" id="lez-8e-i7a"/>
-                        <outlet property="yellowBtn" destination="pO7-e6-eZw" id="4tK-fY-ifg"/>
-                        <outlet property="yellowLbl" destination="AxS-RA-uk1" id="I1m-yN-RMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcz-8s-miZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

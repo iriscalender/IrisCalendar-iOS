@@ -20,7 +20,7 @@ class AllocationTimeAPI: AllocationTimeProvider {
                               param: nil,
                               header: Header.token.getHeader())
             .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil,.failure) }
+                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
                 switch response.0.statusCode {
                 case 200: return (data, .ok)
                 case 204: return (nil, .noContent)
@@ -39,7 +39,7 @@ class AllocationTimeAPI: AllocationTimeProvider {
                                param: param,
                                header: Header.token.getHeader())
             .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil,.failure) }
+                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
                 switch response.0.statusCode {
                 case 200: return (data, .ok)
                 case 400: return (nil, .badRequest)
@@ -57,7 +57,7 @@ class AllocationTimeAPI: AllocationTimeProvider {
                                param: param,
                                header: Header.token.getHeader())
             .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil,.failure) }
+                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
                 switch response.0.statusCode {
                 case 200: return (data, .ok)
                 case 400: return (nil, .badRequest)

@@ -18,12 +18,12 @@ class AutoScheduleVC: UIViewController {
     
     @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleLbl: UILabel!
-    @IBOutlet weak var skyblueBtn: HeightRoundButton!
-    @IBOutlet weak var skyblueLbl: UILabel!
+    @IBOutlet weak var blueBtn: HeightRoundButton!
+    @IBOutlet weak var blueLbl: UILabel!
     @IBOutlet weak var pinkBtn: HeightRoundButton!
     @IBOutlet weak var pinkLbl: UILabel!
-    @IBOutlet weak var yellowBtn: HeightRoundButton!
-    @IBOutlet weak var yellowLbl: UILabel!
+    @IBOutlet weak var orangeBtn: HeightRoundButton!
+    @IBOutlet weak var orangeLbl: UILabel!
     
     @IBOutlet weak var scheduleNameTxtField: UITextField!
     @IBOutlet weak var scheduleNameUnderlineView: UIView!

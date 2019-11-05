@@ -46,4 +46,23 @@ extension UIViewController {
             controller.pushViewController(vc!, animated: false)
         }
     }
+
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+
+    @objc func keyboardHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+}
+
+extension Encodable {
+    var asDictionary: [String: Any]? {
+        guard let data = try? JSONEncoder().encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+    }
 }

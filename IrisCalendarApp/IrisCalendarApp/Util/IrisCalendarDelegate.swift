@@ -1,5 +1,5 @@
 //
-//  IrisDelegate.swift
+//  IrisCalendarDelegate.swift
 //  IrisCalendarApp
 //
 //  Created by baby1234 on 2019/11/04.

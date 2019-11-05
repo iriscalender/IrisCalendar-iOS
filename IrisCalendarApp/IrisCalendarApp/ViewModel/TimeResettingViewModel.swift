@@ -65,11 +65,11 @@ class TimeResettingViewModel: ViewModelType {
 
         input.viewDidLoad.asObservable().subscribe { [weak self] (_) in
             guard let strongSelf = self else { return }
-            api.getAlloctionTime().asObservable().subscribe (onNext: { (response) in
-                switch response.1 {
+            api.getAlloctionTime().asObservable().subscribe (onNext: { (response, networkingResult) in
+                switch networkingResult {
                 case .ok:
-                    startTime.accept(response.0!.startTime)
-                    endTime.accept(response.0!.endTime)
+                    startTime.accept(response!.startTime)
+                    endTime.accept(response!.endTime)
                     result.onNext("불러오기 성공")
                 case .noContent: result.onNext("잘못된 접근")
                 case .badRequest: result.onNext("유효하지 않은 요청")

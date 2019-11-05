@@ -13,7 +13,7 @@ import Alamofire
 import RxSwift
 
 class HTTPClient {
-    typealias param = [String:Any]?
+    typealias param = [String: Any]?
 
     func get(url: String, param: param, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
         return requestData(.get,
