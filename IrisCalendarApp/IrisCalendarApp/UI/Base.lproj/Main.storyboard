@@ -631,20 +631,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리 수정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="POt-wZ-Fuf">
-                                        <rect key="frame" x="92" y="16" width="136" height="20"/>
+                                        <rect key="frame" x="95" y="16" width="130" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-Ln-zVz">
-                                        <rect key="frame" x="24" y="16" width="30" height="30"/>
+                                        <rect key="frame" x="24" y="16" width="30" height="31"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="취소">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsl-aI-bYg">
-                                        <rect key="frame" x="266" y="16" width="30" height="30"/>
+                                        <rect key="frame" x="266" y="16" width="30" height="31"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="16"/>
                                         <state key="normal" title="완료">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -663,10 +663,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-EW-fNx" customClass="Round8View" customModule="IrisCalendarApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="280" height="480"/>
+                                <rect key="frame" x="20" y="65" width="280" height="479"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc2-k8-ES5">
-                                        <rect key="frame" x="44" y="96" width="192" height="288"/>
+                                        <rect key="frame" x="44" y="95.5" width="192" height="288"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77w-nK-Qfd" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="11.5" width="10" height="10"/>
@@ -863,8 +863,11 @@
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-tN-f4x">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-tN-f4x">
                                         <rect key="frame" x="20" y="242" width="240" height="114"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="594615600.65282297">
+                                            <!--2019-11-05 03:00:00 +0000-->
+                                        </date>
                                         <locale key="locale" localeIdentifier="ko"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">

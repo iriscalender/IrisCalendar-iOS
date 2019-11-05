@@ -1,8 +1,8 @@
 //
-//  TimeSettingViewModel.swift
+//  TimeResettingViewModel.swift
 //  IrisCalendarApp
 //
-//  Created by baby1234 on 2019/10/29.
+//  Created by baby1234 on 2019/11/05.
 //  Copyright © 2019 baby1234. All rights reserved.
 //
 
@@ -11,12 +11,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class TimeSettingViewModel: ViewModelType {
+class TimeResettingViewModel: ViewModelType {
 
     private let disposeBag = DisposeBag()
 
     struct Input {
         let timeSettingTaps: Signal<Void>
+        let viewDidLoad: Signal<Void>
         let startTimeTaps: Signal<Void>
         let endTimeTaps: Signal<Void>
         let selectedTime: Driver<Date>
@@ -29,7 +30,7 @@ class TimeSettingViewModel: ViewModelType {
         let result: Driver<String>
     }
 
-    func transform(input: TimeSettingViewModel.Input) -> TimeSettingViewModel.Output {
+    func transform(input: TimeResettingViewModel.Input) -> TimeResettingViewModel.Output {
         let api = AllocationTimeAPI()
         let allocationTimeFormat = "HH:mm"
         let startTime = BehaviorRelay<String>(value: allocationTimeFormat)
@@ -51,7 +52,7 @@ class TimeSettingViewModel: ViewModelType {
 
         input.timeSettingTaps.withLatestFrom(info).asObservable().subscribe({ [weak self] (event) in
             guard let time = event.element, let strongSelf = self else { return }
-            api.setAlloctionTime(startTime: time.0, endTime: time.1).asObservable().subscribe { (event) in
+            api.updateAlloctionTime(startTime: time.0, endTime: time.1).asObservable().subscribe { (event) in
                 switch event.element?.1 {
                 case .ok: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")
@@ -61,6 +62,23 @@ class TimeSettingViewModel: ViewModelType {
                 }
             }.disposed(by: strongSelf.disposeBag)
         }).disposed(by: disposeBag)
+
+        input.viewDidLoad.asObservable().subscribe { [weak self] (_) in
+            guard let strongSelf = self else { return }
+            api.getAlloctionTime().asObservable().subscribe (onNext: { (response) in
+                switch response.1 {
+                case .ok:
+                    startTime.accept(response.0!.startTime)
+                    endTime.accept(response.0!.endTime)
+                    result.onNext("불러오기 성공")
+                case .noContent: result.onNext("잘못된 접근")
+                case .badRequest: result.onNext("유효하지 않은 요청")
+                case .unauthorized: result.onNext("유효하지 않은 토큰")
+                case .serverError: result.onNext("서버오류")
+                default: result.onNext("")
+                }
+            }).disposed(by: strongSelf.disposeBag)
+        }.disposed(by: disposeBag)
 
         input.startTimeTaps.withLatestFrom(input.selectedTime).asObservable()
             .subscribe { (event) in

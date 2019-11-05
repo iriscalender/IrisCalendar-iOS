@@ -45,24 +45,23 @@ class SignInVC: UIViewController {
 
         output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
 
-        output.isEnabled.asObservable().subscribe { [weak self] (event) in
+        output.isEnabled.drive(onNext: { [weak self] (result) in
             guard let strongSelf = self else { return }
-            if event.element == true {
+            if result {
                 strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
                 strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
                 strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
                 strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
             }
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
 
-        output.result.asObservable().subscribe { [weak self] (event) in
+        output.result.drive(onNext: { [weak self] (result) in
             guard let strongSelf = self else { return }
-            guard let result = event.element else { return }
             if result == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC"); return }
             if result.isEmpty { strongSelf.showToast(message: "회원가입실패"); return }
             strongSelf.showToast(message: result)
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
 }
