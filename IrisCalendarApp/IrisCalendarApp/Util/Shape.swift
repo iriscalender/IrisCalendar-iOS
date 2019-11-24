@@ -36,6 +36,20 @@ final class BorderAndRound8Button: UIButton {
         layer.borderWidth = 1
         layer.borderColor = Color.mainHalfClear.cgColor
     }
+
+    func update(isSelected: Bool) {
+        if isSelected {
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.white.cgColor
+            backgroundColor = Color.mainHalfClear
+            setTitleColor(Color.mainHalfClear, for: .normal)
+        } else {
+            layer.borderWidth = 1
+            layer.borderColor = Color.mainHalfClear.cgColor
+            backgroundColor = UIColor.white
+            setTitleColor(UIColor.white, for: .selected)
+        }
+    }
 }
 
 

@@ -2,7 +2,7 @@
 //  AutoScheduleViewModel.swift
 //  IrisCalendarApp
 //
-//  Created by baby1234 on 2019/11/17.
+//  Created by baby1234 on 2019/11/24.
 //  Copyright © 2019 baby1234. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class FixScheduleViewModel: ViewModelType {
+class AutoScheduleViewModel: ViewModelType {
 
     private let disposeBag = DisposeBag()
 
@@ -24,8 +24,11 @@ class FixScheduleViewModel: ViewModelType {
         let pinkTaps: Signal<Void>
         let orangeTaps: Signal<Void>
         let scheduleName: Driver<String>
-        let startTime: Driver<String>
-        let endTime: Driver<String>
+        let endYear: Driver<String>
+        let endMonth: Driver<String>
+        let endDay: Driver<String>
+        let theTimeRequired: Driver<String>
+        let isMoreImportant: Driver<Bool>
     }
 
     struct Output {
@@ -38,14 +41,16 @@ class FixScheduleViewModel: ViewModelType {
         let pinkSize: Driver<CGFloat>
         let orangeSize: Driver<CGFloat>
         let defaultScheduleName: Driver<String>
-        let defaultStartTime: Driver<String>
-        let defaultEndTime: Driver<String>
+        let defaultEndYear: Driver<String>
+        let defaultEndMonth: Driver<String>
+        let defaultEndDay: Driver<String>
+        let defaultTheTimeRequired: Driver<String>
+        let deaultIsMoreImportant: Driver<Bool>
         let isEnabled: Driver<Bool>
         let result: Driver<String>
     }
 
-    func transform(input: FixScheduleViewModel.Input) -> FixScheduleViewModel.Output {
-        let timeFormat = "yyyy-MM-dd HH:mm"
+    func transform(input: AutoScheduleViewModel.Input) -> AutoScheduleViewModel.Output {
         let categoryAPI = CategoryAPI()
         let api = CalendarAPI()
 
@@ -59,24 +64,25 @@ class FixScheduleViewModel: ViewModelType {
         let orangeSize = BehaviorRelay<CGFloat>(value: 10)
         
         let defaultScheduleName = PublishRelay<String>()
-        let defaultStartTime = PublishRelay<String>()
-        let defaultEndTime = PublishRelay<String>()
+        let defaultEndYear = PublishRelay<String>()
+        let defaultEndMonth = PublishRelay<String>()
+        let defaultEndDay = PublishRelay<String>()
+        let defaultTheTimeRequired = PublishRelay<String>()
+        let defaultIsMoreImportant = PublishRelay<Bool>()
         let selectedCategory = BehaviorRelay<IrisCategory>(value: .purple)
         let result = PublishSubject<String>()
-        let info = Driver.combineLatest(selectedCategory.asDriver(), input.scheduleName, input.startTime, input.endTime) {
-            FixScheduleModel(category: $0.rawValue, scheduleName: $1, startTime: $2, endTime: $3)
+        let info = Driver.combineLatest(selectedCategory.asDriver(), input.scheduleName, input.endYear, input.endMonth, input.endDay, input.theTimeRequired, input.isMoreImportant) {
+            AutoScheduleModel(category: $0.rawValue, scheduleName: $1, endTime: "\($2)-\($3)-\($4)", requiredTime: Int($5) ?? 0, isParticularImportant: $6)
         }
 
         let isEnabled = info.map { (model) -> Bool in
-            if model.scheduleName.isEmpty || model.startTime == timeFormat || model.endTime == timeFormat { return false }
-            if model.startTime.components(separatedBy: ["-",":"]).joined() < model.endTime.components(separatedBy: ["-",":"]).joined() {
-                return true
-            }
-            result.onNext("종료시간이 더 빠릅니다")
-            return false
+            if model.scheduleName.isEmpty || model.requiredTime == 0 ||
+                model.endTime.range(of: "(19|20)\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])", options: .regularExpression) == nil ||
+                model.requiredTime > 24 { return false }
+            return true
         }.asDriver(onErrorJustReturn: false)
 
-        input.saveTaps.withLatestFrom(input.scheduleStatus).debug().asObservable().subscribe(onNext: { [weak self] (scheduleStatus) in
+        input.saveTaps.withLatestFrom(input.scheduleStatus).asObservable().subscribe(onNext: { [weak self] (scheduleStatus) in
             guard let strongSelf = self else { return }
             switch scheduleStatus {
             case .add:
@@ -111,13 +117,17 @@ class FixScheduleViewModel: ViewModelType {
 
             switch scheduleStatus {
             case .update(let id):
-                api.getFixCalendar(id).asObservable().subscribe(onNext: { (response, networkingResult) in
+                api.getAutoCalendar(id).asObservable().subscribe(onNext: { (response, networkingResult) in
                     switch networkingResult {
                     case .ok:
                         selectedCategory.accept(IrisCategory.getIrisCategory(category: response!.category))
                         defaultScheduleName.accept(response!.scheduleName)
-                        defaultStartTime.accept(response!.startTime)
-                        defaultEndTime.accept(response!.endTime)
+                        let endDate = response!.endTime.components(separatedBy: ["-"])
+                        defaultEndYear.accept(endDate[0])
+                        defaultEndMonth.accept(endDate[1])
+                        defaultEndDay.accept(endDate[2])
+                        defaultTheTimeRequired.accept("\(response!.requiredTime)")
+                        defaultIsMoreImportant.accept(response!.isParticularImportant)
                     case .badRequest: result.onNext("유효하지 않은 요청")
                     case .unauthorized: result.onNext("유효하지 않은 토큰")
                     case .serverError: result.onNext("서버오류")
@@ -178,15 +188,18 @@ class FixScheduleViewModel: ViewModelType {
                       pinkSize: pinkSize.asDriver(),
                       orangeSize: orangeSize.asDriver(),
                       defaultScheduleName: defaultScheduleName.asDriver(onErrorJustReturn: ""),
-                      defaultStartTime: defaultStartTime.asDriver(onErrorJustReturn: ""),
-                      defaultEndTime: defaultEndTime.asDriver(onErrorJustReturn: ""),
+                      defaultEndYear: defaultEndYear.asDriver(onErrorJustReturn: ""),
+                      defaultEndMonth: defaultEndMonth.asDriver(onErrorJustReturn: ""),
+                      defaultEndDay: defaultEndDay.asDriver(onErrorJustReturn: ""),
+                      defaultTheTimeRequired: defaultTheTimeRequired.asDriver(onErrorJustReturn: ""),
+                      deaultIsMoreImportant: defaultIsMoreImportant.asDriver(onErrorJustReturn: false),
                       isEnabled: isEnabled.asDriver(),
                       result: result.asDriver(onErrorJustReturn: "오류 발생"))
     }
 
-    private func addSchedule(_ info: Observable<FixScheduleModel>) -> Observable<String> {
+    private func addSchedule(_ info: Observable<AutoScheduleModel>) -> Observable<String> {
         return info.flatMap { (model) -> Observable<String> in
-            return CalendarAPI().addFixCalendar(model).map { (_, networkingResult) -> String in
+            return CalendarAPI().addAutoCalendar(model).map { (_, networkingResult) -> String in
                 switch networkingResult {
                 case .ok: return "성공"
                 case .badRequest: return "유효하지 않은 요청"
@@ -199,9 +212,9 @@ class FixScheduleViewModel: ViewModelType {
         }
     }
 
-    private func updateSchedule(_ info: Observable<FixScheduleModel>, id: Int) -> Observable<String> {
+    private func updateSchedule(_ info: Observable<AutoScheduleModel>, id: Int) -> Observable<String> {
         return info.flatMap { (model) -> Observable<String> in
-            return CalendarAPI().updateFixCalendar(model, id: id).map { (_, networkingResult) -> String in
+            return CalendarAPI().updateAutoCalendar(model, id: id).map { (_, networkingResult) -> String in
                 switch networkingResult {
                 case .ok: return "성공"
                 case .badRequest: return "유효하지 않은 요청"

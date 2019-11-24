@@ -55,6 +55,14 @@ extension MainVC: MenubarDelegate {
     func goWhere(destination: GoWhere) {
         switch destination {
         case .none: return
+        case .FixScheduleVC:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! FixScheduleVC
+            vc.scheduleStatus.onNext(.add)
+            self.navigationController?.pushViewController(vc, animated: false)
+        case .AutoScheduleVC:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! AutoScheduleVC
+            vc.scheduleStatus.onNext(.add)
+            self.navigationController?.pushViewController(vc, animated: false)
         default: self.goNextVC(identifier: destination.rawValue)
         }
     }

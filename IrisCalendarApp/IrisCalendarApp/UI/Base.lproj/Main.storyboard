@@ -1052,13 +1052,13 @@
                                 <rect key="frame" x="20" y="108" width="374" height="730"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oQ-ZU-jjz">
-                                        <rect key="frame" x="23.999999999999996" y="149" width="47.666666666666657" height="14.666666666666657"/>
+                                        <rect key="frame" x="23.999999999999996" y="141.33333333333334" width="47.666666666666657" height="14.666666666666657"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-k3-03M">
-                                        <rect key="frame" x="0.0" y="195.66666666666669" width="93.666666666666671" height="31"/>
+                                        <rect key="frame" x="0.0" y="188" width="93.666666666666671" height="38.666666666666657"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-RD-UFO" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="39.333333333333336" y="0.0" width="15" height="15"/>
@@ -1069,7 +1069,7 @@
                                                 </constraints>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기타" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQw-Vm-pWe">
-                                                <rect key="frame" x="0.0" y="19" width="93.666666666666671" height="12"/>
+                                                <rect key="frame" x="0.0" y="27.333333333333311" width="93.666666666666671" height="11.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="10"/>
                                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1078,15 +1078,15 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="zQw-Vm-pWe" secondAttribute="bottom" id="YeJ-3W-Pm6"/>
-                                            <constraint firstItem="zQw-Vm-pWe" firstAttribute="top" secondItem="vvp-RD-UFO" secondAttribute="bottom" constant="4" id="eTc-MD-bua"/>
                                             <constraint firstItem="vvp-RD-UFO" firstAttribute="top" secondItem="DJq-k3-03M" secondAttribute="top" id="i8y-74-W4a"/>
                                             <constraint firstAttribute="trailing" secondItem="zQw-Vm-pWe" secondAttribute="trailing" id="oSM-xX-LuZ"/>
+                                            <constraint firstItem="zQw-Vm-pWe" firstAttribute="top" secondItem="DJq-k3-03M" secondAttribute="centerY" constant="8" id="q1v-qY-vf3"/>
                                             <constraint firstItem="zQw-Vm-pWe" firstAttribute="centerX" secondItem="vvp-RD-UFO" secondAttribute="centerX" id="tj3-pb-SCW"/>
                                             <constraint firstItem="zQw-Vm-pWe" firstAttribute="leading" secondItem="DJq-k3-03M" secondAttribute="leading" id="ytY-vK-7b8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cez-vt-LWg">
-                                        <rect key="frame" x="93.666666666666686" y="198.33333333333331" width="93.333333333333314" height="26"/>
+                                        <rect key="frame" x="93.666666666666686" y="187.66666666666669" width="93.333333333333314" height="39.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8b5-9G-8xC" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666671" y="0.0" width="10" height="10"/>
@@ -1097,7 +1097,7 @@
                                                 </constraints>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의, 미팅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9s3-sm-D73">
-                                                <rect key="frame" x="0.0" y="14" width="93.333333333333329" height="12"/>
+                                                <rect key="frame" x="0.0" y="27.333333333333314" width="93.333333333333329" height="12"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="10"/>
                                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1108,13 +1108,12 @@
                                             <constraint firstAttribute="bottom" secondItem="9s3-sm-D73" secondAttribute="bottom" id="1Xb-n5-ncd"/>
                                             <constraint firstItem="9s3-sm-D73" firstAttribute="centerX" secondItem="8b5-9G-8xC" secondAttribute="centerX" id="I8x-e4-gpd"/>
                                             <constraint firstAttribute="trailing" secondItem="9s3-sm-D73" secondAttribute="trailing" id="O4p-bZ-haS"/>
-                                            <constraint firstItem="9s3-sm-D73" firstAttribute="top" secondItem="8b5-9G-8xC" secondAttribute="bottom" constant="4" id="ej6-sQ-eqM"/>
                                             <constraint firstItem="8b5-9G-8xC" firstAttribute="top" secondItem="cez-vt-LWg" secondAttribute="top" id="kve-PC-NIl"/>
                                             <constraint firstItem="9s3-sm-D73" firstAttribute="leading" secondItem="cez-vt-LWg" secondAttribute="leading" id="yvM-JD-nGS"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1R-tH-6jM">
-                                        <rect key="frame" x="187" y="198.33333333333331" width="93.666666666666686" height="26"/>
+                                        <rect key="frame" x="187" y="187.66666666666669" width="93.666666666666686" height="39.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pt-iQ-xC0" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666657" y="0.0" width="10" height="10"/>
@@ -1125,7 +1124,7 @@
                                                 </constraints>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="운동" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opQ-AS-tGT">
-                                                <rect key="frame" x="0.0" y="14" width="93.666666666666671" height="12"/>
+                                                <rect key="frame" x="0.0" y="27.333333333333314" width="93.666666666666671" height="12"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="10"/>
                                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1137,12 +1136,11 @@
                                             <constraint firstAttribute="trailing" secondItem="opQ-AS-tGT" secondAttribute="trailing" id="BaB-lb-ZYq"/>
                                             <constraint firstAttribute="bottom" secondItem="opQ-AS-tGT" secondAttribute="bottom" id="KIm-lh-Kg9"/>
                                             <constraint firstItem="2Pt-iQ-xC0" firstAttribute="top" secondItem="r1R-tH-6jM" secondAttribute="top" id="f9Q-7g-shd"/>
-                                            <constraint firstItem="opQ-AS-tGT" firstAttribute="top" secondItem="2Pt-iQ-xC0" secondAttribute="bottom" constant="4" id="iap-HF-TMV"/>
                                             <constraint firstItem="opQ-AS-tGT" firstAttribute="centerX" secondItem="2Pt-iQ-xC0" secondAttribute="centerX" id="qk4-g5-oL8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-va-Lbc">
-                                        <rect key="frame" x="280.66666666666669" y="198.33333333333331" width="93.333333333333314" height="26"/>
+                                        <rect key="frame" x="280.66666666666669" y="187.66666666666669" width="93.333333333333314" height="39.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pO7-e6-eZw" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666629" y="0.0" width="10" height="10"/>
@@ -1153,7 +1151,7 @@
                                                 </constraints>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과제, 공부" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-RA-uk1">
-                                                <rect key="frame" x="0.0" y="14" width="93.333333333333329" height="12"/>
+                                                <rect key="frame" x="0.0" y="27.333333333333314" width="93.333333333333329" height="12"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="10"/>
                                                 <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1164,7 +1162,6 @@
                                             <constraint firstItem="AxS-RA-uk1" firstAttribute="centerX" secondItem="pO7-e6-eZw" secondAttribute="centerX" id="VcJ-hE-sWx"/>
                                             <constraint firstItem="AxS-RA-uk1" firstAttribute="leading" secondItem="ij7-va-Lbc" secondAttribute="leading" id="Xpz-f5-9zS"/>
                                             <constraint firstAttribute="trailing" secondItem="AxS-RA-uk1" secondAttribute="trailing" id="aKA-xM-TwJ"/>
-                                            <constraint firstItem="AxS-RA-uk1" firstAttribute="top" secondItem="pO7-e6-eZw" secondAttribute="bottom" constant="4" id="kvt-Qv-Oec"/>
                                             <constraint firstItem="pO7-e6-eZw" firstAttribute="top" secondItem="ij7-va-Lbc" secondAttribute="top" id="l1e-9Q-ugm"/>
                                             <constraint firstAttribute="bottom" secondItem="AxS-RA-uk1" secondAttribute="bottom" id="wVw-3Q-NaP"/>
                                         </constraints>
@@ -1214,7 +1211,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdg-eJ-E80">
                                                 <rect key="frame" x="4" y="0.0" width="106.66666666666667" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-hJ-M1J">
                                                 <rect key="frame" x="0.0" y="19.666666666666686" width="110.66666666666667" height="0.33333333333333215"/>
@@ -1249,7 +1246,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XBv-QT-gbO">
                                                 <rect key="frame" x="4" y="0.0" width="53" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTl-hd-gsX">
                                                 <rect key="frame" x="0.0" y="19.666666666666686" width="57" height="0.33333333333333215"/>
@@ -1284,7 +1281,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="96N-W3-jC9">
                                                 <rect key="frame" x="4" y="0.0" width="53.333333333333336" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzD-lZ-2Hy">
                                                 <rect key="frame" x="0.0" y="19.666666666666686" width="57.333333333333336" height="0.33333333333333215"/>
@@ -1325,7 +1322,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A55-zO-uMR">
                                                 <rect key="frame" x="4" y="0.0" width="50.666666666666664" height="16"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQZ-2B-Jg3">
                                                 <rect key="frame" x="0.0" y="19.666666666666629" width="54.666666666666664" height="0.33333333333333215"/>
@@ -1365,6 +1362,9 @@
                                         <state key="normal" title="특히 중요한 일정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1373,9 +1373,11 @@
                                     <constraint firstItem="jly-3g-2KW" firstAttribute="top" secondItem="Dg9-Kq-5PQ" secondAttribute="bottom" constant="24" id="8sy-d2-ava"/>
                                     <constraint firstItem="VjE-3M-92W" firstAttribute="centerY" secondItem="E0L-s8-p8q" secondAttribute="centerY" id="Ap6-eJ-iEf"/>
                                     <constraint firstItem="DJq-k3-03M" firstAttribute="leading" secondItem="li1-Rg-HK8" secondAttribute="leading" id="CvD-hx-Xub"/>
+                                    <constraint firstItem="opQ-AS-tGT" firstAttribute="centerY" secondItem="9s3-sm-D73" secondAttribute="centerY" id="DOd-N7-kqx"/>
                                     <constraint firstItem="E0L-s8-p8q" firstAttribute="top" secondItem="pxP-KL-cyg" secondAttribute="bottom" constant="32" id="DvK-L0-4Zb"/>
                                     <constraint firstAttribute="trailing" secondItem="ij7-va-Lbc" secondAttribute="trailing" id="ERG-B2-TGu"/>
                                     <constraint firstItem="60x-8Z-M8d" firstAttribute="top" secondItem="DJq-k3-03M" secondAttribute="bottom" constant="40" id="Enl-m9-ThQ"/>
+                                    <constraint firstItem="AxS-RA-uk1" firstAttribute="centerY" secondItem="opQ-AS-tGT" secondAttribute="centerY" id="FyU-rs-kE6"/>
                                     <constraint firstItem="96N-W3-jC9" firstAttribute="width" secondItem="XBv-QT-gbO" secondAttribute="width" id="Gi5-9L-aHe"/>
                                     <constraint firstItem="pdg-eJ-E80" firstAttribute="width" secondItem="XBv-QT-gbO" secondAttribute="width" multiplier="2:1" id="HgO-En-hd4"/>
                                     <constraint firstItem="ij7-va-Lbc" firstAttribute="centerY" secondItem="r1R-tH-6jM" secondAttribute="centerY" id="I8J-7q-em6"/>
@@ -1394,6 +1396,7 @@
                                     <constraint firstItem="pxP-KL-cyg" firstAttribute="top" secondItem="jly-3g-2KW" secondAttribute="bottom" constant="52" id="XAK-w2-ST7"/>
                                     <constraint firstItem="IfX-Zc-Qgd" firstAttribute="leading" secondItem="aNC-BJ-AzY" secondAttribute="trailing" constant="20" id="Yfd-p4-ROq"/>
                                     <constraint firstItem="jly-3g-2KW" firstAttribute="leading" secondItem="Dg9-Kq-5PQ" secondAttribute="leading" constant="8" id="ZbW-fd-Psq"/>
+                                    <constraint firstItem="60x-8Z-M8d" firstAttribute="top" secondItem="zQw-Vm-pWe" secondAttribute="bottom" constant="40" id="a16-zy-q74"/>
                                     <constraint firstItem="aNC-BJ-AzY" firstAttribute="centerY" secondItem="jly-3g-2KW" secondAttribute="centerY" id="dw0-HE-l61"/>
                                     <constraint firstItem="aNC-BJ-AzY" firstAttribute="leading" secondItem="jly-3g-2KW" secondAttribute="trailing" constant="20" id="eFA-Nv-FLv"/>
                                     <constraint firstItem="VjE-3M-92W" firstAttribute="leading" secondItem="aNC-BJ-AzY" secondAttribute="leading" id="eTY-as-XWs"/>
@@ -1402,6 +1405,7 @@
                                     <constraint firstItem="A55-zO-uMR" firstAttribute="trailing" secondItem="pxP-KL-cyg" secondAttribute="trailing" id="gUJ-OU-P3S"/>
                                     <constraint firstItem="DJq-k3-03M" firstAttribute="top" secondItem="8oQ-ZU-jjz" secondAttribute="bottom" constant="32" id="hkk-xW-2kq"/>
                                     <constraint firstItem="Dg9-Kq-5PQ" firstAttribute="leading" secondItem="li1-Rg-HK8" secondAttribute="leading" constant="24" id="inq-eU-qaW"/>
+                                    <constraint firstItem="9s3-sm-D73" firstAttribute="centerY" secondItem="zQw-Vm-pWe" secondAttribute="centerY" id="kAA-Td-tdp"/>
                                     <constraint firstItem="cez-vt-LWg" firstAttribute="centerY" secondItem="DJq-k3-03M" secondAttribute="centerY" id="ngQ-00-lIF"/>
                                     <constraint firstItem="Dg9-Kq-5PQ" firstAttribute="top" secondItem="Oc9-q6-wlx" secondAttribute="bottom" constant="40" id="tsu-Cj-Kse"/>
                                     <constraint firstItem="ij7-va-Lbc" firstAttribute="width" secondItem="r1R-tH-6jM" secondAttribute="width" id="xXJ-ga-voY"/>
@@ -1427,6 +1431,7 @@
                     <navigationItem key="navigationItem" id="H0w-kE-gLm"/>
                     <connections>
                         <outlet property="blueBtn" destination="8b5-9G-8xC" id="uvr-Y9-dUG"/>
+                        <outlet property="blueBtnHeightConstraint" destination="Xli-XT-A3O" id="y2S-2O-dbW"/>
                         <outlet property="blueLbl" destination="9s3-sm-D73" id="NDa-jN-1HS"/>
                         <outlet property="cancelBtn" destination="1Lz-Ot-784" id="Qgf-6x-TKN"/>
                         <outlet property="doneBtn" destination="NFg-V2-TwW" id="RBn-sN-NTt"/>
@@ -1438,10 +1443,13 @@
                         <outlet property="endYearUnderlineView" destination="aN1-hJ-M1J" id="HGz-7A-efQ"/>
                         <outlet property="moreImportantScheduleBtn" destination="VjE-3M-92W" id="Zdm-dM-X3g"/>
                         <outlet property="orangeBtn" destination="pO7-e6-eZw" id="4tK-fY-ifg"/>
+                        <outlet property="orangeBtnHeightConstraint" destination="pTq-5Q-yvu" id="DfV-H8-xHa"/>
                         <outlet property="orangeLbl" destination="AxS-RA-uk1" id="I1m-yN-RMe"/>
                         <outlet property="pinkBtn" destination="2Pt-iQ-xC0" id="fPk-ag-Cq5"/>
+                        <outlet property="pinkBtnHeightConstraint" destination="wwc-Kv-0oA" id="oy0-ex-ldw"/>
                         <outlet property="pinkLbl" destination="opQ-AS-tGT" id="SP1-1Y-1qY"/>
                         <outlet property="purpleBtn" destination="vvp-RD-UFO" id="jrb-hl-H6B"/>
+                        <outlet property="purpleBtnHeightConstraint" destination="I14-i5-a1e" id="VqE-ev-BmF"/>
                         <outlet property="purpleLbl" destination="zQw-Vm-pWe" id="rwH-Bv-rX4"/>
                         <outlet property="scheduleNameTxtField" destination="WAw-S7-GSA" id="ANN-1g-A0z"/>
                         <outlet property="scheduleNameUnderlineView" destination="V5X-Ph-R7N" id="3b6-Wt-8ey"/>
@@ -1453,7 +1461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcz-8s-miZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2529.375" y="-1080.6338028169014"/>
+            <point key="canvasLocation" x="2528.985507246377" y="-1080.8035714285713"/>
         </scene>
     </scenes>
     <resources>

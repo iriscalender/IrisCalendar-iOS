@@ -43,7 +43,7 @@ class TimeResettingViewModel: ViewModelType {
 
         let isEnabled = info.map { (start, end) -> Bool in
             if start == allocationTimeFormat || end == allocationTimeFormat { return false }
-            if start.components(separatedBy: [":"]).joined() <= end.components(separatedBy: [":"]).joined() {
+            if start.components(separatedBy: [":"]).joined() < end.components(separatedBy: [":"]).joined() {
                 return true
             }
             result.onNext("종료시간이 더 빠릅니다")

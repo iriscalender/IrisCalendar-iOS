@@ -121,7 +121,6 @@ class FixScheduleVC: UIViewController {
 
         output.isEnabled.drive(onNext: { [weak self] (isEnabled) in
             guard let strongSelf = self else { return }
-            print(isEnabled)
             if isEnabled {
                 strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
