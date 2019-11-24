@@ -35,10 +35,10 @@ class EditCategoryViewModel: ViewModelType {
 
     func transform(input: EditCategoryViewModel.Input) -> EditCategoryViewModel.Output {
         let api = CategoryAPI()
-        let purple = BehaviorRelay<String>(value: "")
-        let blue = BehaviorRelay<String>(value: "")
-        let pink = BehaviorRelay<String>(value: "")
-        let orange = BehaviorRelay<String>(value: "")
+        let purple = BehaviorRelay<String>(value: "기타")
+        let blue = BehaviorRelay<String>(value: "회의, 미팅")
+        let pink = BehaviorRelay<String>(value: "운동")
+        let orange = BehaviorRelay<String>(value: "과제, 공부")
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.purpleTxt, input.blueTxt, input.pinkTxt, input.orangeTxt) {
             CategoryModel(purple: $0, blue: $1, pink: $2, orange: $3)
@@ -48,7 +48,7 @@ class EditCategoryViewModel: ViewModelType {
 
         input.saveTaps.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (category) in
             guard let strongSelf = self else { return }
-            api.updateCategory(category: category).asObservable().subscribe(onNext: { (_, networkingResult) in
+            api.updateCategory(category).asObservable().subscribe(onNext: { (_, networkingResult) in
                 switch networkingResult {
                 case .ok: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")
@@ -61,14 +61,13 @@ class EditCategoryViewModel: ViewModelType {
 
         input.viewDidLoad.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (category) in
             guard let strongSelf = self else { return }
-            api.getCategory().asObservable().subscribe(onNext: { (response, networkingresult) in
-                switch networkingresult {
+            api.getCategory().asObservable().subscribe(onNext: { (response, networkingResult) in
+                switch networkingResult {
                 case .ok:
                     purple.accept(response!.purple)
                     blue.accept(response!.blue)
                     pink.accept(response!.pink)
                     orange.accept(response!.orange)
-                    result.onNext("불러오기 성공")
                 case .badRequest: result.onNext("유효하지 않은 요청")
                 case .unauthorized: result.onNext("유효하지 않은 토큰")
                 case .serverError: result.onNext("서버오류")

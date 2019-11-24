@@ -13,14 +13,14 @@ enum IrisCalendarURL {
     case signUp
     case allocationTime
     case category
-    case calendar
+    case dailyCalendar(date: String)
+    case bookedCalendar
     case addAutoCalendar
-    case addManualCalendar
+    case addFixCalendar
     case autoCalendar(calendarId: Int)
-    case manualCalendar(calendarId: Int)
+    case fixCalendar(calendarId: Int)
 
     func getPath() -> String {
-
         switch self {
         case .signIn:
             return "/auth/login"
@@ -30,15 +30,17 @@ enum IrisCalendarURL {
             return "/time"
         case .category:
             return "/category"
-        case .calendar:
-            return "/calendar"
+        case .dailyCalendar(let date):
+            return "/calendar/\(date)"
+        case .bookedCalendar:
+            return "/calendar/book"
         case .addAutoCalendar:
             return "/calendar/auto"
-        case .addManualCalendar:
-            return "/calendar/manual"
+        case .addFixCalendar:
+            return "/calendar/manual/"
         case .autoCalendar(let id):
             return "/calendar/auto/\(id)"
-        case .manualCalendar(let id):
+        case .fixCalendar(let id):
             return "/calendar/manual/\(id)"
         }
     }

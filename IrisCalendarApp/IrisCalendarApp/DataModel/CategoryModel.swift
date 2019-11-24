@@ -14,3 +14,17 @@ struct CategoryModel: Codable {
     let pink: String
     let orange: String
 }
+
+enum IrisCategory: String {
+    case purple, blue, pink, orange
+
+    static func getIrisCategory(category: String) -> IrisCategory {
+        switch category {
+        case "purple": return .purple
+        case "blue": return .blue
+        case "pink": return .pink
+        case "orange": return .orange
+        default: return .purple
+        }
+    }
+}

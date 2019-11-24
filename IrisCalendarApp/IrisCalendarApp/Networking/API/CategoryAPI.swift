@@ -31,7 +31,7 @@ class CategoryAPI: CategoryProvider {
         }
     }
 
-    func updateCategory(category: CategoryModel) -> CategoryAPI.CategoryResult {
+    func updateCategory(_ category: CategoryModel) -> CategoryAPI.CategoryResult {
         guard let param = category.asDictionary else { return Observable.just((nil, .failure)) }
 
         return httpClient.patch(url: IrisCalendarURL.category.getPath(),

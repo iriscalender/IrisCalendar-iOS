@@ -43,7 +43,7 @@ class TimeResettingViewModel: ViewModelType {
 
         let isEnabled = info.map { (start, end) -> Bool in
             if start == allocationTimeFormat || end == allocationTimeFormat { return false }
-            if start.components(separatedBy: [":"]).joined() < end.components(separatedBy: [":"]).joined() {
+            if start.components(separatedBy: [":"]).joined() <= end.components(separatedBy: [":"]).joined() {
                 return true
             }
             result.onNext("종료시간이 더 빠릅니다")
@@ -75,7 +75,7 @@ class TimeResettingViewModel: ViewModelType {
                 case .badRequest: result.onNext("유효하지 않은 요청")
                 case .unauthorized: result.onNext("유효하지 않은 토큰")
                 case .serverError: result.onNext("서버오류")
-                default: result.onNext("")
+                default: result.onNext("할당시간 재설정 실패")
                 }
             }).disposed(by: strongSelf.disposeBag)
         }.disposed(by: disposeBag)
@@ -95,6 +95,6 @@ class TimeResettingViewModel: ViewModelType {
         return Output(startTime: startTime.asDriver(),
                       endTime: endTime.asDriver(),
                       isEnabled: isEnabled,
-                      result: result.asDriver(onErrorJustReturn: ""))
+                      result: result.asDriver(onErrorJustReturn: "할당시간 재설정 실패"))
     }
 }

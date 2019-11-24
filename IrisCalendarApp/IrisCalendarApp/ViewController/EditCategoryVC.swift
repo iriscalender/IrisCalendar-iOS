@@ -26,11 +26,10 @@ class EditCategoryVC: UIViewController {
 
     private let disposeBag = DisposeBag()
     private let viewModel = EditCategoryViewModel()
-    private let editCategoryViewDidLoad = PublishSubject<Void>()
+    private let editCategoryViewDidLoad = BehaviorSubject<Void>(value: ())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editCategoryViewDidLoad.onNext(())
         setUpUI()
         bindViewModel()
     }
@@ -65,8 +64,8 @@ class EditCategoryVC: UIViewController {
 
         output.purpleTxt.drive(purpleTxtView.rx.text).disposed(by: disposeBag)
         output.blueTxt.drive(blueTxtView.rx.text).disposed(by: disposeBag)
-        output.pinkTxt.drive(blueTxtView.rx.text).disposed(by: disposeBag)
-        output.orangeTxt.drive(blueTxtView.rx.text).disposed(by: disposeBag)
+        output.pinkTxt.drive(pinkTxtView.rx.text).disposed(by: disposeBag)
+        output.orangeTxt.drive(orangeTxtView.rx.text).disposed(by: disposeBag)
         output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
 
         output.isEnabled.drive(onNext: { [weak self] (result) in

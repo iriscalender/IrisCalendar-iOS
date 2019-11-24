@@ -27,12 +27,19 @@ protocol CategoryProvider {
     typealias CategoryResult = Observable<(CategoryModel?, NetworkingResult)>
 
     func getCategory() -> CategoryResult
-    func updateCategory(category: CategoryModel) -> CategoryResult
+    func updateCategory(_ category: CategoryModel) -> CategoryResult
 }
 
 protocol CalendarProvider {
-    func getTheEntireCalendar() -> Observable<(TheEntireCalendarModel?, NetworkingResult)>
-    func addCalendar(calendar: NoIdCalendarModel) -> Observable<(NoIdCalendarModel?, NetworkingResult)>
-    func getCalendar(calendarId: Int) -> Observable<(CalendarModel?, NetworkingResult)>
-    func updateCalendar(calendarId: Int, calendar: NoIdCalendarModel) -> Observable<(CalendarModel?, NetworkingResult)>
+    typealias AutoCalendarResult = Observable<(AutoScheduleModel?, NetworkingResult)>
+    typealias FixCalendarResult = Observable<(FixScheduleModel?, NetworkingResult)>
+
+    func getAutoCalendar(_ id: Int) -> AutoCalendarResult
+    func addAutoCalendar(_ calendar: AutoScheduleModel) -> AutoCalendarResult
+    func updateAutoCalendar(_ calendar: AutoScheduleModel, id: Int) -> AutoCalendarResult
+    func getFixCalendar(_ id: Int) -> FixCalendarResult
+    func addFixCalendar(_ calendar: FixScheduleModel) -> FixCalendarResult
+    func updateFixCalendar(_ calendar: FixScheduleModel, id: Int) -> FixCalendarResult
+    func getDailyCalendar(_ date: String) -> Observable<([DailyCalendarModel]?, NetworkingResult)>
+    func getBookedCalendar() -> Observable<([BookedCalendarModel]?, NetworkingResult)>
 }

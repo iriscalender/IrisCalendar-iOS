@@ -59,7 +59,6 @@ class SignInVC: UIViewController {
         output.result.drive(onNext: { [weak self] (result) in
             guard let strongSelf = self else { return }
             if result == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC"); return }
-            if result.isEmpty { strongSelf.showToast(message: "회원가입실패"); return }
             strongSelf.showToast(message: result)
         }).disposed(by: disposeBag)
     }

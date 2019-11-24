@@ -63,7 +63,6 @@ class SignUpVC: UIViewController {
         output.result.drive(onNext: { [weak self] (message) in
             guard let strongSelf = self else { return }
             if message == "성공" { strongSelf.goNextVC(identifier: "TimeSettingVC"); return }
-            if message.isEmpty { strongSelf.showToast(message: "회원가입실패"); return }
             strongSelf.showToast(message: message)
         }).disposed(by: disposeBag)
     }

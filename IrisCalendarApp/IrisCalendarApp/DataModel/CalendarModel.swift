@@ -8,25 +8,59 @@
 
 import Foundation
 
-struct TheEntireCalendarModel: Codable {
-    let calendar: [CalendarModel]
-}
-
-struct CalendarModel: Codable {
+struct DailyCalendarModel: Codable {
     let id: Int
-    let isAutomatic: Bool
     let category: String
-    let calendarName: String
+    let scheduleName: String
+    let startTime: String
     let endTime: String
-    let requiredTime: Int
-    let isParticularImportant: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case category
+        case scheduleName = "calendarName"
+        case startTime
+        case endTime
+    }
 }
 
-struct NoIdCalendarModel: Codable {
-    let isAutomatic: Bool
+struct AutoScheduleModel: Codable {
     let category: String
-    let calendarName: String
+    let scheduleName: String
     let endTime: String
     let requiredTime: Int
     let isParticularImportant: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case category
+        case scheduleName = "calendarName"
+        case endTime
+        case requiredTime
+        case isParticularImportant
+    }
+}
+
+struct FixScheduleModel: Codable {
+    let category: String
+    let scheduleName: String
+    let startTime: String
+    let endTime: String
+
+    enum CodingKeys: String, CodingKey {
+        case category
+        case scheduleName = "calendarName"
+        case startTime
+        case endTime
+    }
+}
+
+struct BookedCalendarModel: Codable {
+    let category: String
+    let date: String
+}
+
+enum ScheduleStatus {
+    case add
+    case update(calendarId: Int)
+    case unknown
 }

@@ -67,7 +67,6 @@ class TimeSettingVC: UIViewController {
 
         output.result.drive (onNext: { [weak self] (message) in
             guard let strongSelf = self else { return }
-            if message == "" { strongSelf.showToast(message: "할당시간 설정 실패") }
             strongSelf.showToast(message: message)
             }, onCompleted: { [weak self] in
                 guard let strongSelf = self else { return }

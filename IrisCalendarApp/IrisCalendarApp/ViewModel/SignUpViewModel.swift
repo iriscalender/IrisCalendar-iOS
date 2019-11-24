@@ -30,7 +30,7 @@ class SignUpViewModel: ViewModelType {
         let info = Driver.combineLatest(input.id, input.pw, input.rePW)
         
         let isEnabled = info.map { (id, pw, rePw) -> Bool in
-            if id.count > 5 && pw.range(of: #"\b[A-Za-z0-9]{8,}\b"#, options: .regularExpression) != nil && pw == rePw {
+            if id.count > 5 && pw.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil && pw == rePw {
                 return true
             }
             return false
@@ -43,9 +43,9 @@ class SignUpViewModel: ViewModelType {
                 case .badRequest: return "유효하지 않은 요청"
                 case .conflict: return "존재하는 사용자"
                 case .serverError: return "서버오류"
-                default: return ""
+                default: return "회원가입 실패"
                 }
-            }.asDriver(onErrorJustReturn: "")
+            }.asDriver(onErrorJustReturn: "회원가입 실패")
         }
         
         return Output(isEnabled: isEnabled, result: result)

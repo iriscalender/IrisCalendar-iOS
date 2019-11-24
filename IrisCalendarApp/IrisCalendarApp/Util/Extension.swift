@@ -47,6 +47,12 @@ extension UIViewController {
         }
     }
 
+    func updateBtnRadius(btns: [UIButton]) {
+        btns.forEach { (btn) in
+            btn.layer.cornerRadius = btn.frame.height / 2
+        }
+    }
+
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }

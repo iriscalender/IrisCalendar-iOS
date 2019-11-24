@@ -65,14 +65,14 @@ class TimeResettingVC: UIViewController {
         output.result.drive(onNext: { [weak self] (message) in
             guard let strongSelf = self else { return }
             switch message {
-            case "":
-                strongSelf.showToast(message: "할당시간 설정 실패")
             case "불러오기 성공":
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
                 output.startTime.drive(onNext: { (time) in
                     strongSelf.datePicker.date = formatter.date(from: time)!
                 }).disposed(by: strongSelf.disposeBag)
+                output.startTime.drive(strongSelf.startTimeLbl.rx.text).disposed(by: strongSelf.disposeBag)
+                output.endTime.drive(strongSelf.endTimeLbl.rx.text).disposed(by: strongSelf.disposeBag)
             default:
                 strongSelf.showToast(message: message)
             }
