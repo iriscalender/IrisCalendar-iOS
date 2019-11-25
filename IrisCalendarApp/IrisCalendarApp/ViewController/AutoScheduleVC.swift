@@ -15,6 +15,7 @@ class AutoScheduleVC: UIViewController {
 
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleLbl: UILabel!
@@ -137,7 +138,7 @@ class AutoScheduleVC: UIViewController {
             guard let strongSelf = self else { return }
             switch status {
             case .update:
-                output.defaultScheduleName.drive(strongSelf.scheduleNameTxtField.rx.text.asObserver()).disposed(by: strongSelf.disposeBag)
+                output.defaultScheduleName.drive(strongSelf.scheduleNameTxtField.rx.text).disposed(by: strongSelf.disposeBag)
                 output.defaultEndYear.drive(strongSelf.endYearTxtField.rx.text).disposed(by: strongSelf.disposeBag)
                 output.defaultEndMonth.drive(strongSelf.endMonthTxtField.rx.text).disposed(by: strongSelf.disposeBag)
                 output.defaultEndDay.drive(strongSelf.endDayTxtField.rx.text).disposed(by: strongSelf.disposeBag)

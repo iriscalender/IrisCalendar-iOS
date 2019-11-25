@@ -15,6 +15,7 @@ class FixScheduleVC: UIViewController {
 
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var titleLbl: UILabel!
 
     @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleLbl: UILabel!
