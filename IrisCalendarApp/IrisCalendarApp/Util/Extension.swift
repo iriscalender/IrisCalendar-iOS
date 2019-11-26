@@ -17,8 +17,8 @@ extension UITextField {
 
         self.rx.controlEvent(.editingDidBegin).subscribe { (_) in
             UIView.animate(withDuration: 0.5, animations: {
-                underlineView.backgroundColor = Color.skyblueCategory
-                underlineView.tintColor = Color.skyblueCategory
+                underlineView.backgroundColor = Color.blueCategory
+                underlineView.tintColor = Color.blueCategory
                 underlineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
             })
         }.disposed(by: disposeBag)

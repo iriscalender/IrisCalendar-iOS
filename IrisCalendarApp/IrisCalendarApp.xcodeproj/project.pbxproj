@@ -39,6 +39,7 @@
 		37D62C51234ADF7100AB3DC3 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C50234ADF7100AB3DC3 /* Provider.swift */; };
 		37D62C53234AE02300AB3DC3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C52234AE02300AB3DC3 /* HTTPClient.swift */; };
 		37E91D88238A6BE000633628 /* AutoScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */; };
+		37E91D8A238B504B00633628 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D89238B504B00633628 /* MainViewModel.swift */; };
 		37EBA2C5235545E900EC88B9 /* AllocationTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */; };
 		37EBA2C7235546F800EC88B9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C6235546F800EC88B9 /* CategoryModel.swift */; };
 		37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */; };
@@ -115,6 +116,7 @@
 		37D62C50234ADF7100AB3DC3 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		37D62C52234AE02300AB3DC3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScheduleViewModel.swift; sourceTree = "<group>"; };
+		37E91D89238B504B00633628 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTimeModel.swift; sourceTree = "<group>"; };
 		37EBA2C6235546F800EC88B9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				379A0779237107B0004C6AE1 /* EditCategoryViewModel.swift */,
 				3780023223815D9100309B65 /* FixScheduleViewModel.swift */,
 				37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */,
+				37E91D89238B504B00633628 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E91D8A238B504B00633628 /* MainViewModel.swift in Sources */,
 				3794BB9623725EF900EDE7F7 /* CalendarAPI.swift in Sources */,
 				37F3571C230D19AB00415686 /* TimeSettingVC.swift in Sources */,
 				37F3571E230F7FD700415686 /* MainVC.swift in Sources */,

@@ -13,9 +13,9 @@ import Alamofire
 import RxSwift
 
 class HTTPClient {
-    typealias param = [String: Any]?
+    typealias param = [String: Any]
 
-    func get(url: String, param: param, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
+    func get(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
         return requestData(.get,
                            url,
                            parameters: param,
@@ -23,7 +23,7 @@ class HTTPClient {
                            headers: header)
     }
 
-    func post(url: String, param: param, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
+    func post(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
         return requestData(.post,
                            url,
                            parameters: param,
@@ -31,8 +31,16 @@ class HTTPClient {
                            headers: header)
     }
 
-    func patch(url: String, param: param, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
+    func patch(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
         return requestData(.patch,
+                           url,
+                           parameters: param,
+                           encoding: URLEncoding.queryString,
+                           headers: header)
+    }
+
+    func delete(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
+        return requestData(.delete,
                            url,
                            parameters: param,
                            encoding: URLEncoding.queryString,

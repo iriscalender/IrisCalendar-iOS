@@ -33,13 +33,19 @@ protocol CategoryProvider {
 protocol CalendarProvider {
     typealias AutoCalendarResult = Observable<(AutoScheduleModel?, NetworkingResult)>
     typealias FixCalendarResult = Observable<(FixScheduleModel?, NetworkingResult)>
+    typealias IdAutoCalendarResult = Observable<(IdAutoScheduleModel?, NetworkingResult)>
+    typealias IdFixCalendarResult = Observable<(IdFixScheduleModel?, NetworkingResult)>
 
-    func getAutoCalendar(_ id: Int) -> AutoCalendarResult
+    func getAutoCalendar(_ id: String) -> IdAutoCalendarResult
     func addAutoCalendar(_ calendar: AutoScheduleModel) -> AutoCalendarResult
-    func updateAutoCalendar(_ calendar: AutoScheduleModel, id: Int) -> AutoCalendarResult
-    func getFixCalendar(_ id: Int) -> FixCalendarResult
+    func updateAutoCalendar(_ calendar: AutoScheduleModel, id: String) -> IdAutoCalendarResult
+    func deleteAutoCalendar(_ id: String) -> Observable<NetworkingResult>
+
+    func getFixCalendar(_ id: String) -> IdFixCalendarResult
     func addFixCalendar(_ calendar: FixScheduleModel) -> FixCalendarResult
-    func updateFixCalendar(_ calendar: FixScheduleModel, id: Int) -> FixCalendarResult
-    func getDailyCalendar(_ date: String) -> Observable<([DailyCalendarModel]?, NetworkingResult)>
-    func getBookedCalendar() -> Observable<([BookedCalendarModel]?, NetworkingResult)>
+    func updateFixCalendar(_ calendar: FixScheduleModel, id: String) -> IdFixCalendarResult
+    func deleteFixCalendar(_ id: String) -> Observable<NetworkingResult>
+
+    func getDailyCalendar(_ date: String) -> Observable<(DailyScheduleModel?, NetworkingResult)>
+    func getBookedCalendar() -> Observable<(BookedScheduleModel?, NetworkingResult)>
 }

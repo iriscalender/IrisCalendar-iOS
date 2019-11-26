@@ -8,22 +8,6 @@
 
 import Foundation
 
-struct DailyCalendarModel: Codable {
-    let id: Int
-    let category: String
-    let scheduleName: String
-    let startTime: String
-    let endTime: String
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case category
-        case scheduleName = "calendarName"
-        case startTime
-        case endTime
-    }
-}
-
 struct AutoScheduleModel: Codable {
     let category: String
     let scheduleName: String
@@ -54,13 +38,74 @@ struct FixScheduleModel: Codable {
     }
 }
 
-struct BookedCalendarModel: Codable {
+struct IdAutoScheduleModel: Codable {
+    let id: String
+    let category: String
+    let scheduleName: String
+    let endTime: String
+    let requiredTime: Int
+    let isParticularImportant: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case category
+        case scheduleName = "calendarName"
+        case endTime
+        case requiredTime
+        case isParticularImportant
+    }
+}
+
+struct IdFixScheduleModel: Codable {
+    let id: String
+    let category: String
+    let scheduleName: String
+    let startTime: String
+    let endTime: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case category
+        case scheduleName = "calendarName"
+        case startTime
+        case endTime
+    }
+}
+
+struct BookedSchedule: Codable {
     let category: String
     let date: String
 }
 
+struct BookedScheduleModel: Codable {
+    let schedules: [BookedSchedule]
+
+    enum CodingKeys: String, CodingKey {
+        case schedules = "calendar"
+    }
+}
+
+struct DailyScheduleModel: Codable {
+    let fixSchedules: [IdFixScheduleModel]
+    let autoSchedules: [IdFixScheduleModel]
+
+    enum CodingKeys: String, CodingKey {
+        case fixSchedules = "manual"
+        case autoSchedules = "auto"
+    }
+}
+
+struct DailySchedule {
+    let id: String
+    let category: IrisCategory
+    let scheduleName: String
+    let startTime: String
+    let endTime: String
+    let isAuto: Bool
+}
+
 enum ScheduleStatus {
     case add
-    case update(calendarId: Int)
+    case update(calendarId: String)
     case unknown
 }

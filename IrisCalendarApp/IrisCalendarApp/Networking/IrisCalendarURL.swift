@@ -17,31 +17,32 @@ enum IrisCalendarURL {
     case bookedCalendar
     case addAutoCalendar
     case addFixCalendar
-    case autoCalendar(calendarId: Int)
-    case fixCalendar(calendarId: Int)
+    case autoCalendar(calendarId: String)
+    case fixCalendar(calendarId: String)
 
     func getPath() -> String {
+        let baseURL = "http://iriscalendar.ap-northeast-2.elasticbeanstalk.com"
         switch self {
         case .signIn:
-            return "/auth/login"
+            return baseURL + "/auth/login"
         case .signUp:
-            return "/auth/signup"
+            return baseURL + "/auth/signup"
         case .allocationTime:
-            return "/time"
+            return baseURL + "/time"
         case .category:
-            return "/category"
+            return baseURL + "/category"
         case .dailyCalendar(let date):
-            return "/calendar/\(date)"
+            return baseURL + "/calendar/\(date)"
         case .bookedCalendar:
-            return "/calendar/book"
+            return baseURL + "/calendar/book"
         case .addAutoCalendar:
-            return "/calendar/auto"
+            return baseURL + "/calendar/auto"
         case .addFixCalendar:
-            return "/calendar/manual/"
+            return baseURL + "/calendar/manual/"
         case .autoCalendar(let id):
-            return "/calendar/auto/\(id)"
+            return baseURL + "/calendar/auto/\(id)"
         case .fixCalendar(let id):
-            return "/calendar/manual/\(id)"
+            return baseURL + "/calendar/manual/\(id)"
         }
     }
 }

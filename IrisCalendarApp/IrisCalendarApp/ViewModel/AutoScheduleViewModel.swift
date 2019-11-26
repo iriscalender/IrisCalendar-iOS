@@ -212,7 +212,7 @@ class AutoScheduleViewModel: ViewModelType {
         }
     }
 
-    private func updateSchedule(_ info: Observable<AutoScheduleModel>, id: Int) -> Observable<String> {
+    private func updateSchedule(_ info: Observable<AutoScheduleModel>, id: String) -> Observable<String> {
         return info.flatMap { (model) -> Observable<String> in
             return CalendarAPI().updateAutoCalendar(model, id: id).map { (_, networkingResult) -> String in
                 switch networkingResult {
