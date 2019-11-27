@@ -24,7 +24,7 @@ enum IrisCalendarURL {
         let baseURL = "http://iriscalendar.ap-northeast-2.elasticbeanstalk.com"
         switch self {
         case .signIn:
-            return baseURL + "/auth/login"
+            return baseURL + "/auth/signin"
         case .signUp:
             return baseURL + "/auth/signup"
         case .allocationTime:
