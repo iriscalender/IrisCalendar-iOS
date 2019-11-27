@@ -8,43 +8,47 @@
 
 import Foundation
 
-import RxAlamofire
-import Alamofire
 import RxSwift
 
 class HTTPClient {
-    typealias param = [String: Any]
+    typealias Parameters = [String: Any]
+    typealias httpResult = Observable<(response: HTTPURLResponse, data: Data)>
 
-    func get(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
-        return requestData(.get,
-                           url,
-                           parameters: param,
-                           encoding: URLEncoding.queryString,
-                           headers: header)
+    func get(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+        guard let url = URL(string: url) else { return Observable.empty() }
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        return URLSession.shared.rx.response(request: request)
     }
 
-    func post(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
-        return requestData(.post,
-                           url,
-                           parameters: param,
-                           encoding: URLEncoding.queryString,
-                           headers: header)
+    func post(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+        guard let url = URL(string: url),
+            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        request.httpMethod = "POST"
+        request.httpBody = data
+        return URLSession.shared.rx.response(request: request)
     }
 
-    func patch(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
-        return requestData(.patch,
-                           url,
-                           parameters: param,
-                           encoding: URLEncoding.queryString,
-                           headers: header)
+    func patch(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+        guard let url = URL(string: url),
+            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        request.httpMethod = "PATCH"
+        request.httpBody = data
+        return URLSession.shared.rx.response(request: request)
     }
 
-    func delete(url: String, param: param?, header: [String: String]) -> Observable<(HTTPURLResponse, Data)> {
-        return requestData(.delete,
-                           url,
-                           parameters: param,
-                           encoding: URLEncoding.queryString,
-                           headers: header)
+    func delete(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+        guard let url = URL(string: url),
+            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        request.httpMethod = "DELETE"
+        request.httpBody = data
+        return URLSession.shared.rx.response(request: request)
     }
 
 }
@@ -56,9 +60,9 @@ enum Header {
         switch self {
         case .token:
             guard let token = Token.token else { return [:] }
-            return ["content-type": "application/json", "Authorization": token]
+            return ["Content-Type": "application/json", "Authorization": token]
         case .noToken:
-            return ["content-type": "application/json"]
+            return ["Content-Type": "application/json"]
         }
     }
 }
