@@ -1,6 +1,12 @@
 PODS:
+  - Alamofire (4.9.1)
   - BubbleTransition (3.2.0)
   - FSCalendar (2.8.0)
+  - RxAlamofire (5.1.0):
+    - RxAlamofire/Core (= 5.1.0)
+  - RxAlamofire/Core (5.1.0):
+    - Alamofire (~> 4.8)
+    - RxSwift (~> 5.0)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -12,27 +18,32 @@ PODS:
 DEPENDENCIES:
   - BubbleTransition (~> 3.2.0)
   - FSCalendar
+  - RxAlamofire
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - Toaster
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - BubbleTransition
     - FSCalendar
+    - RxAlamofire
     - RxCocoa
     - RxRelay
     - RxSwift
     - Toaster
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   Toaster: c1a81b376edcc2470157b4d1ee1e9341d3b96455
 
-PODFILE CHECKSUM: 238b4326100e264b5f1397ae41ac8ec971323239
+PODFILE CHECKSUM: 5b253f200d5eaa657a423b9195d54b86d3a8e6c9
 
 COCOAPODS: 1.8.4
