@@ -22,7 +22,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cr2-kZ-I6O">
             <objects>
-                <navigationController storyboardIdentifier="MainNC" navigationBarHidden="YES" id="CgP-SB-2Cn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNC" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="CgP-SB-2Cn" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TCU-uA-Oks">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -37,7 +37,7 @@
         <!--Main-->
         <scene sceneID="w1N-PW-hdJ">
             <objects>
-                <viewController storyboardIdentifier="MainVC" title="Main" id="v2N-8h-BJq" customClass="MainVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v2N-8h-BJq" customClass="MainVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xlz-mg-wfB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <!--Menubar-->
         <scene sceneID="VWF-jq-vCd">
             <objects>
-                <viewController storyboardIdentifier="MenubarVC" title="Menubar" id="kII-Ls-WcE" customClass="MenubarVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenubarVC" title="Menubar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kII-Ls-WcE" customClass="MenubarVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wpJ-c1-cf9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,7 +311,7 @@
         <!--FixSchedule-->
         <scene sceneID="PBg-A3-M30">
             <objects>
-                <viewController storyboardIdentifier="FixScheduleVC" title="FixSchedule" id="9c6-pE-E7L" customClass="FixScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixScheduleVC" title="FixSchedule" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9c6-pE-E7L" customClass="FixScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Adj-tz-BfI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,33 +501,33 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDu-qW-cjm">
-                                        <rect key="frame" x="24" y="425" width="23.666666666666671" height="15.666666666666686"/>
+                                        <rect key="frame" x="24" y="425" width="23.666666666666671" height="14.666666666666686"/>
                                         <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="13"/>
                                         <color key="textColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-2s-vuC">
-                                        <rect key="frame" x="72.666666666666671" y="468.66666666666663" width="66.000000000000014" height="26"/>
+                                        <rect key="frame" x="72.666666666666671" y="467.66666666666663" width="66.000000000000014" height="26"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="12"/>
                                         <state key="normal" title="시작시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM3-bj-Ccs">
-                                        <rect key="frame" x="239.66666666666669" y="468.66666666666663" width="66" height="26"/>
+                                        <rect key="frame" x="239.66666666666669" y="467.66666666666663" width="66" height="26"/>
                                         <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="12"/>
                                         <state key="normal" title="종료시간설정">
                                             <color key="titleColor" red="0.44705882349999998" green="0.2784313725" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy-MM-dd HH:mm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-DL-jaR">
-                                        <rect key="frame" x="24" y="506.66666666666663" width="163" height="14"/>
+                                        <rect key="frame" x="24" y="505.66666666666663" width="163" height="14"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="12"/>
                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy-MM-dd HH:mm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQO-Wo-9f2">
-                                        <rect key="frame" x="191" y="506.66666666666663" width="163" height="14"/>
+                                        <rect key="frame" x="191" y="505.66666666666663" width="163" height="14"/>
                                         <fontDescription key="fontDescription" name="NanumSquareR" family="NanumSquare" pointSize="12"/>
                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -620,7 +620,7 @@
         <!--EditCategory-->
         <scene sceneID="GON-EQ-yKg">
             <objects>
-                <viewController storyboardIdentifier="EditCategoryVC" title="EditCategory" id="tda-tL-bCB" customClass="EditCategoryVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditCategoryVC" title="EditCategory" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tda-tL-bCB" customClass="EditCategoryVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qTc-SG-c2B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -803,7 +803,7 @@
         <!--TimeResetting-->
         <scene sceneID="WZg-hh-2Ot">
             <objects>
-                <viewController storyboardIdentifier="TimeResettingVC" title="TimeResetting" id="snd-Tx-9KD" customClass="TimeResettingVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeResettingVC" title="TimeResetting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="snd-Tx-9KD" customClass="TimeResettingVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h6x-3s-Vid">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -939,7 +939,7 @@
         <!--AddScheduleMenubar-->
         <scene sceneID="kyQ-LK-0CF">
             <objects>
-                <viewController storyboardIdentifier="AddScheduleMenubarVC" title="AddScheduleMenubar" id="ckb-U0-bQ0" customClass="AddScheduleMenubarVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleMenubarVC" title="AddScheduleMenubar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ckb-U0-bQ0" customClass="AddScheduleMenubarVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DrP-Xl-CEa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1003,7 +1003,7 @@
         <!--AutoSchedule-->
         <scene sceneID="USe-RW-MI9">
             <objects>
-                <viewController storyboardIdentifier="AutoScheduleVC" title="AutoSchedule" id="p9l-j3-3an" customClass="AutoScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutoScheduleVC" title="AutoSchedule" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p9l-j3-3an" customClass="AutoScheduleVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OgI-a6-l0C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1079,7 +1079,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cez-vt-LWg">
-                                        <rect key="frame" x="93.666666666666686" y="188" width="93.333333333333314" height="39"/>
+                                        <rect key="frame" x="93.666666666666686" y="188.33333333333331" width="93.333333333333314" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8b5-9G-8xC" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666671" y="0.0" width="10" height="10"/>
@@ -1106,7 +1106,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1R-tH-6jM">
-                                        <rect key="frame" x="187" y="188" width="93.666666666666686" height="39"/>
+                                        <rect key="frame" x="187" y="188.33333333333331" width="93.666666666666686" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pt-iQ-xC0" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666657" y="0.0" width="10" height="10"/>
@@ -1133,7 +1133,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-va-Lbc">
-                                        <rect key="frame" x="280.66666666666669" y="188" width="93.333333333333314" height="39"/>
+                                        <rect key="frame" x="280.66666666666669" y="188.33333333333331" width="93.333333333333314" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pO7-e6-eZw" customClass="HeightRoundButton" customModule="IrisCalendarApp" customModuleProvider="target">
                                                 <rect key="frame" x="41.666666666666629" y="0.0" width="10" height="10"/>
@@ -1207,7 +1207,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-hJ-M1J">
-                                                <rect key="frame" x="0.0" y="19.333333333333314" width="110.66666666666667" height="0.66666666666666785"/>
+                                                <rect key="frame" x="0.0" y="19.666666666666686" width="110.66666666666667" height="0.33333333333333215"/>
                                                 <color key="backgroundColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="xMf-J3-LxW"/>
@@ -1242,7 +1242,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTl-hd-gsX">
-                                                <rect key="frame" x="0.0" y="19.333333333333314" width="57" height="0.66666666666666785"/>
+                                                <rect key="frame" x="0.0" y="19.666666666666686" width="57" height="0.33333333333333215"/>
                                                 <color key="backgroundColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="EUf-GZ-k6L"/>
@@ -1277,7 +1277,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzD-lZ-2Hy">
-                                                <rect key="frame" x="0.0" y="19.333333333333314" width="57.333333333333336" height="0.66666666666666785"/>
+                                                <rect key="frame" x="0.0" y="19.666666666666686" width="57.333333333333336" height="0.33333333333333215"/>
                                                 <color key="backgroundColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="JP4-14-vBT"/>

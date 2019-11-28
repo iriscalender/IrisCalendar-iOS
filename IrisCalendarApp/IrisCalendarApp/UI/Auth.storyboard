@@ -25,7 +25,7 @@
         <!--SignIn-->
         <scene sceneID="Xj5-W7-5tG">
             <objects>
-                <viewController storyboardIdentifier="SignInVC" title="SignIn" id="9VR-GM-Icd" customClass="SignInVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" title="SignIn" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9VR-GM-Icd" customClass="SignInVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDO-u3-fam">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
         <!--Main-->
         <scene sceneID="gIV-fO-Bkv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="ATB-iw-oZv" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="MainNC" storyboardName="Main" id="ATB-iw-oZv" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6Vf-gC-ht8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhc-yD-ep7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,7 +201,7 @@
         <!--SignUp-->
         <scene sceneID="Ef3-Vy-hrP">
             <objects>
-                <viewController storyboardIdentifier="SignUpVC" title="SignUp" id="4B6-KN-Kln" customClass="SignUpVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" title="SignUp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4B6-KN-Kln" customClass="SignUpVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Nd-CI-eD7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -368,7 +368,7 @@
         <!--TimeSetting-->
         <scene sceneID="Y4C-Fv-wGe">
             <objects>
-                <viewController storyboardIdentifier="TimeSettingVC" title="TimeSetting" id="eD0-o1-Eaw" customClass="TimeSettingVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeSettingVC" title="TimeSetting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eD0-o1-Eaw" customClass="TimeSettingVC" customModule="IrisCalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IeO-oV-QoR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
