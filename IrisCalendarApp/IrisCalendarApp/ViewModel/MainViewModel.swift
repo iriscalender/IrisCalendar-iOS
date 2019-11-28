@@ -22,6 +22,7 @@ class MainViewModel: ViewModelType {
         let selectedDate: Driver<String>
         let selectedScheduleIndexPath: Signal<IndexPath>
         let doneTaps: Signal<Void>
+        let updateTaps: Signal<Void>
     }
 
     struct Output {
@@ -29,6 +30,8 @@ class MainViewModel: ViewModelType {
         let dailySchedule: Driver<[DailySchedule]>
         let result: Signal<String>
         let deleteIndexPath: Signal<IndexPath>
+        let updateFixScheduleId: Signal<String>
+        let updateAutoScheduleId: Signal<String>
         let selectedSchedule: Signal<DailySchedule>
     }
 
@@ -38,6 +41,8 @@ class MainViewModel: ViewModelType {
         let bookedSchedules = PublishRelay<BookedSchedules>()
         let dailySchedule = PublishRelay<[DailySchedule]>()
         let deleteIndexPath = PublishRelay<IndexPath>()
+        let updateFixScheduleId = PublishRelay<String>()
+        let updateAutoScheduleId = PublishRelay<String>()
         let info = Signal.combineLatest(input.selectedScheduleIndexPath, dailySchedule.asSignal()).asObservable()
 
         let selectedSchedule = info.map { $1[$0.row] }
@@ -98,10 +103,20 @@ class MainViewModel: ViewModelType {
             }
         }).disposed(by: disposeBag)
 
+        input.updateTaps.asObservable().withLatestFrom(selectedSchedule).subscribe(onNext: { (schedule) in
+            if schedule.isAuto {
+                 updateAutoScheduleId.accept(schedule.id)
+            } else {
+                updateFixScheduleId.accept(schedule.id)
+            }
+        }).disposed(by: disposeBag)
+
         return Output(bookedSchedules: bookedSchedules.asDriver(onErrorJustReturn: BookedSchedules()),
                       dailySchedule: dailySchedule.asDriver(onErrorJustReturn: []),
                       result: result.asSignal(),
                       deleteIndexPath: deleteIndexPath.asSignal(),
+                      updateFixScheduleId: updateFixScheduleId.asSignal(),
+                      updateAutoScheduleId: updateAutoScheduleId.asSignal(),
                       selectedSchedule: selectedSchedule.asSignal(onErrorJustReturn: DailySchedule(id: "",
                                                                                                    category: IrisCategory.purple,
                                                                                                    scheduleName: "",

@@ -25,6 +25,7 @@ class MainVC: UIViewController {
     private let viewModel = MainViewModel()
     private let mainViewDidLoad = BehaviorRelay<Void>(value: ())
     private let doneTaps = PublishRelay<Void>()
+    private let updateTaps = PublishRelay<Void>()
     private var bookedSchedules = BehaviorRelay<MainViewModel.BookedSchedules>(value: [:])
 
     private lazy var today: String = {
@@ -40,8 +41,6 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginCheck()
-        setUpUI()
-        bindViewModel()
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,9 +61,10 @@ class MainVC: UIViewController {
 
     private func loginCheck() {
         if Token.token == nil {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "AuthNC") as! UINavigationController
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false, completion: nil)
+            self.presentVC(identifier: "AuthNC")
+        } else {
+            setUpUI()
+            bindViewModel()
         }
     }
 
@@ -76,6 +76,8 @@ class MainVC: UIViewController {
         irisCalendar.appearance.weekdayTextColor = Color.calendarTitle
         irisCalendar.appearance.headerTitleColor = Color.calendarTitle
         irisCalendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
+        irisCalendar.appearance.todayColor = Color.authTxtField
+        irisCalendar.appearance.selectionColor = Color.mainHalfClear
 
         irisCalendar.delegate = self
         irisCalendar.dataSource = self
@@ -86,7 +88,8 @@ class MainVC: UIViewController {
         let input = MainViewModel.Input(viewDidLoad: mainViewDidLoad.asDriver(onErrorJustReturn: ()),
                                         selectedDate: selectedDate.asDriver(onErrorJustReturn: ""),
                                         selectedScheduleIndexPath: tableView.rx.itemSelected.asSignal(),
-                                        doneTaps: doneTaps.asSignal())
+                                        doneTaps: doneTaps.asSignal(),
+                                        updateTaps: updateTaps.asSignal())
         let output = viewModel.transform(input: input)
 
         output.bookedSchedules.drive(bookedSchedules).disposed(by: disposeBag)
@@ -105,22 +108,29 @@ class MainVC: UIViewController {
             strongSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
         }).disposed(by: disposeBag)
 
+        output.updateFixScheduleId.emit(onNext: { (id) in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "FixScheduleVC") as! FixScheduleVC
+            vc.scheduleStatus.onNext(.update(calendarId: id))
+            self.navigationController?.pushViewController(vc, animated: false)
+        }).disposed(by: disposeBag)
+
+        output.updateFixScheduleId.emit(onNext: { (id) in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AutoScheduleVC") as! AutoScheduleVC
+            vc.scheduleStatus.onNext(.update(calendarId: id))
+            self.navigationController?.pushViewController(vc, animated: false)
+        }).disposed(by: disposeBag)
+
         output.selectedSchedule.emit(onNext: { [weak self] (schedule) in
             guard let strongSelf = self else { return }
             let alert = UIAlertController(title: schedule.scheduleName, message: nil, preferredStyle: .alert)
             alert.view.tintColor = Color.main
 
-            let update = UIAlertAction(title: "일정 수정하기", style: .default) { (_) in
-
-            }
-            let done = UIAlertAction(title: "일정 완료", style: .default) { (_) in
-                strongSelf.doneTaps.accept(())
-            }
+            let update = UIAlertAction(title: "일정 수정하기", style: .default) { (_) in strongSelf.updateTaps.accept(()) }
+            let done = UIAlertAction(title: "일정 완료", style: .default) { (_) in strongSelf.doneTaps.accept(()) }
 
             alert.addAction(update)
             alert.addAction(done)
             strongSelf.present(alert, animated: true, completion: nil)
-
         }).disposed(by: disposeBag)
 
         output.dailySchedule.drive(tableView.rx.items(cellIdentifier: "TodayScheduleListCell", cellType: TodayScheduleListCell.self)) {
@@ -143,6 +153,9 @@ extension MainVC: MenubarDelegate {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! AutoScheduleVC
             vc.scheduleStatus.onNext(.add)
             self.navigationController?.pushViewController(vc, animated: false)
+        case .AuthNC:
+            self.navigationController?.dismiss(animated: false, completion: nil)
+            self.presentVC(identifier: destination.rawValue)
         default: self.goNextVC(identifier: destination.rawValue)
         }
     }
