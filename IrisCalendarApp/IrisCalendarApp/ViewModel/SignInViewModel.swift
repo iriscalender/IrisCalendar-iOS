@@ -12,40 +12,40 @@ import RxSwift
 import RxCocoa
 
 class SignInViewModel: ViewModelType {
+
+    private let disposeBag = DisposeBag()
+
     struct Input {
-        let SignInTaps: Signal<Void>
         let id: Driver<String>
         let pw: Driver<String>
+        let doneTaps: Signal<Void>
     }
     
     struct Output {
         let isEnabled: Driver<Bool>
-        let result: Driver<String>
+        let result: Signal<String>
     }
     
     func transform(input: SignInViewModel.Input) -> SignInViewModel.Output {
         let api = AuthAPI()
+        let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.id, input.pw)
         
-        let isEnabled = info.map { (id, pw) -> Bool in
-            if id.count > 5 && pw.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil {
-                return true
-            }
-            return false
-        }.asDriver()
+        let isEnabled = info.map { $0.count > 5 && $1.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil }.asDriver()
         
-        let result = input.SignInTaps.withLatestFrom(info).flatMap { (id, pw) -> Driver<String> in
-            return api.postSignIn(id: id, pw: pw).map { (result) -> String in
-                switch result {
-                case .ok : return "성공"
-                case .badRequest : return "유효하지 않은 요청"
-                case .serverError : return "서버오류"
-                default : return "로그인 실패"
+        input.doneTaps.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw) in
+            guard let strongSelf = self else { return }
+            api.postSignIn(id: id, pw: pw).subscribe (onNext: { (response) in
+                switch response {
+                case .ok : result.onCompleted()
+                case .badRequest : result.onNext("유효하지 않은 요청")
+                case .serverError : result.onNext("서버오류")
+                default : result.onNext("로그인 실패")
                 }
-            }.asDriver(onErrorJustReturn: "로그인 실패")
-        }
+            }).disposed(by: strongSelf.disposeBag)
+        }).disposed(by: disposeBag)
         
-        return Output(isEnabled: isEnabled, result: result)
+        return Output(isEnabled: isEnabled, result: result.asSignal(onErrorJustReturn: "로그인 실패"))
     }
     
     

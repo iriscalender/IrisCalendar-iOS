@@ -38,29 +38,15 @@ class SignInVC: UIViewController {
     }
 
     private func bindViewModel() {
-        let input = SignInViewModel.Input(SignInTaps: doneBtn.rx.tap.asSignal(),
-                                          id: idTxtField.rx.text.orEmpty.asDriver(),
-                                          pw: pwTxtField.rx.text.orEmpty.asDriver())
+        let input = SignInViewModel.Input(id: idTxtField.rx.text.orEmpty.asDriver(),
+                                          pw: pwTxtField.rx.text.orEmpty.asDriver(),
+                                          doneTaps: doneBtn.rx.tap.asSignal())
         let output = viewModel.transform(input: input)
 
         output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
+        output.isEnabled.drive(onNext: { [unowned self] in self.updateBtnColor(btn: self.doneBtn, isEnabled: $0) }).disposed(by: disposeBag)
 
-        output.isEnabled.drive(onNext: { [weak self] (result) in
-            guard let strongSelf = self else { return }
-            if result {
-                strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
-                strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
-            } else {
-                strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
-                strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
-            }
-        }).disposed(by: disposeBag)
-
-        output.result.drive(onNext: { [weak self] (result) in
-            guard let strongSelf = self else { return }
-            if result == "성공" { strongSelf.presentVC(identifier: "MainNC"); return }
-            strongSelf.showToast(message: result)
-        }).disposed(by: disposeBag)
+        output.result.emit(onNext: { [unowned self] in self.showToast(message: $0)},
+                           onCompleted: { [unowned self] in self.presentVC(identifier: "MainNC") }).disposed(by: disposeBag)
     }
-    
 }
