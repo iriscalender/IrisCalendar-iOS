@@ -9,46 +9,42 @@
 import Foundation
 
 import RxSwift
+import RxAlamofire
+import Alamofire
 
 class HTTPClient {
-    typealias Parameters = [String: Any]
-    typealias httpResult = Observable<(response: HTTPURLResponse, data: Data)>
+    typealias httpResult = Observable<(HTTPURLResponse, Data)>
 
     func get(url: String, param: Parameters?, header: [String: String]) -> httpResult {
-        guard let url = URL(string: url) else { return Observable.empty() }
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        return URLSession.shared.rx.response(request: request)
+        return requestData(.get,
+                           url,
+                           parameters: param,
+                           encoding: URLEncoding.queryString,
+                           headers: header)
     }
 
     func post(url: String, param: Parameters?, header: [String: String]) -> httpResult {
-        guard let url = URL(string: url),
-            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        request.httpMethod = "POST"
-        request.httpBody = data
-        return URLSession.shared.rx.response(request: request)
+        return requestData(.post,
+                           url,
+                           parameters: param,
+                           encoding: JSONEncoding.prettyPrinted,
+                           headers: header)
     }
 
     func patch(url: String, param: Parameters?, header: [String: String]) -> httpResult {
-        guard let url = URL(string: url),
-            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        request.httpMethod = "PATCH"
-        request.httpBody = data
-        return URLSession.shared.rx.response(request: request)
+        return requestData(.patch,
+                           url,
+                           parameters: param,
+                           encoding: JSONEncoding.prettyPrinted,
+                           headers: header)
     }
 
     func delete(url: String, param: Parameters?, header: [String: String]) -> httpResult {
-        guard let url = URL(string: url),
-            let data = try? JSONSerialization.data(withJSONObject: param as Any, options: .prettyPrinted) else { return Observable.empty() }
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        request.httpMethod = "DELETE"
-        request.httpBody = data
-        return URLSession.shared.rx.response(request: request)
+        return requestData(.delete,
+                           url,
+                           parameters: param,
+                           encoding: URLEncoding.queryString,
+                           headers: header)
     }
 
 }
@@ -77,7 +73,7 @@ struct Token {
         }
     }
 }
-                 
+
 enum NetworkingResult: Int {
     case failure = 0
     case ok = 200
