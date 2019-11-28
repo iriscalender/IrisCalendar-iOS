@@ -40,6 +40,7 @@
 		37D62C53234AE02300AB3DC3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D62C52234AE02300AB3DC3 /* HTTPClient.swift */; };
 		37E91D88238A6BE000633628 /* AutoScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */; };
 		37E91D8A238B504B00633628 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D89238B504B00633628 /* MainViewModel.swift */; };
+		37E91D8D238FDE8D00633628 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37E91D8C238FDE8D00633628 /* .swiftlint.yml */; };
 		37EBA2C5235545E900EC88B9 /* AllocationTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */; };
 		37EBA2C7235546F800EC88B9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C6235546F800EC88B9 /* CategoryModel.swift */; };
 		37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */; };
@@ -117,6 +118,7 @@
 		37D62C52234AE02300AB3DC3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScheduleViewModel.swift; sourceTree = "<group>"; };
 		37E91D89238B504B00633628 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		37E91D8C238FDE8D00633628 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTimeModel.swift; sourceTree = "<group>"; };
 		37EBA2C6235546F800EC88B9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		373BF69B22F9C8AF003AB8A9 = {
 			isa = PBXGroup;
 			children = (
+				37E91D8C238FDE8D00633628 /* .swiftlint.yml */,
 				373BF6A622F9C8AF003AB8A9 /* IrisCalendarApp */,
 				373BF6BB22F9C8B1003AB8A9 /* IrisCalendarAppTests */,
 				373BF6C622F9C8B2003AB8A9 /* IrisCalendarAppUITests */,
@@ -358,6 +361,7 @@
 				373BF6A122F9C8AF003AB8A9 /* Frameworks */,
 				373BF6A222F9C8AF003AB8A9 /* Resources */,
 				F2A4D3D8C27D394BF5359501 /* [CP] Embed Pods Frameworks */,
+				37E91D8B238FDE1F00633628 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -454,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E91D8D238FDE8D00633628 /* .swiftlint.yml in Resources */,
 				37F35716230B8FF400415686 /* Auth.storyboard in Resources */,
 				373BF6E222FF2A2F003AB8A9 /* NanumSquareLight.ttf in Resources */,
 				373BF6E122FF2A2C003AB8A9 /* NanumSquareExtraBold.ttf in Resources */,
@@ -483,6 +488,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37E91D8B238FDE1F00633628 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
 		CD926D75A703354BE6982B1A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

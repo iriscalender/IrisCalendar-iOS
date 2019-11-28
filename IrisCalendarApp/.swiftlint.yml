@@ -1,0 +1,6 @@
+disabled_rules:
+- force_cast
+included:
+excluded:
+- Pods
+- IrisCalendarApp/ViewController/MainVC.swift
