@@ -41,16 +41,17 @@ extension UIViewController {
 
     func goNextVC(identifier: String) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
+        navigationController?.pushViewController(vc!, animated: false)
+    }
+
+    func presentVC(identifier: String) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
         vc?.modalPresentationStyle = .fullScreen
-        if let controller = navigationController {
-            controller.pushViewController(vc!, animated: false)
-        }
+        present(vc!, animated: false, completion: nil)
     }
 
     func updateBtnRadius(btns: [UIButton]) {
-        btns.forEach { (btn) in
-            btn.layer.cornerRadius = btn.frame.height / 2
-        }
+        btns.forEach { $0.layer.cornerRadius = $0.frame.height / 2 }
     }
 
     @objc func dismissKeyboard() {
