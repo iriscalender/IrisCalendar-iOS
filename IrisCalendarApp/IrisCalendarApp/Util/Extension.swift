@@ -14,19 +14,18 @@ import Toaster
 
 extension UITextField {
     func configureIrisEffect(underlineView: UIView, disposeBag: DisposeBag) {
-
         self.rx.controlEvent(.editingDidBegin).subscribe { (_) in
             UIView.animate(withDuration: 0.5, animations: {
-                underlineView.backgroundColor = Color.blueCategory
-                underlineView.tintColor = Color.blueCategory
+                underlineView.backgroundColor = IrisColor.blueCategory
+                underlineView.tintColor = IrisColor.blueCategory
                 underlineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
             })
         }.disposed(by: disposeBag)
 
         self.rx.controlEvent(.editingDidEnd).subscribe { (_) in
             UIView.animate(withDuration: 0.5, animations: {
-                underlineView.backgroundColor = Color.authTxtField
-                underlineView.tintColor = Color.authTxtField
+                underlineView.backgroundColor = IrisColor.authTxtField
+                underlineView.tintColor = IrisColor.authTxtField
                 underlineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
             })
         }.disposed(by: disposeBag)
@@ -34,7 +33,6 @@ extension UITextField {
 }
 
 extension UIViewController {
-
     func showToast(message: String) {
         Toast(text: message, duration: 1.0).show()
     }
@@ -54,9 +52,17 @@ extension UIViewController {
         btns.forEach { $0.layer.cornerRadius = $0.frame.height / 2 }
     }
 
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+    func updateBtnColor(btn: UIButton, isEnabled: Bool) {
+        if isEnabled {
+            btn.backgroundColor = IrisColor.mainHalfClear
+            btn.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            btn.backgroundColor = IrisColor.btnIsUnableState
+            btn.setTitleColor(UIColor.black, for: .disabled)
+        }
     }
+
+    @objc func dismissKeyboard() { self.view.endEditing(true) }
 
     @objc func keyboardHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -64,6 +70,18 @@ extension UIViewController {
                 self.view.frame.origin.y += keyboardSize.height
             }
         }
+    }
+}
+
+extension UIColor {
+    func hexStringToUIColor(hex:String) -> UIColor {
+        var rgbValue:UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&rgbValue)
+        return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                       green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                       blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                       alpha: CGFloat(1.0)
+        )
     }
 }
 

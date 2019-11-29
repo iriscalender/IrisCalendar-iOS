@@ -12,17 +12,17 @@ import RxSwift
 import RxCocoa
 
 class AllocationTimeAPI: AllocationTimeProvider {
-
     private let httpClient = HTTPClient()
 
-    func getAlloctionTime() -> AllocationTimeAPI.AllocationTimeResult {
-        return httpClient.get(url: IrisCalendarURL.allocationTime.getPath(),
+    func getAlloctionTime() -> Observable<(AllocationTimeModel?, NetworkingResult)> {
+        return httpClient.get(url: IrisCalendarURL.allocationTime.path(),
                               param: nil,
-                              header: Header.token.getHeader())
-            .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
-                switch response.0.statusCode {
-                case 200: return (data, .ok)
+                              header: Header.token.header())
+            .map { (response, data) -> (AllocationTimeModel?, NetworkingResult) in
+                switch response.statusCode {
+                case 200:
+                    guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: data) else { return (nil, .failure) }
+                    return (data, .ok)
                 case 204: return (nil, .noContent)
                 case 400: return (nil, .badRequest)
                 case 401: return (nil, .unauthorized)
@@ -32,38 +32,34 @@ class AllocationTimeAPI: AllocationTimeProvider {
         }
     }
 
-    func setAlloctionTime(startTime: String, endTime: String) -> AllocationTimeAPI.AllocationTimeResult {
-        let param = ["start": startTime, "end": endTime]
-
-        return httpClient.post(url: IrisCalendarURL.allocationTime.getPath(),
-                               param: param,
-                               header: Header.token.getHeader())
-            .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
-                switch response.0.statusCode {
-                case 200: return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+    func setAlloctionTime(startTime: String, endTime: String) -> Observable<NetworkingResult> {
+        return httpClient.post(url: IrisCalendarURL.allocationTime.path(),
+                               param: ["start": startTime,
+                                       "end": endTime],
+                               header: Header.token.header())
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
 
-    func updateAlloctionTime(startTime: String, endTime: String) -> AllocationTimeAPI.AllocationTimeResult {
-        let param = ["start": startTime, "end": endTime]
-
-        return httpClient.patch(url: IrisCalendarURL.allocationTime.getPath(),
-                               param: param,
-                               header: Header.token.getHeader())
-            .map { (response) -> (AllocationTimeModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(AllocationTimeModel.self, from: response.1) else { return (nil, .failure) }
-                switch response.0.statusCode {
-                case 200: return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+    func updateAlloctionTime(startTime: String, endTime: String) -> Observable<NetworkingResult> {
+        return httpClient.patch(url: IrisCalendarURL.allocationTime.path(),
+                                param: ["start": startTime,
+                                        "end": endTime],
+                                header: Header.token.header())
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }

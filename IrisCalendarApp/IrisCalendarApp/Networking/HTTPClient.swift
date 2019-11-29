@@ -13,9 +13,9 @@ import RxAlamofire
 import Alamofire
 
 class HTTPClient {
-    typealias httpResult = Observable<(HTTPURLResponse, Data)>
+    typealias HttpResult = Observable<(HTTPURLResponse, Data)>
 
-    func get(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+    func get(url: String, param: Parameters?, header: [String: String]) -> HttpResult {
         return requestData(.get,
                            url,
                            parameters: param,
@@ -23,7 +23,7 @@ class HTTPClient {
                            headers: header)
     }
 
-    func post(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+    func post(url: String, param: Parameters?, header: [String: String]) -> HttpResult {
         return requestData(.post,
                            url,
                            parameters: param,
@@ -31,7 +31,7 @@ class HTTPClient {
                            headers: header)
     }
 
-    func patch(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+    func patch(url: String, param: Parameters?, header: [String: String]) -> HttpResult {
         return requestData(.patch,
                            url,
                            parameters: param,
@@ -39,20 +39,19 @@ class HTTPClient {
                            headers: header)
     }
 
-    func delete(url: String, param: Parameters?, header: [String: String]) -> httpResult {
+    func delete(url: String, param: Parameters?, header: [String: String]) -> HttpResult {
         return requestData(.delete,
                            url,
                            parameters: param,
                            encoding: URLEncoding.queryString,
                            headers: header)
     }
-
 }
 
 enum Header {
     case token, noToken
 
-    func getHeader() -> [String: String] {
+    func header() -> [String: String] {
         switch self {
         case .token:
             guard let token = Token.token else { return [:] }

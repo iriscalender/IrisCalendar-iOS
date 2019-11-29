@@ -53,7 +53,7 @@ class TimeResettingViewModel: ViewModelType {
         input.timeSettingTaps.withLatestFrom(info).asObservable().subscribe({ [weak self] (event) in
             guard let time = event.element, let strongSelf = self else { return }
             api.updateAlloctionTime(startTime: time.0, endTime: time.1).asObservable().subscribe { (event) in
-                switch event.element?.1 {
+                switch event.element {
                 case .ok: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")
                 case .unauthorized: result.onNext("유효하지 않은 토큰")

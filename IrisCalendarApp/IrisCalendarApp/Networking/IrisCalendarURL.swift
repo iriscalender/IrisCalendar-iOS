@@ -20,7 +20,7 @@ enum IrisCalendarURL {
     case autoCalendar(calendarId: String)
     case fixCalendar(calendarId: String)
 
-    func getPath() -> String {
+    func path() -> String {
         let baseURL = "http://iriscalendar.ap-northeast-2.elasticbeanstalk.com"
         switch self {
         case .signIn:

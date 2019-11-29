@@ -10,13 +10,10 @@
 		02FEA1D06020E78A15D7B750 /* Pods_IrisCalendarAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D81056B2259690D2A5C3D9F /* Pods_IrisCalendarAppTests.framework */; };
 		37021510235E8F9400CC954F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3702150F235E8F9400CC954F /* Extension.swift */; };
 		37136652231777120030F72B /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37136651231777120030F72B /* Shape.swift */; };
-		373153AC231DF3B6006A5C7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373153AB231DF3B6006A5C7C /* Color.swift */; };
 		373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */; };
 		373BF6AD22F9C8AF003AB8A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6AB22F9C8AF003AB8A9 /* Main.storyboard */; };
 		373BF6AF22F9C8B1003AB8A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6AE22F9C8B1003AB8A9 /* Assets.xcassets */; };
 		373BF6B222F9C8B1003AB8A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6B022F9C8B1003AB8A9 /* LaunchScreen.storyboard */; };
-		373BF6BD22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */; };
-		373BF6C822F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */; };
 		373BF6E022FF2A29003AB8A9 /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6DB22FF2976003AB8A9 /* NanumSquareBold.ttf */; };
 		373BF6E122FF2A2C003AB8A9 /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6DD22FF2976003AB8A9 /* NanumSquareExtraBold.ttf */; };
 		373BF6E222FF2A2F003AB8A9 /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 373BF6DE22FF2976003AB8A9 /* NanumSquareLight.ttf */; };
@@ -28,7 +25,7 @@
 		378AFB11234C684D00662754 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB10234C684D00662754 /* SignUpViewModel.swift */; };
 		378AFB13234C695200662754 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378AFB12234C695200662754 /* ViewModelType.swift */; };
 		3794BB9623725EF900EDE7F7 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3794BB9523725EF900EDE7F7 /* CalendarAPI.swift */; };
-		379A077623701AB7004C6AE1 /* IrisCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A077523701AB7004C6AE1 /* IrisCalendarDelegate.swift */; };
+		379A077623701AB7004C6AE1 /* IrisDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A077523701AB7004C6AE1 /* IrisDelegate.swift */; };
 		379A07782370F2BB004C6AE1 /* TimeResettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A07772370F2BB004C6AE1 /* TimeResettingViewModel.swift */; };
 		379A077A237107B0004C6AE1 /* EditCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A0779237107B0004C6AE1 /* EditCategoryViewModel.swift */; };
 		379A077C2371089A004C6AE1 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A077B2371089A004C6AE1 /* CategoryAPI.swift */; };
@@ -41,6 +38,7 @@
 		37E91D88238A6BE000633628 /* AutoScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */; };
 		37E91D8A238B504B00633628 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D89238B504B00633628 /* MainViewModel.swift */; };
 		37E91D8D238FDE8D00633628 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37E91D8C238FDE8D00633628 /* .swiftlint.yml */; };
+		37E91D9223916F7F00633628 /* Iris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E91D9123916F7F00633628 /* Iris.swift */; };
 		37EBA2C5235545E900EC88B9 /* AllocationTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */; };
 		37EBA2C7235546F800EC88B9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C6235546F800EC88B9 /* CategoryModel.swift */; };
 		37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */; };
@@ -82,7 +80,6 @@
 		21A8E2EB79C39A644CF01A56 /* Pods-IrisCalendarAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IrisCalendarAppTests.release.xcconfig"; path = "Target Support Files/Pods-IrisCalendarAppTests/Pods-IrisCalendarAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702150F235E8F9400CC954F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		37136651231777120030F72B /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
-		373153AB231DF3B6006A5C7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		373BF6A422F9C8AF003AB8A9 /* IrisCalendarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrisCalendarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		373BF6A722F9C8AF003AB8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		373BF6AC22F9C8AF003AB8A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,11 +87,7 @@
 		373BF6B122F9C8B1003AB8A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		373BF6B322F9C8B1003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373BF6B822F9C8B1003AB8A9 /* IrisCalendarAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrisCalendarAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarAppTests.swift; sourceTree = "<group>"; };
-		373BF6BE22F9C8B2003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373BF6C322F9C8B2003AB8A9 /* IrisCalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrisCalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarAppUITests.swift; sourceTree = "<group>"; };
-		373BF6C922F9C8B2003AB8A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373BF6DB22FF2976003AB8A9 /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		373BF6DC22FF2976003AB8A9 /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
 		373BF6DD22FF2976003AB8A9 /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
@@ -106,7 +99,7 @@
 		378AFB10234C684D00662754 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		378AFB12234C695200662754 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		3794BB9523725EF900EDE7F7 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
-		379A077523701AB7004C6AE1 /* IrisCalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisCalendarDelegate.swift; sourceTree = "<group>"; };
+		379A077523701AB7004C6AE1 /* IrisDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisDelegate.swift; sourceTree = "<group>"; };
 		379A07772370F2BB004C6AE1 /* TimeResettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeResettingViewModel.swift; sourceTree = "<group>"; };
 		379A0779237107B0004C6AE1 /* EditCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewModel.swift; sourceTree = "<group>"; };
 		379A077B2371089A004C6AE1 /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
@@ -119,6 +112,7 @@
 		37E91D87238A6BE000633628 /* AutoScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScheduleViewModel.swift; sourceTree = "<group>"; };
 		37E91D89238B504B00633628 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		37E91D8C238FDE8D00633628 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		37E91D9123916F7F00633628 /* Iris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Iris.swift; sourceTree = "<group>"; };
 		37EBA2C4235545E900EC88B9 /* AllocationTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTimeModel.swift; sourceTree = "<group>"; };
 		37EBA2C6235546F800EC88B9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		37EBA2C8235547AD00EC88B9 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
@@ -174,8 +168,6 @@
 			children = (
 				37E91D8C238FDE8D00633628 /* .swiftlint.yml */,
 				373BF6A622F9C8AF003AB8A9 /* IrisCalendarApp */,
-				373BF6BB22F9C8B1003AB8A9 /* IrisCalendarAppTests */,
-				373BF6C622F9C8B2003AB8A9 /* IrisCalendarAppUITests */,
 				373BF6A522F9C8AF003AB8A9 /* Products */,
 				ED0A185E33FCD02CCF06B275 /* Pods */,
 				4562F162312030B9BD64E82D /* Frameworks */,
@@ -207,24 +199,6 @@
 				373BF6B322F9C8B1003AB8A9 /* Info.plist */,
 			);
 			path = IrisCalendarApp;
-			sourceTree = "<group>";
-		};
-		373BF6BB22F9C8B1003AB8A9 /* IrisCalendarAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				373BF6BC22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift */,
-				373BF6BE22F9C8B2003AB8A9 /* Info.plist */,
-			);
-			path = IrisCalendarAppTests;
-			sourceTree = "<group>";
-		};
-		373BF6C622F9C8B2003AB8A9 /* IrisCalendarAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				373BF6C722F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift */,
-				373BF6C922F9C8B2003AB8A9 /* Info.plist */,
-			);
-			path = IrisCalendarAppUITests;
 			sourceTree = "<group>";
 		};
 		373BF6D622FB09B3003AB8A9 /* UI */ = {
@@ -273,10 +247,10 @@
 		373BF6D922FB0A0A003AB8A9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				37E91D9123916F7F00633628 /* Iris.swift */,
+				379A077523701AB7004C6AE1 /* IrisDelegate.swift */,
 				37136651231777120030F72B /* Shape.swift */,
-				373153AB231DF3B6006A5C7C /* Color.swift */,
 				3702150F235E8F9400CC954F /* Extension.swift */,
-				379A077523701AB7004C6AE1 /* IrisCalendarDelegate.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -600,7 +574,6 @@
 				37F3571C230D19AB00415686 /* TimeSettingVC.swift in Sources */,
 				37F3571E230F7FD700415686 /* MainVC.swift in Sources */,
 				37D62C51234ADF7100AB3DC3 /* Provider.swift in Sources */,
-				373153AC231DF3B6006A5C7C /* Color.swift in Sources */,
 				379A077A237107B0004C6AE1 /* EditCategoryViewModel.swift in Sources */,
 				37EBA2CB235557E100EC88B9 /* AllocationTimeAPI.swift in Sources */,
 				37EBA2C7235546F800EC88B9 /* CategoryModel.swift in Sources */,
@@ -623,13 +596,14 @@
 				37E91D88238A6BE000633628 /* AutoScheduleViewModel.swift in Sources */,
 				37C969972367D68C003F9551 /* TimeSettingViewModel.swift in Sources */,
 				37F35724230F802C00415686 /* AutoScheduleVC.swift in Sources */,
+				37E91D9223916F7F00633628 /* Iris.swift in Sources */,
 				37F3571A230D197600415686 /* SignUpVC.swift in Sources */,
 				378AFB13234C695200662754 /* ViewModelType.swift in Sources */,
 				37B287202342EC69009C04D6 /* AddScheduleMenubarVC.swift in Sources */,
 				37021510235E8F9400CC954F /* Extension.swift in Sources */,
 				373BF6A822F9C8AF003AB8A9 /* AppDelegate.swift in Sources */,
 				37EBA2C9235547AD00EC88B9 /* CalendarModel.swift in Sources */,
-				379A077623701AB7004C6AE1 /* IrisCalendarDelegate.swift in Sources */,
+				379A077623701AB7004C6AE1 /* IrisDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +611,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				373BF6BD22F9C8B1003AB8A9 /* IrisCalendarAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +618,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				373BF6C822F9C8B2003AB8A9 /* IrisCalendarAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

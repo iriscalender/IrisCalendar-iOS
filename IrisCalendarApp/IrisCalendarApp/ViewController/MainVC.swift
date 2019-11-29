@@ -72,17 +72,16 @@ class MainVC: UIViewController {
         irisCalendar.appearance.titleFont = UIFont(name: "NanumSquareEB", size: 15)
         irisCalendar.appearance.weekdayFont = UIFont(name: "NanumSquareEB", size: 15)
         irisCalendar.appearance.headerTitleFont = UIFont(name: "NanumSquareEB", size: 20)
-        irisCalendar.appearance.titleDefaultColor = Color.calendarDefault
-        irisCalendar.appearance.weekdayTextColor = Color.calendarTitle
-        irisCalendar.appearance.headerTitleColor = Color.calendarTitle
+        irisCalendar.appearance.titleDefaultColor = IrisColor.calendarDefault
+        irisCalendar.appearance.weekdayTextColor = IrisColor.calendarTitle
+        irisCalendar.appearance.headerTitleColor = IrisColor.calendarTitle
         irisCalendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
-        irisCalendar.appearance.todayColor = Color.authTxtField
-        irisCalendar.appearance.selectionColor = Color.mainHalfClear
+        irisCalendar.appearance.todayColor = IrisColor.authTxtField
+        irisCalendar.appearance.selectionColor = IrisColor.mainHalfClear
 
         irisCalendar.delegate = self
         irisCalendar.dataSource = self
     }
-
 
     private func bindViewModel() {
         let input = MainViewModel.Input(viewDidLoad: mainViewDidLoad.asDriver(onErrorJustReturn: ()),
@@ -123,7 +122,7 @@ class MainVC: UIViewController {
         output.selectedSchedule.emit(onNext: { [weak self] (schedule) in
             guard let strongSelf = self else { return }
             let alert = UIAlertController(title: schedule.scheduleName, message: nil, preferredStyle: .alert)
-            alert.view.tintColor = Color.main
+            alert.view.tintColor = IrisColor.main
 
             let update = UIAlertAction(title: "일정 수정하기", style: .default) { (_) in strongSelf.updateTaps.accept(()) }
             let done = UIAlertAction(title: "일정 완료", style: .default) { (_) in strongSelf.doneTaps.accept(()) }

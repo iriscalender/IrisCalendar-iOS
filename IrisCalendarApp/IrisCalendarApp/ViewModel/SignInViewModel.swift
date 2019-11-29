@@ -17,22 +17,21 @@ class SignInViewModel: ViewModelType {
     struct Input {
         let userID: Driver<String>
         let userPW: Driver<String>
-        let doneTaps: Signal<Void>
+        let doneTap: Signal<Void>
     }
-    
+
     struct Output {
         let isEnabled: Driver<Bool>
         let result: Signal<String>
     }
-    
+
     func transform(input: SignInViewModel.Input) -> SignInViewModel.Output {
         let api = AuthAPI()
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.userID, input.userPW)
-        
-        let isEnabled = info.map { $0.count > 5 && $1.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil }.asDriver()
-        
-        input.doneTaps.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw) in
+        let isEnabled = info.map { IrisFilter.checkIDPW(id: $0, pw: $1) }
+
+        input.doneTap.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw) in
             guard let strongSelf = self else { return }
             api.postSignIn(userID: id, userPW: pw).subscribe (onNext: { (response) in
                 switch response {
@@ -44,7 +43,7 @@ class SignInViewModel: ViewModelType {
             }).disposed(by: strongSelf.disposeBag)
         }).disposed(by: disposeBag)
         
-        return Output(isEnabled: isEnabled, result: result.asSignal(onErrorJustReturn: "로그인 실패"))
+        return Output(isEnabled: isEnabled.asDriver(),
+                      result: result.asSignal(onErrorJustReturn: "로그인 실패"))
     }
-    
 }

@@ -140,9 +140,8 @@ class MainViewModel: ViewModelType {
                                                                     endTime: $0.endTime,
                                                                     isAuto: false)) }
         return result.sorted {
-            $0.startTime.components(separatedBy: ["-",":"]).joined() > $1.startTime.components(separatedBy: ["-",":"]).joined()
+            $0.startTime.components(separatedBy: ["-",":"]).joined() > $1.startTime.components(separatedBy: ["-", ":"]).joined()
         }
     }
-
 
 }

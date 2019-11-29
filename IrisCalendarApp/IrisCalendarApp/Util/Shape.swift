@@ -34,18 +34,18 @@ final class BorderAndRound8Button: UIButton {
     override func awakeFromNib() {
         layer.cornerRadius = 8
         layer.borderWidth = 1
-        layer.borderColor = Color.mainHalfClear.cgColor
+        layer.borderColor = IrisColor.mainHalfClear.cgColor
     }
 
     func update(isSelected: Bool) {
         if isSelected {
             layer.borderWidth = 1
             layer.borderColor = UIColor.white.cgColor
-            backgroundColor = Color.mainHalfClear
-            setTitleColor(Color.mainHalfClear, for: .normal)
+            backgroundColor = IrisColor.mainHalfClear
+            setTitleColor(IrisColor.mainHalfClear, for: .normal)
         } else {
             layer.borderWidth = 1
-            layer.borderColor = Color.mainHalfClear.cgColor
+            layer.borderColor = IrisColor.mainHalfClear.cgColor
             backgroundColor = UIColor.white
             setTitleColor(UIColor.white, for: .selected)
         }

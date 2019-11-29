@@ -54,10 +54,10 @@ class TimeResettingVC: UIViewController {
         output.isEnabled.drive(onNext: { [weak self] (result) in
             guard let strongSelf = self else { return }
             if result {
-                strongSelf.doneBtn.backgroundColor = Color.mainHalfClear
+                strongSelf.doneBtn.backgroundColor = IrisColor.mainHalfClear
                 strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
-                strongSelf.doneBtn.backgroundColor = Color.btnIsEnableState
+                strongSelf.doneBtn.backgroundColor = IrisColor.btnIsUnableState
                 strongSelf.doneBtn.setTitleColor(UIColor.black, for: .disabled)
             }
         }).disposed(by: disposeBag)

@@ -117,7 +117,7 @@ class AutoScheduleVC: UIViewController {
             if isEnabled {
                 strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
-                strongSelf.doneBtn.setTitleColor(Color.main, for: .disabled)
+                strongSelf.doneBtn.setTitleColor(IrisColor.main, for: .disabled)
             }
         }).disposed(by: disposeBag)
 

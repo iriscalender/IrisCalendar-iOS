@@ -73,7 +73,7 @@ class EditCategoryVC: UIViewController {
             if result {
                 strongself.doneBtn.setTitleColor(UIColor.white, for: .normal)
             } else {
-                strongself.doneBtn.setTitleColor(Color.main, for: .disabled)
+                strongself.doneBtn.setTitleColor(IrisColor.main, for: .disabled)
             }
         }).disposed(by: disposeBag)
 
