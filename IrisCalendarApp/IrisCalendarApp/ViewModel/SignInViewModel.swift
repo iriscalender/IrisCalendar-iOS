@@ -12,12 +12,11 @@ import RxSwift
 import RxCocoa
 
 class SignInViewModel: ViewModelType {
-
     private let disposeBag = DisposeBag()
 
     struct Input {
-        let id: Driver<String>
-        let pw: Driver<String>
+        let userID: Driver<String>
+        let userPW: Driver<String>
         let doneTaps: Signal<Void>
     }
     
@@ -29,13 +28,13 @@ class SignInViewModel: ViewModelType {
     func transform(input: SignInViewModel.Input) -> SignInViewModel.Output {
         let api = AuthAPI()
         let result = PublishSubject<String>()
-        let info = Driver.combineLatest(input.id, input.pw)
+        let info = Driver.combineLatest(input.userID, input.userPW)
         
         let isEnabled = info.map { $0.count > 5 && $1.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil }.asDriver()
         
         input.doneTaps.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw) in
             guard let strongSelf = self else { return }
-            api.postSignIn(id: id, pw: pw).subscribe (onNext: { (response) in
+            api.postSignIn(userID: id, userPW: pw).subscribe (onNext: { (response) in
                 switch response {
                 case .ok : result.onCompleted()
                 case .badRequest : result.onNext("유효하지 않은 요청")
@@ -47,6 +46,5 @@ class SignInViewModel: ViewModelType {
         
         return Output(isEnabled: isEnabled, result: result.asSignal(onErrorJustReturn: "로그인 실패"))
     }
-    
     
 }

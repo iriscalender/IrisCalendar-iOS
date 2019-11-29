@@ -12,22 +12,22 @@ import RxSwift
 import RxCocoa
 
 class SignInVC: UIViewController {
-    
+
     @IBOutlet weak var idTxtField: UITextField!
     @IBOutlet weak var pwTxtField: UITextField!
     @IBOutlet weak var idUnderlineView: UIView!
     @IBOutlet weak var pwUnderlineView: UIView!
     @IBOutlet weak var doneBtn: HeightRoundButton!
-    
+
     private let disposeBag = DisposeBag()
     private let viewModel = SignInViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         bindViewModel()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -38,8 +38,8 @@ class SignInVC: UIViewController {
     }
 
     private func bindViewModel() {
-        let input = SignInViewModel.Input(id: idTxtField.rx.text.orEmpty.asDriver(),
-                                          pw: pwTxtField.rx.text.orEmpty.asDriver(),
+        let input = SignInViewModel.Input(userID: idTxtField.rx.text.orEmpty.asDriver(),
+                                          userPW: pwTxtField.rx.text.orEmpty.asDriver(),
                                           doneTaps: doneBtn.rx.tap.asSignal())
         let output = viewModel.transform(input: input)
 
