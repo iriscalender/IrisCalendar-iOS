@@ -13,11 +13,11 @@ import RxCocoa
 
 class SignUpViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    
+
     struct Input {
-        let id: Driver<String>
-        let pw: Driver<String>
-        let rePW: Driver<String>
+        let userID: Driver<String>
+        let userPW: Driver<String>
+        let userRePW: Driver<String>
         let doneTaps: Signal<Void>
     }
     
@@ -25,17 +25,17 @@ class SignUpViewModel: ViewModelType {
         let isEnabled: Driver<Bool>
         let result: Signal<String>
     }
-    
+
     func transform(input: SignUpViewModel.Input) -> SignUpViewModel.Output {
         let api = AuthAPI()
         let result = PublishSubject<String>()
-        let info = Driver.combineLatest(input.id, input.pw, input.rePW)
-        
+        let info = Driver.combineLatest(input.userID, input.userPW, input.userRePW)
+
         let isEnabled = info.map { $0.count > 5 && $1.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil && $1 == $2 }.asDriver()
-        
+
         input.doneTaps.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw, rePW) in
             guard let strongSelf = self else { return }
-            api.postSignUp(id: id, pw: pw, rePW: rePW).subscribe (onNext: { (response) in
+            api.postSignUp(userID: id, userPW: pw, userRePW: rePW).subscribe (onNext: { (response) in
                 switch response {
                 case .ok : result.onCompleted()
                 case .badRequest : result.onNext("유효하지 않은 요청")
