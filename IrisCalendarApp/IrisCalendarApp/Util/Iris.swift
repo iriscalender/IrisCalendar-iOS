@@ -34,10 +34,10 @@ enum IrisDateFormat: String {
     case date = "yyyy-MM-dd"
     case dateWithTime = "yyyy-MM-dd HH:mm"
 
-    func dateFormatter() -> DateFormatter {
+    func toString(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.date(from: self.rawValue)
-        return dateFormatter
+        dateFormatter.dateFormat = self.rawValue
+        return dateFormatter.string(from: date)
     }
 
     func isStartFaster(startTime: String, endTime: String) -> Bool {
