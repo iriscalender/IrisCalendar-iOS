@@ -29,7 +29,7 @@ class SignInViewModel: ViewModelType {
         let api = AuthAPI()
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.userID, input.userPW)
-        let isEnabled = info.map { IrisFilter.checkIDPW(id: $0, pw: $1) }
+        let isEnabled = info.map { IrisFilter.checkIDPW(userID: $0, userPW: $1) }
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW) in
             guard let strongSelf = self else { return }

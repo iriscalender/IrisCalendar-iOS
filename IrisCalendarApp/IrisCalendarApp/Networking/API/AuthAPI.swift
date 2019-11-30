@@ -22,10 +22,10 @@ class AuthAPI: AuthProvider {
                                header: Header.noToken.header())
             .map { (response, data) -> NetworkingResult in
                 switch response.statusCode {
-                case 200:
+                case 201:
                     guard let data = try? JSONDecoder().decode(AuthModel.self, from: data) else { return .failure }
                     Token.token = data.token
-                    return .ok
+                    return .created
                 case 400: return .badRequest
                 case 409: return .conflict
                 case 500: return .serverError

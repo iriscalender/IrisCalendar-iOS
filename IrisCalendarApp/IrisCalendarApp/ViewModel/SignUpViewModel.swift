@@ -30,13 +30,13 @@ class SignUpViewModel: ViewModelType {
         let api = AuthAPI()
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.userID, input.userPW, input.userRePW)
-        let isEnabled = info.map { IrisFilter.checkIDPW(id: $0, pw: $1) && $1 == $2 }
+        let isEnabled = info.map { IrisFilter.checkIDPW(userID: $0, userPW: $1) && $1 == $2 }
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW, userRePW) in
             guard let strongSelf = self else { return }
             api.postSignUp(userID: userID, userPW: userPW, userRePW: userRePW).subscribe(onNext: { (response) in
                 switch response {
-                case .ok: result.onCompleted()
+                case .created: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")
                 case .conflict: result.onNext("이미 존재하는 회원")
                 case .serverError : result.onNext("서버오류")

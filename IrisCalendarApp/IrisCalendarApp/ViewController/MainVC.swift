@@ -76,7 +76,7 @@ class MainVC: UIViewController {
         irisCalendar.appearance.weekdayTextColor = IrisColor.calendarTitle
         irisCalendar.appearance.headerTitleColor = IrisColor.calendarTitle
         irisCalendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
-        irisCalendar.appearance.todayColor = IrisColor.authTxtField
+        irisCalendar.appearance.todayColor = IrisColor.todayColor
         irisCalendar.appearance.selectionColor = IrisColor.mainHalfClear
 
         irisCalendar.delegate = self
