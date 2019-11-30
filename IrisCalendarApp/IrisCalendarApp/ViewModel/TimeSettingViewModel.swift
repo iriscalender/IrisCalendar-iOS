@@ -36,6 +36,14 @@ class TimeSettingViewModel: ViewModelType {
         let info = Driver.combineLatest(startTime.asDriver(), endTime.asDriver())
         let isEnabled = info.map { IrisDateFormat.time.isStartFaster(startTime: $0, endTime: $1) }
 
+        input.startTimeTap.withLatestFrom(input.selectedTime).asObservable().subscribe(onNext: {
+            startTime.accept(IrisDateFormat.time.toString(date: $0))
+        }).disposed(by: disposeBag)
+
+        input.endTimeTap.withLatestFrom(input.selectedTime).asObservable().subscribe(onNext: {
+            endTime.accept(IrisDateFormat.time.toString(date: $0))
+        }).disposed(by: disposeBag)
+
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (start, end) in
             guard let strongSelf = self else { return }
             api.setAlloctionTime(startTime: start, endTime: end).subscribe(onNext: { (response) in
@@ -47,14 +55,6 @@ class TimeSettingViewModel: ViewModelType {
                 default: result.onNext("할당시간 설정 실패")
                 }
             }).disposed(by: strongSelf.disposeBag)
-        }).disposed(by: disposeBag)
-
-        input.startTimeTap.withLatestFrom(input.selectedTime).asObservable().subscribe(onNext: {
-            startTime.accept(IrisDateFormat.date.dateFormatter().string(from: $0))
-        }).disposed(by: disposeBag)
-
-        input.endTimeTap.withLatestFrom(input.selectedTime).asObservable().subscribe(onNext: {
-            endTime.accept(IrisDateFormat.date.dateFormatter().string(from: $0))
         }).disposed(by: disposeBag)
 
         return Output(startTime: startTime.asDriver(),
