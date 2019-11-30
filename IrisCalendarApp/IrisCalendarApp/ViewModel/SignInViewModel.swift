@@ -31,9 +31,9 @@ class SignInViewModel: ViewModelType {
         let info = Driver.combineLatest(input.userID, input.userPW)
         let isEnabled = info.map { IrisFilter.checkIDPW(id: $0, pw: $1) }
 
-        input.doneTap.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw) in
+        input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW) in
             guard let strongSelf = self else { return }
-            api.postSignIn(userID: id, userPW: pw).subscribe (onNext: { (response) in
+            api.postSignIn(userID: userID, userPW: userPW).subscribe(onNext: { (response) in
                 switch response {
                 case .ok : result.onCompleted()
                 case .badRequest : result.onNext("유효하지 않은 요청")
@@ -42,7 +42,7 @@ class SignInViewModel: ViewModelType {
                 }
             }).disposed(by: strongSelf.disposeBag)
         }).disposed(by: disposeBag)
-        
+
         return Output(isEnabled: isEnabled.asDriver(),
                       result: result.asSignal(onErrorJustReturn: "로그인 실패"))
     }

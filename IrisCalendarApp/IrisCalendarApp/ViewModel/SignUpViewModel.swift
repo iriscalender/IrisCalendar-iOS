@@ -20,30 +20,31 @@ class SignUpViewModel: ViewModelType {
         let userRePW: Driver<String>
         let doneTap: Signal<Void>
     }
-    
+
     struct Output {
         let isEnabled: Driver<Bool>
         let result: Signal<String>
     }
-    
+
     func transform(input: SignUpViewModel.Input) -> SignUpViewModel.Output {
         let api = AuthAPI()
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.userID, input.userPW, input.userRePW)
         let isEnabled = info.map { IrisFilter.checkIDPW(id: $0, pw: $1) && $1 == $2 }
 
-        input.doneTap.withLatestFrom(info).asObservable().subscribe (onNext: { [weak self] (id, pw, rePW) in
+        input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW, userRePW) in
             guard let strongSelf = self else { return }
-            api.postSignUp(userID: id, userPW: pw, userRePW: rePW).subscribe (onNext: { (response) in
+            api.postSignUp(userID: userID, userPW: userPW, userRePW: userRePW).subscribe(onNext: { (response) in
                 switch response {
-                case .ok : result.onCompleted()
-                case .badRequest : result.onNext("유효하지 않은 요청")
+                case .ok: result.onCompleted()
+                case .badRequest: result.onNext("유효하지 않은 요청")
+                case .conflict: result.onNext("이미 존재하는 회원")
                 case .serverError : result.onNext("서버오류")
-                default : result.onNext("회원가입 실패")
+                default: result.onNext("회원가입 실패")
                 }
             }).disposed(by: strongSelf.disposeBag)
         }).disposed(by: disposeBag)
-        
+
         return Output(isEnabled: isEnabled.asDriver(),
                       result: result.asSignal(onErrorJustReturn: "회원가입 실패"))
     }
