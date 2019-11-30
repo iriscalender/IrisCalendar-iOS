@@ -21,11 +21,12 @@ struct IrisColor {
     static let btnIsUnableState = UIColor().hexStringToUIColor(hex: "F2F2F7")
     static let calendarTitle = UIColor().hexStringToUIColor(hex: "383535")
     static let calendarDefault = UIColor().hexStringToUIColor(hex: "747474")
+    static let todayColor = UIColor().hexStringToUIColor(hex: "FAA86B")
 }
 
 struct IrisFilter {
-    static func checkIDPW(id: String, pw: String) -> Bool {
-        return id.count > 5 && pw.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil
+    static func checkIDPW(userID: String, userPW: String) -> Bool {
+        return userID.count > 5 && userPW.range(of: "[A-Za-z0-9]{8,}", options: .regularExpression) != nil
     }
 }
 

@@ -33,32 +33,57 @@ extension UITextField {
 }
 
 extension UIViewController {
+    func cancelObserver(_: Event<Void>) { self.goPreviousVC() }
+
     func showToast(message: String) {
         Toast(text: message, duration: 1.0).show()
     }
 
+    func goPreviousVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     func goNextVC(identifier: String) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
-        navigationController?.pushViewController(vc!, animated: false)
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier)
+        navigationController?.pushViewController(viewController!, animated: false)
     }
 
     func presentVC(identifier: String) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
-        vc?.modalPresentationStyle = .fullScreen
-        present(vc!, animated: false, completion: nil)
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier)
+        viewController?.modalPresentationStyle = .fullScreen
+        present(viewController!, animated: false, completion: nil)
     }
 
     func updateBtnRadius(btns: [UIButton]) {
         btns.forEach { $0.layer.cornerRadius = $0.frame.height / 2 }
     }
 
-    func updateBtnColor(btn: UIButton, isEnabled: Bool) {
+    func updateBtnColorWithBackground(btn: UIButton, isEnabled: Bool) {
         if isEnabled {
             btn.backgroundColor = IrisColor.mainHalfClear
             btn.setTitleColor(UIColor.white, for: .normal)
         } else {
             btn.backgroundColor = IrisColor.btnIsUnableState
             btn.setTitleColor(UIColor.black, for: .disabled)
+        }
+    }
+
+    func updateBtnColor(btn: UIButton, isEnabled: Bool) {
+        if isEnabled {
+            btn.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            btn.setTitleColor(IrisColor.main, for: .disabled)
+        }
+    }
+
+    func updateSelectedBtnColor(selectedBtn: UIButton, deselectedBtn: UIButton) {
+        selectedBtn.setTitleColor(IrisColor.mainHalfClear, for: .normal)
+        deselectedBtn.setTitleColor(IrisColor.lightGray, for: .normal)
+    }
+
+    func configureTxtFields(txtFields: [UITextField], underlineViews: [UIView], disposeBag: DisposeBag) {
+        for idx in 0..<txtFields.count {
+            txtFields[idx].configureIrisEffect(underlineView: underlineViews[idx], disposeBag: disposeBag)
         }
     }
 
@@ -74,8 +99,8 @@ extension UIViewController {
 }
 
 extension UIColor {
-    func hexStringToUIColor(hex:String) -> UIColor {
-        var rgbValue:UInt64 = 0
+    func hexStringToUIColor(hex: String) -> UIColor {
+        var rgbValue: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&rgbValue)
         return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
                        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
