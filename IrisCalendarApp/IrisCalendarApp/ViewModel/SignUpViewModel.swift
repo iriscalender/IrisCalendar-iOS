@@ -33,7 +33,7 @@ class SignUpViewModel: ViewModelType {
         let isEnabled = info.map { IrisFilter.checkIDPW(userID: $0, userPW: $1) && $1 == $2 }
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW, userRePW) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.postSignUp(userID: userID, userPW: userPW, userRePW: userRePW).subscribe(onNext: { (response) in
                 switch response {
                 case .created: result.onCompleted()
@@ -42,7 +42,7 @@ class SignUpViewModel: ViewModelType {
                 case .serverError : result.onNext("서버오류")
                 default: result.onNext("회원가입 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         return Output(isEnabled: isEnabled.asDriver(),

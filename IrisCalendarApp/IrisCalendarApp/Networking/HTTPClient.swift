@@ -82,4 +82,20 @@ enum NetworkingResult: Int {
     case unauthorized = 401
     case conflict = 409
     case serverError = 500
+
+    func toStringForSchedule(status: ScheduleStatus) -> String {
+        switch self {
+        case .ok, .created: return "성공"
+        case .badRequest: return "유효하지 않은 요청"
+        case .unauthorized: return "유효하지 않은 토큰"
+        case .conflict: return "소화할 수 없는 일정"
+        case .serverError: return "서버오류"
+        default:
+            switch status {
+            case .add: return "일정 추가 실패"
+            case .update: return "일정 수정 실패"
+            case .unknown: return "알 수 없는 status"
+            }
+        }
+    }
 }

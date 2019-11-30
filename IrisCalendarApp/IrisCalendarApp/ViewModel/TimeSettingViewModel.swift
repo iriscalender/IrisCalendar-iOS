@@ -45,7 +45,7 @@ class TimeSettingViewModel: ViewModelType {
         }).disposed(by: disposeBag)
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (start, end) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.setAlloctionTime(startTime: start, endTime: end).subscribe(onNext: { (response) in
                 switch response {
                 case .ok: result.onCompleted()
@@ -54,7 +54,7 @@ class TimeSettingViewModel: ViewModelType {
                 case .serverError: result.onNext("서버오류")
                 default: result.onNext("할당시간 설정 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         return Output(startTime: startTime.asDriver(),

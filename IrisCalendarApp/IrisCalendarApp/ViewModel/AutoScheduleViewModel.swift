@@ -69,7 +69,7 @@ class AutoScheduleViewModel: ViewModelType {
         let defaultEndDay = PublishRelay<String>()
         let defaultTheTimeRequired = PublishRelay<String>()
         let defaultIsMoreImportant = PublishRelay<Bool>()
-        let selectedCategory = BehaviorRelay<IrisCategory>(value: .purple)
+        let selectedCategory = BehaviorRelay<IrisCategory.Category>(value: .purple)
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(selectedCategory.asDriver(), input.scheduleName, input.endYear, input.endMonth, input.endDay, input.theTimeRequired, input.isMoreImportant) {
             AutoScheduleModel(category: $0.rawValue, scheduleName: $1, endTime: "\($2)-\($3)-\($4)", requiredTime: Int($5) ?? 0, isParticularImportant: $6)
@@ -120,7 +120,7 @@ class AutoScheduleViewModel: ViewModelType {
                 api.getAutoCalendar(id).asObservable().subscribe(onNext: { (response, networkingResult) in
                     switch networkingResult {
                     case .ok:
-                        selectedCategory.accept(IrisCategory.getIrisCategory(category: response!.category))
+                        selectedCategory.accept(IrisCategory.Category.toCategory(category: response!.category))
                         defaultScheduleName.accept(response!.scheduleName)
                         let endDate = response!.endTime.components(separatedBy: ["-"])
                         defaultEndYear.accept(endDate[0])
@@ -199,7 +199,7 @@ class AutoScheduleViewModel: ViewModelType {
 
     private func addSchedule(_ info: Observable<AutoScheduleModel>) -> Observable<String> {
         return info.flatMap { (model) -> Observable<String> in
-            return CalendarAPI().addAutoCalendar(model).map { (_, networkingResult) -> String in
+            return CalendarAPI().addAutoCalendar(model).map { (networkingResult) -> String in
                 switch networkingResult {
                 case .ok: return "성공"
                 case .badRequest: return "유효하지 않은 요청"
@@ -214,7 +214,7 @@ class AutoScheduleViewModel: ViewModelType {
 
     private func updateSchedule(_ info: Observable<AutoScheduleModel>, id: String) -> Observable<String> {
         return info.flatMap { (model) -> Observable<String> in
-            return CalendarAPI().updateAutoCalendar(model, id: id).map { (_, networkingResult) -> String in
+            return CalendarAPI().updateAutoCalendar(model, calendarID: id).map { (networkingResult) -> String in
                 switch networkingResult {
                 case .ok: return "성공"
                 case .badRequest: return "유효하지 않은 요청"

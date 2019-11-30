@@ -34,36 +34,20 @@ class EditCategoryViewModel: ViewModelType {
 
     func transform(input: EditCategoryViewModel.Input) -> EditCategoryViewModel.Output {
         let api = CategoryAPI()
-        let purple = BehaviorRelay<String>(value: "")
-        let blue = BehaviorRelay<String>(value: "")
-        let pink = BehaviorRelay<String>(value: "")
-        let orange = BehaviorRelay<String>(value: "")
+        let category = IrisCategory.shared
+        let purple = BehaviorRelay<String>(value: category.purple)
+        let blue = BehaviorRelay<String>(value: category.blue)
+        let pink = BehaviorRelay<String>(value: category.pink)
+        let orange = BehaviorRelay<String>(value: category.orange)
         let result = PublishSubject<String>()
         let info = Driver.combineLatest(input.purpleTxt, input.blueTxt, input.pinkTxt, input.orangeTxt) {
             CategoryModel(purple: $0, blue: $1, pink: $2, orange: $3)
         }
         let isEnabled = info.map { !($0.purple.isEmpty || $0.blue.isEmpty || $0.pink.isEmpty || $0.orange.isEmpty) }
 
-        input.loadData.subscribe { [weak self] (_) in
-            guard let strongSelf = self else { return }
-            api.getCategory().subscribe(onNext: { (response, networkingResult) in
-                switch networkingResult {
-                case .ok:
-                    purple.accept(response!.purple)
-                    blue.accept(response!.blue)
-                    pink.accept(response!.pink)
-                    orange.accept(response!.orange)
-                case .badRequest: result.onNext("유효하지 않은 요청")
-                case .unauthorized: result.onNext("유효하지 않은 토큰")
-                case .serverError: result.onNext("서버오류")
-                default: result.onNext("카테고리 수정 실패")
-                }
-            }).disposed(by: strongSelf.disposeBag)
-        }.disposed(by: disposeBag)
-
-        input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (category) in
-            guard let strongSelf = self else { return }
-            api.updateCategory(category).subscribe(onNext: { (response) in
+        input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (info) in
+            guard let self = self else { return }
+            api.updateCategory(info).subscribe(onNext: { (response) in
                 switch response {
                 case .ok: result.onCompleted()
                 case .badRequest: result.onNext("유효하지 않은 요청")
@@ -71,7 +55,7 @@ class EditCategoryViewModel: ViewModelType {
                 case .serverError: result.onNext("서버오류")
                 default: result.onNext("카테고리 수정 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         return Output(purpleTxt: purple.asDriver(),

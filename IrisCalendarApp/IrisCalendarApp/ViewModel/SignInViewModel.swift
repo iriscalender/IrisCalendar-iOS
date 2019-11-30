@@ -32,7 +32,7 @@ class SignInViewModel: ViewModelType {
         let isEnabled = info.map { IrisFilter.checkIDPW(userID: $0, userPW: $1) }
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (userID, userPW) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.postSignIn(userID: userID, userPW: userPW).subscribe(onNext: { (response) in
                 switch response {
                 case .ok : result.onCompleted()
@@ -40,7 +40,7 @@ class SignInViewModel: ViewModelType {
                 case .serverError : result.onNext("서버오류")
                 default : result.onNext("로그인 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         return Output(isEnabled: isEnabled.asDriver(),

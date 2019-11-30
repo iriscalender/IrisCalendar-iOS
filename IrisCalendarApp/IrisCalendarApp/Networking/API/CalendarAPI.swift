@@ -12,17 +12,16 @@ import RxSwift
 import RxCocoa
 
 class CalendarAPI: CalendarProvider {
-
     private let httpClient = HTTPClient()
 
-    func getAutoCalendar(_ id: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)> {
-        return httpClient.get(url: IrisCalendarURL.autoCalendar(calendarId: id).path(),
+    func getAutoCalendar(_ calendarID: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)> {
+        return httpClient.get(url: IrisCalendarURL.autoCalendar(calendarId: calendarID).path(),
                               param: nil,
                               header: Header.token.header())
-            .map { (response) -> (IdAutoScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
+            .map { (response, data) -> (IdAutoScheduleModel?, NetworkingResult) in
+                switch response.statusCode {
                 case 200:
-                    guard let data = try? JSONDecoder().decode(IdAutoScheduleModel.self, from: response.1) else { return (nil, .failure) }
+                    guard let data = try? JSONDecoder().decode(IdAutoScheduleModel.self, from: data) else { return (nil, .failure) }
                     return (data, .ok)
                 case 400: return (nil, .badRequest)
                 case 401: return (nil, .unauthorized)
@@ -32,52 +31,48 @@ class CalendarAPI: CalendarProvider {
         }
     }
 
-    func addAutoCalendar(_ calendar: AutoScheduleModel) -> Observable<(AutoScheduleModel?, NetworkingResult)> {
-        guard let param = calendar.asDictionary else { return Observable.just((nil, .failure)) }
+    func addAutoCalendar(_ calendar: AutoScheduleModel) -> Observable<NetworkingResult> {
+        guard let param = calendar.asDictionary else { return Observable.just(.failure) }
 
         return httpClient.post(url: IrisCalendarURL.addAutoCalendar.path(),
                                param: param,
                                header: Header.token.header())
-            .map { (response) -> (AutoScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
-                case 200:
-                    guard let data = try? JSONDecoder().decode(AutoScheduleModel.self, from: response.1) else { return (nil, .failure) }
-                    return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 409: return (nil, .conflict)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 409: return .conflict
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
 
-    func updateAutoCalendar(_ calendar: AutoScheduleModel, id: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)> {
-        guard let param = calendar.asDictionary else { return Observable.just((nil, .failure)) }
+    func updateAutoCalendar(_ calendar: AutoScheduleModel, calendarID: String) -> Observable<NetworkingResult> {
+        guard let param = calendar.asDictionary else { return Observable.just(.failure) }
 
-        return httpClient.patch(url: IrisCalendarURL.autoCalendar(calendarId: id).path(),
+        return httpClient.patch(url: IrisCalendarURL.autoCalendar(calendarId: calendarID).path(),
                                 param: param,
                                 header: Header.token.header())
-            .map { (response) -> (IdAutoScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
-                case 200:
-                    guard let data = try? JSONDecoder().decode(IdAutoScheduleModel.self, from: response.1) else { return (nil, .failure) }
-                    return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 409: return (nil, .conflict)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 409: return .conflict
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
 
-    func deleteAutoCalendar(_ id: String) -> Observable<NetworkingResult> {
-        return httpClient.delete(url: IrisCalendarURL.autoCalendar(calendarId: id).path(),
-                                param: nil,
-                                header: Header.token.header())
-            .map { (response) -> NetworkingResult in
-                switch response.0.statusCode {
+    func deleteAutoCalendar(_ calendarID: String) -> Observable<NetworkingResult> {
+        return httpClient.delete(url: IrisCalendarURL.autoCalendar(calendarId: calendarID).path(),
+                                 param: nil,
+                                 header: Header.token.header())
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
                 case 200: return .ok
                 case 204: return .noContent
                 case 401: return .unauthorized
@@ -87,14 +82,15 @@ class CalendarAPI: CalendarProvider {
         }
     }
 
-    func getFixCalendar(_ id: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)> {
-        return httpClient.get(url: IrisCalendarURL.fixCalendar(calendarId: id).path(),
+    func getFixCalendar(_ calendarID: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)> {
+        return httpClient.get(url: IrisCalendarURL.fixCalendar(calendarId: calendarID).path(),
                               param: nil,
                               header: Header.token.header())
-            .map { (response) -> (IdFixScheduleModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(IdFixScheduleModel.self, from: response.1) else { return (nil, .failure) }
-                switch response.0.statusCode {
-                case 200: return (data, .ok)
+            .map { (response, data) -> (IdFixScheduleModel?, NetworkingResult) in
+                switch response.statusCode {
+                case 200:
+                    guard let data = try? JSONDecoder().decode(IdFixScheduleModel.self, from: data) else { return (nil, .failure) }
+                    return (data, .ok)
                 case 400: return (nil, .badRequest)
                 case 401: return (nil, .unauthorized)
                 case 500: return (nil, .serverError)
@@ -103,51 +99,48 @@ class CalendarAPI: CalendarProvider {
         }
     }
 
-    func addFixCalendar(_ calendar: FixScheduleModel) -> Observable<(FixScheduleModel?, NetworkingResult)> {
-        guard let param = calendar.asDictionary else { return Observable.just((nil, .failure)) }
+    func addFixCalendar(_ calendar: FixScheduleModel) -> Observable<NetworkingResult> {
+        guard let param = calendar.asDictionary else { return Observable.just(.failure) }
 
         return httpClient.post(url: IrisCalendarURL.addFixCalendar.path(),
                                param: param,
                                header: Header.token.header())
-            .map { (response) -> (FixScheduleModel?, NetworkingResult) in
-                guard let data = try? JSONDecoder().decode(FixScheduleModel.self, from: response.1) else { return ((nil, .failure)) }
-                switch response.0.statusCode {
-                case 200: return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 409: return (nil, .conflict)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 201: return .created
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 409: return .conflict
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
 
-    func updateFixCalendar(_ calendar: FixScheduleModel, id: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)> {
-        guard let param = calendar.asDictionary else { return Observable.just((nil, .failure)) }
+    func updateFixCalendar(_ calendar: FixScheduleModel, calendarID: String) -> Observable<NetworkingResult> {
+        guard let param = calendar.asDictionary else { return Observable.just(.failure) }
 
-        return httpClient.patch(url: IrisCalendarURL.fixCalendar(calendarId: id).path(),
+        return httpClient.patch(url: IrisCalendarURL.fixCalendar(calendarId: calendarID).path(),
                                 param: param,
                                 header: Header.token.header())
-            .map { (response) -> (IdFixScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
-                case 200:
-                    guard let data = try? JSONDecoder().decode(IdFixScheduleModel.self, from: response.1) else { return ((nil, .failure)) }
-                    return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 409: return (nil, .conflict)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 409: return .conflict
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
 
-    func deleteFixCalendar(_ id: String) -> Observable<NetworkingResult> {
-        return httpClient.delete(url: IrisCalendarURL.autoCalendar(calendarId: id).path(),
-                                param: nil,
-                                header: Header.token.header())
-            .map { (response) -> NetworkingResult in
-                switch response.0.statusCode {
+    func deleteFixCalendar(_ calendarID: String) -> Observable<NetworkingResult> {
+        return httpClient.delete(url: IrisCalendarURL.autoCalendar(calendarId: calendarID).path(),
+                                 param: nil,
+                                 header: Header.token.header())
+            .map { (response, _) -> NetworkingResult in
+                switch response.statusCode {
                 case 200: return .ok
                 case 204: return .noContent
                 case 401: return .unauthorized
@@ -161,10 +154,10 @@ class CalendarAPI: CalendarProvider {
         return httpClient.get(url: IrisCalendarURL.dailyCalendar(date: date).path(),
                               param: nil,
                               header: Header.token.header())
-            .map { (response) -> (DailyScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
+            .map { (response, data) -> (DailyScheduleModel?, NetworkingResult) in
+                switch response.statusCode {
                 case 200:
-                    guard let data = try? JSONDecoder().decode(DailyScheduleModel.self, from: response.1) else { return ((nil, .failure)) }
+                    guard let data = try? JSONDecoder().decode(DailyScheduleModel.self, from: data) else { return (nil, .failure) }
                     return (data, .ok)
                 case 204: return (nil, .noContent)
                 case 400: return (nil, .badRequest)
@@ -179,10 +172,10 @@ class CalendarAPI: CalendarProvider {
         return httpClient.get(url: IrisCalendarURL.bookedCalendar.path(),
                               param: nil,
                               header: Header.token.header())
-            .map { (response) -> (BookedScheduleModel?, NetworkingResult) in
-                switch response.0.statusCode {
+            .map { (response, data) -> (BookedScheduleModel?, NetworkingResult) in
+                switch response.statusCode {
                 case 200:
-                    guard let data = try? JSONDecoder().decode(BookedScheduleModel.self, from: response.1) else { return ((nil, .failure)) }
+                    guard let data = try? JSONDecoder().decode(BookedScheduleModel.self, from: data) else { return (nil, .failure) }
                     return (data, .ok)
                 case 204: return (nil, .noContent)
                 case 401: return (nil, .unauthorized)

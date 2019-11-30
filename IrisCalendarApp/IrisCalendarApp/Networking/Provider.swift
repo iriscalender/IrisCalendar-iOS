@@ -10,32 +10,36 @@ import Foundation
 
 import RxSwift
 
-protocol AuthProvider {
-    func postSignUp(userID: String, userPW: String, userRePW: String) -> Observable<NetworkingResult>
-    func postSignIn(userID: String, userPW: String) -> Observable<NetworkingResult>
+protocol IrisProvider {
+    typealias NetworkingResultResponse = Observable<NetworkingResult>
 }
 
-protocol AllocationTimeProvider {
+protocol AuthProvider: IrisProvider {
+    func postSignUp(userID: String, userPW: String, userRePW: String) -> NetworkingResultResponse
+    func postSignIn(userID: String, userPW: String) -> NetworkingResultResponse
+}
+
+protocol AllocationTimeProvider: IrisProvider {
     func getAlloctionTime() -> Observable<(AllocationTimeModel?, NetworkingResult)>
-    func setAlloctionTime(startTime: String, endTime: String) -> Observable<(NetworkingResult)>
-    func updateAlloctionTime(startTime: String, endTime: String) -> Observable<(NetworkingResult)>
+    func setAlloctionTime(startTime: String, endTime: String) -> NetworkingResultResponse
+    func updateAlloctionTime(startTime: String, endTime: String) -> NetworkingResultResponse
 }
 
-protocol CategoryProvider {
+protocol CategoryProvider: IrisProvider {
     func getCategory() -> Observable<(CategoryModel?, NetworkingResult)>
-    func updateCategory(_ category: CategoryModel) -> Observable<NetworkingResult>
+    func updateCategory(_ category: CategoryModel) -> NetworkingResultResponse
 }
 
-protocol CalendarProvider {
-    func getAutoCalendar(_ id: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)>
-    func addAutoCalendar(_ calendar: AutoScheduleModel) -> Observable<(AutoScheduleModel?, NetworkingResult)>
-    func updateAutoCalendar(_ calendar: AutoScheduleModel, id: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)>
-    func deleteAutoCalendar(_ id: String) -> Observable<NetworkingResult>
+protocol CalendarProvider: IrisProvider {
+    func getAutoCalendar(_ calendarID: String) -> Observable<(IdAutoScheduleModel?, NetworkingResult)>
+    func addAutoCalendar(_ calendar: AutoScheduleModel) -> NetworkingResultResponse
+    func updateAutoCalendar(_ calendar: AutoScheduleModel, calendarID: String) -> NetworkingResultResponse
+    func deleteAutoCalendar(_ calendarID: String) -> NetworkingResultResponse
 
-    func getFixCalendar(_ id: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)>
-    func addFixCalendar(_ calendar: FixScheduleModel) -> Observable<(FixScheduleModel?, NetworkingResult)>
-    func updateFixCalendar(_ calendar: FixScheduleModel, id: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)>
-    func deleteFixCalendar(_ id: String) -> Observable<NetworkingResult>
+    func getFixCalendar(_ calendarID: String) -> Observable<(IdFixScheduleModel?, NetworkingResult)>
+    func addFixCalendar(_ calendar: FixScheduleModel) -> NetworkingResultResponse
+    func updateFixCalendar(_ calendar: FixScheduleModel, calendarID: String) -> NetworkingResultResponse
+    func deleteFixCalendar(_ calendarID: String) -> NetworkingResultResponse
 
     func getDailyCalendar(_ date: String) -> Observable<(DailyScheduleModel?, NetworkingResult)>
     func getBookedCalendar() -> Observable<(BookedScheduleModel?, NetworkingResult)>

@@ -63,6 +63,8 @@ class MainVC: UIViewController {
         if Token.token == nil {
             self.presentVC(identifier: "AuthNC")
         } else {
+            print(Token.token)
+            print(IrisCategory.shared)
             setUpUI()
             bindViewModel()
         }
@@ -109,7 +111,7 @@ class MainVC: UIViewController {
 
         output.updateFixScheduleId.emit(onNext: { (id) in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "FixScheduleVC") as! FixScheduleVC
-            vc.scheduleStatus.onNext(.update(calendarId: id))
+            vc.scheduleStatus.accept(.update(calendarId: id))
             self.navigationController?.pushViewController(vc, animated: false)
         }).disposed(by: disposeBag)
 
@@ -146,7 +148,7 @@ extension MainVC: MenubarDelegate {
         case .none: return
         case .FixScheduleVC:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! FixScheduleVC
-            vc.scheduleStatus.onNext(.add)
+            vc.scheduleStatus.accept(.add)
             self.navigationController?.pushViewController(vc, animated: false)
         case .AutoScheduleVC:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! AutoScheduleVC
@@ -173,7 +175,7 @@ extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAp
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         let key = dateFormatter.string(from: date)
         guard let category = bookedSchedules.value[key] else { return nil }
-        return IrisCategory.getIrisCategory(category: category).getColor()
+        return IrisCategory.Category.toCategory(category: category).toColor()
     }
 }
 
@@ -201,7 +203,7 @@ class TodayScheduleListCell: UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
 
     func configure(info: DailySchedule) {
-        categoryView.backgroundColor = info.category.getColor()
+        categoryView.backgroundColor = info.category.toColor()
         titleLbl.text = info.scheduleName
         timeLbl.text = "\(info.startTime) ~ \(info.endTime)"
     }

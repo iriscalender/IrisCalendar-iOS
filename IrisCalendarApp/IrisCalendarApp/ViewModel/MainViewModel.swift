@@ -81,7 +81,7 @@ class MainViewModel: ViewModelType {
             guard let strongSelf = self else { return }
             let schedule = schedules[indexPath.row]
             if schedule.isAuto {
-                api.deleteAutoCalendar(schedule.id).subscribe(onNext: { networkingResult in
+                api.deleteAutoCalendar(schedule.calendarID).subscribe(onNext: { networkingResult in
                     switch networkingResult {
                     case .ok: deleteIndexPath.accept(indexPath)
                     case .noContent: result.accept("일정이 없습니다")
@@ -91,7 +91,7 @@ class MainViewModel: ViewModelType {
                     }
                 }).disposed(by: strongSelf.disposeBag)
             } else {
-                api.deleteFixCalendar(schedule.id).subscribe(onNext: { networkingResult in
+                api.deleteFixCalendar(schedule.calendarID).subscribe(onNext: { networkingResult in
                     switch networkingResult {
                     case .ok: deleteIndexPath.accept(indexPath)
                     case .noContent: result.accept("일정이 없습니다")
@@ -105,9 +105,9 @@ class MainViewModel: ViewModelType {
 
         input.updateTaps.asObservable().withLatestFrom(selectedSchedule).subscribe(onNext: { (schedule) in
             if schedule.isAuto {
-                 updateAutoScheduleId.accept(schedule.id)
+                 updateAutoScheduleId.accept(schedule.calendarID)
             } else {
-                updateFixScheduleId.accept(schedule.id)
+                updateFixScheduleId.accept(schedule.calendarID)
             }
         }).disposed(by: disposeBag)
 
@@ -117,8 +117,8 @@ class MainViewModel: ViewModelType {
                       deleteIndexPath: deleteIndexPath.asSignal(),
                       updateFixScheduleId: updateFixScheduleId.asSignal(),
                       updateAutoScheduleId: updateAutoScheduleId.asSignal(),
-                      selectedSchedule: selectedSchedule.asSignal(onErrorJustReturn: DailySchedule(id: "",
-                                                                                                   category: IrisCategory.purple,
+                      selectedSchedule: selectedSchedule.asSignal(onErrorJustReturn: DailySchedule(calendarID: "",
+                                                                                                   category: IrisCategory.Category.purple,
                                                                                                    scheduleName: "",
                                                                                                    startTime: "",
                                                                                                    endTime: "",
@@ -127,14 +127,14 @@ class MainViewModel: ViewModelType {
 
     private func makeDailySchedule(_ schedule: DailyScheduleModel) -> [DailySchedule] {
         var result = [DailySchedule]()
-        schedule.autoSchedules.forEach { result.append(DailySchedule(id: $0.id,
-                                                                     category: IrisCategory.getIrisCategory(category: $0.category),
+        schedule.autoSchedules.forEach { result.append(DailySchedule(calendarID: $0.calendarID,
+                                                                     category: IrisCategory.Category.toCategory(category: $0.category),
                                                                      scheduleName: $0.scheduleName,
                                                                      startTime: $0.startTime,
                                                                      endTime: $0.endTime,
                                                                      isAuto: true)) }
-        schedule.fixSchedules.forEach { result.append(DailySchedule(id: $0.id,
-                                                                    category: IrisCategory.getIrisCategory(category: $0.category),
+        schedule.fixSchedules.forEach { result.append(DailySchedule(calendarID: $0.calendarID,
+                                                                    category: IrisCategory.Category.toCategory(category: $0.category),
                                                                     scheduleName: $0.scheduleName,
                                                                     startTime: $0.startTime,
                                                                     endTime: $0.endTime,

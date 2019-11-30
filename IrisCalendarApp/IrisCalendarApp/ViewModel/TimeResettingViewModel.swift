@@ -38,7 +38,7 @@ class TimeResettingViewModel: ViewModelType {
         let isEnabled = info.map { IrisDateFormat.time.isStartFaster(startTime: $0, endTime: $1) }
 
         input.loadData.subscribe { [weak self] (_) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.getAlloctionTime().subscribe(onNext: { (response, networkingResult) in
                 switch networkingResult {
                 case .ok:
@@ -50,7 +50,7 @@ class TimeResettingViewModel: ViewModelType {
                 case .serverError: result.onNext("서버오류")
                 default: result.onNext("할당시간 재설정 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }.disposed(by: disposeBag)
 
         input.startTimeTap.withLatestFrom(input.selectedTime).asObservable().subscribe(onNext: {
@@ -62,7 +62,7 @@ class TimeResettingViewModel: ViewModelType {
         }).disposed(by: disposeBag)
 
         input.doneTap.withLatestFrom(info).asObservable().subscribe(onNext: { [weak self] (start, end) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.updateAlloctionTime(startTime: start, endTime: end).subscribe(onNext: { (response) in
                 switch response {
                 case .ok: result.onCompleted()
@@ -71,7 +71,7 @@ class TimeResettingViewModel: ViewModelType {
                 case .serverError: result.onNext("서버오류")
                 default: result.onNext("할당시간 재설정 실패")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         return Output(startTime: startTime.asDriver(),

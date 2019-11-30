@@ -16,8 +16,8 @@ extension UITextField {
     func configureIrisEffect(underlineView: UIView, disposeBag: DisposeBag) {
         self.rx.controlEvent(.editingDidBegin).subscribe { (_) in
             UIView.animate(withDuration: 0.5, animations: {
-                underlineView.backgroundColor = IrisColor.blueCategory
-                underlineView.tintColor = IrisColor.blueCategory
+                underlineView.backgroundColor = IrisColor.authTxtFieldEnable
+                underlineView.tintColor = IrisColor.authTxtFieldEnable
                 underlineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
             })
         }.disposed(by: disposeBag)
@@ -85,6 +85,13 @@ extension UIViewController {
         for idx in 0..<txtFields.count {
             txtFields[idx].configureIrisEffect(underlineView: underlineViews[idx], disposeBag: disposeBag)
         }
+    }
+
+    func configureCategory(purple: UILabel, blue: UILabel, pink: UILabel, orange: UILabel) {
+        purple.text = IrisCategory.shared.purple
+        blue.text = IrisCategory.shared.blue
+        pink.text = IrisCategory.shared.pink
+        orange.text = IrisCategory.shared.orange
     }
 
     @objc func dismissKeyboard() { self.view.endEditing(true) }

@@ -18,10 +18,10 @@ class CategoryAPI: CategoryProvider {
         return httpClient.get(url: IrisCalendarURL.category.path(),
                                 param: nil,
                                 header: Header.token.header())
-            .map { (response) -> (CategoryModel?, NetworkingResult) in
-                switch response.0.statusCode {
+            .map { (response, data) -> (CategoryModel?, NetworkingResult) in
+                switch response.statusCode {
                 case 200:
-                    guard let data = try? JSONDecoder().decode(CategoryModel.self, from: response.1) else { return (nil, .failure) }
+                    guard let data = try? JSONDecoder().decode(CategoryModel.self, from: data) else { return (nil, .failure) }
                     return (data, .ok)
                 case 400: return (nil, .badRequest)
                 case 401: return (nil, .unauthorized)
@@ -37,9 +37,16 @@ class CategoryAPI: CategoryProvider {
         return httpClient.patch(url: IrisCalendarURL.category.path(),
                                 param: param,
                                 header: Header.token.header())
-            .map { (response) -> NetworkingResult in
-                switch response.0.statusCode {
-                case 200: return .ok
+            .map { (response, data) -> NetworkingResult in
+                switch response.statusCode {
+                case 200:
+                    guard let data = try? JSONDecoder().decode(CategoryModel.self, from: data) else { return .failure }
+                    let irisCategory = IrisCategory.shared
+                    irisCategory.purple = data.purple
+                    irisCategory.blue = data.blue
+                    irisCategory.pink = data.pink
+                    irisCategory.orange = data.orange
+                    return .ok
                 case 400: return .badRequest
                 case 401: return .unauthorized
                 case 500: return .serverError
