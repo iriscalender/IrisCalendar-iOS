@@ -39,7 +39,7 @@ class CalendarAPI: CalendarProvider {
                                header: Header.token.header())
             .map { (response, _) -> NetworkingResult in
                 switch response.statusCode {
-                case 200: return .ok
+                case 201: return .created
                 case 400: return .badRequest
                 case 401: return .unauthorized
                 case 409: return .conflict

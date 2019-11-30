@@ -117,7 +117,7 @@ class MainVC: UIViewController {
 
         output.updateFixScheduleId.emit(onNext: { (id) in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AutoScheduleVC") as! AutoScheduleVC
-            vc.scheduleStatus.onNext(.update(calendarId: id))
+            vc.scheduleStatus.accept(.update(calendarId: id))
             self.navigationController?.pushViewController(vc, animated: false)
         }).disposed(by: disposeBag)
 
@@ -152,7 +152,7 @@ extension MainVC: MenubarDelegate {
             self.navigationController?.pushViewController(vc, animated: false)
         case .AutoScheduleVC:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: destination.rawValue) as! AutoScheduleVC
-            vc.scheduleStatus.onNext(.add)
+            vc.scheduleStatus.accept(.add)
             self.navigationController?.pushViewController(vc, animated: false)
         case .AuthNC:
             self.navigationController?.dismiss(animated: false, completion: nil)

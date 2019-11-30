@@ -16,7 +16,7 @@ class AutoScheduleVC: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
-    
+
     @IBOutlet weak var purpleBtn: HeightRoundButton!
     @IBOutlet weak var purpleLbl: UILabel!
     @IBOutlet weak var blueBtn: HeightRoundButton!
@@ -25,7 +25,7 @@ class AutoScheduleVC: UIViewController {
     @IBOutlet weak var pinkLbl: UILabel!
     @IBOutlet weak var orangeBtn: HeightRoundButton!
     @IBOutlet weak var orangeLbl: UILabel!
-    
+
     @IBOutlet weak var scheduleNameTxtField: UITextField!
     @IBOutlet weak var scheduleNameUnderlineView: UIView!
     @IBOutlet weak var endYearTxtField: UITextField!
@@ -37,7 +37,7 @@ class AutoScheduleVC: UIViewController {
     @IBOutlet weak var theTimeRequiredTxtField: UITextField!
     @IBOutlet weak var theTimeRequiredUnderlineView: UIView!
     @IBOutlet weak var moreImportantScheduleBtn: BorderAndRound8Button!
-    
+
     @IBOutlet weak var theTimeRequiredLbl: UILabel!
     @IBOutlet weak var theTimeRequiredView: UIView!
 
@@ -51,102 +51,74 @@ class AutoScheduleVC: UIViewController {
     private let autoScheduleViewDidLoad = BehaviorSubject<Void>(value: ())
     private let isMoreImportant = BehaviorRelay<Bool>(value: false)
 
-    let scheduleStatus = PublishSubject<ScheduleStatus>()
+    let scheduleStatus = BehaviorRelay<ScheduleStatus>(value: .unknown)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
         bindViewModel()
     }
-    
-    private func setUpUI() {
-        cancelBtn.rx.tap.asObservable().subscribe { [weak self] (_) in
-            guard let strongSelf = self else { return }
-            strongSelf.navigationController?.popViewController(animated: true)
-        }.disposed(by: disposeBag)
 
-        moreImportantScheduleBtn.rx.tap.asDriver().drive(onNext: { [weak self] (_) in
-            guard let strongSelf = self else { return }
-            if strongSelf.moreImportantScheduleBtn.isSelected {
-                strongSelf.moreImportantScheduleBtn.update(isSelected: false)
-                strongSelf.isMoreImportant.accept(false)
-                strongSelf.moreImportantScheduleBtn.isSelected = false
-            } else {
-                strongSelf.moreImportantScheduleBtn.update(isSelected: true)
-                strongSelf.isMoreImportant.accept(true)
-                strongSelf.moreImportantScheduleBtn.isSelected = true
-            }
+    private func configureUI() {
+        cancelBtn.rx.tap.asObservable().subscribe(cancelObserver).disposed(by: disposeBag)
+
+        moreImportantScheduleBtn.rx.tap.asDriver().drive(onNext: { [unowned self] (_) in
+            self.updateMoreImporatnt(isSelcted: !self.moreImportantScheduleBtn.isSelected)
         }).disposed(by: disposeBag)
 
-        scheduleNameTxtField.configureIrisEffect(underlineView: scheduleNameUnderlineView, disposeBag: disposeBag)
-        endYearTxtField.configureIrisEffect(underlineView: endYearUnderlineView, disposeBag: disposeBag)
-        endMonthTxtField.configureIrisEffect(underlineView: endMonthUnderlineView, disposeBag: disposeBag)
-        endDayTxtField.configureIrisEffect(underlineView: endDayUnderlineView, disposeBag: disposeBag)
-        theTimeRequiredTxtField.configureIrisEffect(underlineView: theTimeRequiredUnderlineView, disposeBag: disposeBag)
+        configureCategory(purple: purpleLbl, blue: blueLbl, pink: pinkLbl, orange: orangeLbl)
+
+        configureTxtFields(txtFields: [scheduleNameTxtField, endYearTxtField, endMonthTxtField, endDayTxtField, theTimeRequiredTxtField],
+                           underlineViews: [scheduleNameUnderlineView, endYearUnderlineView, endMonthUnderlineView, endDayUnderlineView, theTimeRequiredUnderlineView],
+                           disposeBag: disposeBag)
     }
 
     private func bindViewModel() {
-        let input = AutoScheduleViewModel.Input(saveTaps: doneBtn.rx.tap.asSignal(),
-                                                scheduleStatus: scheduleStatus.asSignal(onErrorJustReturn: .unknown),
-                                                viewDidLoad: autoScheduleViewDidLoad.asSignal(onErrorJustReturn: ()),
-                                                purlpleTaps: purpleBtn.rx.tap.asSignal(),
-                                                blueTaps: blueBtn.rx.tap.asSignal(),
-                                                pinkTaps: pinkBtn.rx.tap.asSignal(),
-                                                orangeTaps: orangeBtn.rx.tap.asSignal(),
+        let input = AutoScheduleViewModel.Input(scheduleStatus: scheduleStatus.asDriver(),
                                                 scheduleName: scheduleNameTxtField.rx.text.orEmpty.asDriver(),
                                                 endYear: endYearTxtField.rx.text.orEmpty.asDriver(),
                                                 endMonth: endMonthTxtField.rx.text.orEmpty.asDriver(),
                                                 endDay: endDayTxtField.rx.text.orEmpty.asDriver(),
                                                 theTimeRequired: theTimeRequiredTxtField.rx.text.orEmpty.asDriver(),
-                                                isMoreImportant: isMoreImportant.asDriver())
+                                                isMoreImportant: isMoreImportant.asDriver(),
+                                                purlpleTap: purpleBtn.rx.tap.asSignal(),
+                                                blueTap: blueBtn.rx.tap.asSignal(),
+                                                pinkTap: pinkBtn.rx.tap.asSignal(),
+                                                orangeTap: orangeBtn.rx.tap.asSignal(),
+                                                doneTap: doneBtn.rx.tap.asSignal())
         let output = viewModel.transform(input: input)
-
-        output.purpleTxt.drive(purpleLbl.rx.text).disposed(by: disposeBag)
-        output.blueTxt.drive(blueLbl.rx.text).disposed(by: disposeBag)
-        output.pinkTxt.drive(pinkLbl.rx.text).disposed(by: disposeBag)
-        output.orangeTxt.drive(orangeLbl.rx.text).disposed(by: disposeBag)
-        output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
 
         output.purpleSize.drive(purpleBtnHeightConstraint.rx.constant).disposed(by: disposeBag)
         output.blueSize.drive(blueBtnHeightConstraint.rx.constant).disposed(by: disposeBag)
         output.pinkSize.drive(pinkBtnHeightConstraint.rx.constant).disposed(by: disposeBag)
         output.orangeSize.drive(orangeBtnHeightConstraint.rx.constant).disposed(by: disposeBag)
-
-        output.isEnabled.drive(onNext: { [weak self] (isEnabled) in
-            guard let strongSelf = self else { return }
-            if isEnabled {
-                strongSelf.doneBtn.setTitleColor(UIColor.white, for: .normal)
-            } else {
-                strongSelf.doneBtn.setTitleColor(IrisColor.main, for: .disabled)
-            }
+        output.purpleSize.delay(RxTimeInterval.milliseconds(1)).drive(onNext: { [unowned self] (_) in
+            self.updateBtnRadius(btns: [self.purpleBtn, self.blueBtn, self.pinkBtn, self.orangeBtn])
         }).disposed(by: disposeBag)
 
-        output.purpleSize.delay(RxTimeInterval.milliseconds(1)).drive(onNext: { [weak self] (_) in
-            guard let strongSelf = self else { return }
-            strongSelf.updateBtnRadius(btns: [strongSelf.purpleBtn, strongSelf.blueBtn, strongSelf.pinkBtn, strongSelf.orangeBtn])
-        }).disposed(by: disposeBag)
+        output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
+        output.isEnabled.drive(onNext: { [unowned self] in self.updateBtnColor(btn: self.doneBtn, isEnabled: $0) }).disposed(by: disposeBag)
 
-        output.result.drive(onNext: { [weak self] (message) in
-            guard let strongSelf = self else { return }
-            strongSelf.showToast(message: message)
-            }, onCompleted: { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
+        output.result.emit(onNext: { [unowned self] in self.showToast(message: $0) },
+                           onCompleted: { [unowned self] in self.goPreviousVC() }).disposed(by: disposeBag)
 
-        scheduleStatus.asDriver(onErrorJustReturn: .unknown).drive(onNext: { [weak self] (status) in
-            guard let strongSelf = self else { return }
-            switch status {
-            case .update:
-                output.defaultScheduleName.drive(strongSelf.scheduleNameTxtField.rx.text).disposed(by: strongSelf.disposeBag)
-                output.defaultEndYear.drive(strongSelf.endYearTxtField.rx.text).disposed(by: strongSelf.disposeBag)
-                output.defaultEndMonth.drive(strongSelf.endMonthTxtField.rx.text).disposed(by: strongSelf.disposeBag)
-                output.defaultEndDay.drive(strongSelf.endDayTxtField.rx.text).disposed(by: strongSelf.disposeBag)
-                output.defaultTheTimeRequired.drive(strongSelf.theTimeRequiredTxtField.rx.text).disposed(by: strongSelf.disposeBag)
-                output.deaultIsMoreImportant.drive(strongSelf.moreImportantScheduleBtn.rx.isSelected).disposed(by: strongSelf.disposeBag)
-                output.deaultIsMoreImportant.drive(onNext: { strongSelf.isMoreImportant.accept($0) }).disposed(by: strongSelf.disposeBag)
-            default: return
-            }
-        }).disposed(by: disposeBag)
+        output.defaultScheduleName.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.scheduleNameTxtField.text = $0 }).disposed(by: disposeBag)
+        output.defaultEndYear.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.endYearTxtField.text = $0 }).disposed(by: disposeBag)
+        output.defaultEndMonth.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.endMonthTxtField.text = $0 }).disposed(by: disposeBag)
+        output.defaultEndDay.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.endDayTxtField.text = $0 }).disposed(by: disposeBag)
+        output.defaultTheTimeRequired.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.theTimeRequiredTxtField.text = $0 }).disposed(by: disposeBag)
+        output.defaultIsMoreImportant.subscribeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.updateMoreImporatnt(isSelcted: $0) }).disposed(by: disposeBag)
+    }
+
+    private func updateMoreImporatnt(isSelcted: Bool) {
+        moreImportantScheduleBtn.update(isSelected: isSelcted)
+        isMoreImportant.accept(isSelcted)
+        moreImportantScheduleBtn.isSelected = isSelcted
     }
 }
