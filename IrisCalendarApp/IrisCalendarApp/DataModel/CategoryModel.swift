@@ -31,10 +31,10 @@ enum IrisCategory: String {
 
     func getColor() -> UIColor {
         switch self {
-        case .purple: return UIColor().hexStringToUIColor(hex: "#7247B2")
-        case .blue: return UIColor().hexStringToUIColor(hex: "#3CB8EF")
-        case .pink: return UIColor().hexStringToUIColor(hex: "#D92D73")
-        case .orange: return UIColor().hexStringToUIColor(hex: "#FDA921")
+        case .purple: return UIColor().hexStringToUIColor(hex: "7247B2")
+        case .blue: return UIColor().hexStringToUIColor(hex: "3CB8EF")
+        case .pink: return UIColor().hexStringToUIColor(hex: "D92D73")
+        case .orange: return UIColor().hexStringToUIColor(hex: "FDA921")
         }
     }
 }

@@ -11,11 +11,11 @@ import Foundation
 import RxSwift
 
 protocol AuthProvider {
-    func postSignUp(userID: String, userPW: String, userRePW:String) -> Observable<NetworkingResult>
+    func postSignUp(userID: String, userPW: String, userRePW: String) -> Observable<NetworkingResult>
     func postSignIn(userID: String, userPW: String) -> Observable<NetworkingResult>
 }
 
-protocol AllocationTimeProvider{
+protocol AllocationTimeProvider {
     func getAlloctionTime() -> Observable<(AllocationTimeModel?, NetworkingResult)>
     func setAlloctionTime(startTime: String, endTime: String) -> Observable<(NetworkingResult)>
     func updateAlloctionTime(startTime: String, endTime: String) -> Observable<(NetworkingResult)>
@@ -23,7 +23,7 @@ protocol AllocationTimeProvider{
 
 protocol CategoryProvider {
     func getCategory() -> Observable<(CategoryModel?, NetworkingResult)>
-    func updateCategory(_ category: CategoryModel) -> Observable<(CategoryModel?, NetworkingResult)>
+    func updateCategory(_ category: CategoryModel) -> Observable<NetworkingResult>
 }
 
 protocol CalendarProvider {

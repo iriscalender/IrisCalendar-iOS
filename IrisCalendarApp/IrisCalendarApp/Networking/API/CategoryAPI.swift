@@ -12,11 +12,10 @@ import RxSwift
 import RxCocoa
 
 class CategoryAPI: CategoryProvider {
-
     private let httpClient = HTTPClient()
 
     func getCategory() -> Observable<(CategoryModel?, NetworkingResult)> {
-        return httpClient.patch(url: IrisCalendarURL.category.path(),
+        return httpClient.get(url: IrisCalendarURL.category.path(),
                                 param: nil,
                                 header: Header.token.header())
             .map { (response) -> (CategoryModel?, NetworkingResult) in
@@ -32,21 +31,19 @@ class CategoryAPI: CategoryProvider {
         }
     }
 
-    func updateCategory(_ category: CategoryModel) -> Observable<(CategoryModel?, NetworkingResult)> {
-        guard let param = category.asDictionary else { return Observable.just((nil, .failure)) }
+    func updateCategory(_ category: CategoryModel) -> Observable<NetworkingResult> {
+        guard let param = category.asDictionary else { return Observable.just(.failure) }
 
         return httpClient.patch(url: IrisCalendarURL.category.path(),
                                 param: param,
                                 header: Header.token.header())
-            .map { (response) -> (CategoryModel?, NetworkingResult) in
+            .map { (response) -> NetworkingResult in
                 switch response.0.statusCode {
-                case 200:
-                    guard let data = try? JSONDecoder().decode(CategoryModel.self, from: response.1) else { return (nil, .failure) }
-                    return (data, .ok)
-                case 400: return (nil, .badRequest)
-                case 401: return (nil, .unauthorized)
-                case 500: return (nil, .serverError)
-                default: return (nil, .failure)
+                case 200: return .ok
+                case 400: return .badRequest
+                case 401: return .unauthorized
+                case 500: return .serverError
+                default: return .failure
                 }
         }
     }
