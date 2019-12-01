@@ -39,7 +39,7 @@ struct FixScheduleModel: Codable {
 }
 
 struct IdAutoScheduleModel: Codable {
-    let calendarID: String
+    let calendarID: Int
     let category: String
     let scheduleName: String
     let endTime: String
@@ -57,7 +57,7 @@ struct IdAutoScheduleModel: Codable {
 }
 
 struct IdFixScheduleModel: Codable {
-    let calendarID: String
+    let calendarID: Int
     let category: String
     let scheduleName: String
     let startTime: String
@@ -75,6 +75,11 @@ struct IdFixScheduleModel: Codable {
 struct BookedSchedule: Codable {
     let category: String
     let date: String
+
+    enum CodingKeys: String, CodingKey {
+        case category = "calendar"
+        case date
+    }
 }
 
 struct BookedScheduleModel: Codable {
@@ -96,7 +101,7 @@ struct DailyScheduleModel: Codable {
 }
 
 struct DailySchedule {
-    let calendarID: String
+    let calendarID: Int
     let category: IrisCategory.Category
     let scheduleName: String
     let startTime: String

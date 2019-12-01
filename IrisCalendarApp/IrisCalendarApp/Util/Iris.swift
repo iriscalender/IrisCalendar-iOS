@@ -16,6 +16,10 @@ enum IrisDateFormat: String {
     case date = "yyyy-MM-dd"
     case dateAndTime = "yyyy-MM-dd HH:mm"
 
+    static func toTime(dateAndTime: String) -> String {
+        return dateAndTime.components(separatedBy: " ")[1]
+    }
+    
     func toString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = self.rawValue

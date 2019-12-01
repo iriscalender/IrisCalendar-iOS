@@ -71,7 +71,7 @@ class AutoScheduleViewModel: ViewModelType {
         }.asDriver(onErrorJustReturn: false)
 
         input.scheduleStatus.asObservable().subscribe(onNext: { [weak self] (scheduleStatus) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             switch scheduleStatus {
             case .update(let id):
                 api.getAutoCalendar(id).asObservable().subscribe(onNext: { (response, networkingResult) in
@@ -90,7 +90,7 @@ class AutoScheduleViewModel: ViewModelType {
                     case .serverError: result.onNext("서버오류")
                     default: result.onNext("기존 데이터 가져오기 실패")
                     }
-                }).disposed(by: strongSelf.disposeBag)
+                }).disposed(by: self.disposeBag)
             default: return
             }
         }).disposed(by: disposeBag)

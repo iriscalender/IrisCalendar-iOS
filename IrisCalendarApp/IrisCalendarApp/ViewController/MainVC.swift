@@ -14,33 +14,31 @@ import RxSwift
 import RxCocoa
 
 class MainVC: UIViewController {
-    
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var addScheduleBtn: UIButton!
     @IBOutlet weak var irisCalendar: FSCalendar!
     @IBOutlet weak var todayDateLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
-    private let dateFormatter = DateFormatter()
+    private let loadData = BehaviorRelay<Void>(value: ())
+    private let disposeBag = DisposeBag()
     private let viewModel = MainViewModel()
-    private let mainViewDidLoad = BehaviorRelay<Void>(value: ())
-    private let doneTaps = PublishRelay<Void>()
-    private let updateTaps = PublishRelay<Void>()
-    private var bookedSchedules = BehaviorRelay<MainViewModel.BookedSchedules>(value: [:])
+    private let doneTap = PublishRelay<Void>()
+    private let updateTap = PublishRelay<Void>()
+    private let today = IrisDateFormat.date.toString(date: Date())
+    private let selectedDate = BehaviorSubject<String>(value: IrisDateFormat.date.toString(date: Date()))
+    private var bookedSchedules = BehaviorRelay<[String: String]>(value: [:])
 
-    private lazy var today: String = {
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        return dateFormatter.string(from: Date())
-    }()
-    private lazy var selectedDate = BehaviorSubject<String>(value: today)
-
-    let disposeBag = DisposeBag()
     let transition = BubbleTransition()
     let interactiveTransition = BubbleInteractiveTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginCheck()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        loadData.accept(())
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,12 +63,12 @@ class MainVC: UIViewController {
         } else {
             print(Token.token)
             print(IrisCategory.shared)
-            setUpUI()
+            configureUI()
             bindViewModel()
         }
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         irisCalendar.appearance.titleFont = UIFont(name: "NanumSquareEB", size: 15)
         irisCalendar.appearance.weekdayFont = UIFont(name: "NanumSquareEB", size: 15)
         irisCalendar.appearance.headerTitleFont = UIFont(name: "NanumSquareEB", size: 20)
@@ -79,64 +77,53 @@ class MainVC: UIViewController {
         irisCalendar.appearance.headerTitleColor = IrisColor.calendarTitle
         irisCalendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         irisCalendar.appearance.todayColor = IrisColor.todayColor
-        irisCalendar.appearance.selectionColor = IrisColor.mainHalfClear
-
+        irisCalendar.appearance.selectionColor = IrisColor.calendarDefault
         irisCalendar.delegate = self
         irisCalendar.dataSource = self
     }
 
     private func bindViewModel() {
-        let input = MainViewModel.Input(viewDidLoad: mainViewDidLoad.asDriver(onErrorJustReturn: ()),
-                                        selectedDate: selectedDate.asDriver(onErrorJustReturn: ""),
+        let input = MainViewModel.Input(selectedDate: selectedDate.asSignal(onErrorJustReturn: ""),
                                         selectedScheduleIndexPath: tableView.rx.itemSelected.asSignal(),
-                                        doneTaps: doneTaps.asSignal(),
-                                        updateTaps: updateTaps.asSignal())
+                                        loadData: loadData.asSignal(onErrorJustReturn: ()),
+                                        doneTap: doneTap.asSignal(),
+                                        updateTap: updateTap.asSignal())
         let output = viewModel.transform(input: input)
 
         output.bookedSchedules.drive(bookedSchedules).disposed(by: disposeBag)
-        output.bookedSchedules.drive(onNext: { [weak self] (_) in
-            guard let strongSelf = self else { return }
-            strongSelf.irisCalendar.configureAppearance()
-        }).disposed(by: disposeBag)
+        output.bookedSchedules.drive(onNext: { [unowned self] (_) in self.irisCalendar.reloadData() }).disposed(by: disposeBag)
 
-        output.result.emit(onNext: { [weak self] (message) in
-            guard let strongSelf = self else { return }
-            strongSelf.showToast(message: message)
-        }).disposed(by: disposeBag)
+        output.result.emit(onNext: { [unowned self] in self.showToast(message: $0) }).disposed(by: disposeBag)
 
-        output.deleteIndexPath.emit(onNext: { [weak self] (indexPath) in
-            guard let strongSelf = self else { return }
-            strongSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
-        }).disposed(by: disposeBag)
-
-        output.updateFixScheduleId.emit(onNext: { (id) in
+        output.selectedFixScheduleID.emit(onNext: { [unowned self] in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "FixScheduleVC") as! FixScheduleVC
-            vc.scheduleStatus.accept(.update(calendarId: id))
+            vc.scheduleStatus.accept(.update(calendarId: $0))
             self.navigationController?.pushViewController(vc, animated: false)
         }).disposed(by: disposeBag)
 
-        output.updateFixScheduleId.emit(onNext: { (id) in
+        output.selectedAutoScheduleID.emit(onNext: { [unowned self] in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AutoScheduleVC") as! AutoScheduleVC
-            vc.scheduleStatus.accept(.update(calendarId: id))
+            vc.scheduleStatus.accept(.update(calendarId: $0))
             self.navigationController?.pushViewController(vc, animated: false)
         }).disposed(by: disposeBag)
 
-        output.selectedSchedule.emit(onNext: { [weak self] (schedule) in
-            guard let strongSelf = self else { return }
-            let alert = UIAlertController(title: schedule.scheduleName, message: nil, preferredStyle: .alert)
+        output.selectedScheduleName.emit(onNext: { [unowned self] in
+            let alert = UIAlertController(title: $0, message: nil, preferredStyle: .actionSheet)
             alert.view.tintColor = IrisColor.main
-
-            let update = UIAlertAction(title: "일정 수정하기", style: .default) { (_) in strongSelf.updateTaps.accept(()) }
-            let done = UIAlertAction(title: "일정 완료", style: .default) { (_) in strongSelf.doneTaps.accept(()) }
-
+            let update = UIAlertAction(title: "일정 수정하기", style: .default) { (_) in self.updateTap.accept(()) }
+            let done = UIAlertAction(title: "일정 완료", style: .default) { (_) in self.doneTap.accept(()) }
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(cancel)
             alert.addAction(update)
             alert.addAction(done)
-            strongSelf.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }).disposed(by: disposeBag)
 
         output.dailySchedule.drive(tableView.rx.items(cellIdentifier: "TodayScheduleListCell", cellType: TodayScheduleListCell.self)) {
             $2.configure(info: $1)
         }.disposed(by: disposeBag)
+
+        output.dailySchedule.drive(onNext: { [unowned self] (_) in self.irisCalendar.reloadData() }).disposed(by: disposeBag)
 
     }
 
@@ -164,18 +151,24 @@ extension MainVC: MenubarDelegate {
 
 extension MainVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if dateFormatter.string(from: date) == today {
+        if IrisDateFormat.date.toString(date: date) == today {
             todayDateLbl.text = "Today"
         } else {
-            todayDateLbl.text = dateFormatter.string(from: date)
+            todayDateLbl.text = IrisDateFormat.date.toString(date: date)
         }
-        selectedDate.onNext(dateFormatter.string(from: date))
+        selectedDate.onNext(IrisDateFormat.date.toString(date: date))
     }
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        let key = dateFormatter.string(from: date)
+        let key = IrisDateFormat.date.toString(date: date)
         guard let category = bookedSchedules.value[key] else { return nil }
         return IrisCategory.Category.toCategory(category: category).toColor()
+    }
+
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        let key = IrisDateFormat.date.toString(date: date)
+        if key == today { return UIColor.white }
+        return bookedSchedules.value[key] == nil ? IrisColor.calendarDefault : UIColor.white
     }
 }
 

@@ -136,7 +136,7 @@ class CalendarAPI: CalendarProvider {
     }
 
     func deleteFixCalendar(_ calendarID: String) -> Observable<NetworkingResult> {
-        return httpClient.delete(url: IrisCalendarURL.autoCalendar(calendarId: calendarID).path(),
+        return httpClient.delete(url: IrisCalendarURL.fixCalendar(calendarId: calendarID).path(),
                                  param: nil,
                                  header: Header.token.header())
             .map { (response, _) -> NetworkingResult in

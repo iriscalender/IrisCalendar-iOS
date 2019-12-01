@@ -12,117 +12,114 @@ import RxSwift
 import RxCocoa
 
 class MainViewModel: ViewModelType {
-
-    typealias BookedSchedules = [AnyHashable: String]
-
     private let disposeBag = DisposeBag()
 
     struct Input {
-        let viewDidLoad: Driver<Void>
-        let selectedDate: Driver<String>
+        let selectedDate: Signal<String>
         let selectedScheduleIndexPath: Signal<IndexPath>
-        let doneTaps: Signal<Void>
-        let updateTaps: Signal<Void>
+        let loadData: Signal<Void>
+        let doneTap: Signal<Void>
+        let updateTap: Signal<Void>
     }
 
     struct Output {
-        let bookedSchedules: Driver<BookedSchedules>
+        let bookedSchedules: Driver<[String: String]>
         let dailySchedule: Driver<[DailySchedule]>
+        let selectedFixScheduleID: Signal<String>
+        let selectedAutoScheduleID: Signal<String>
+        let selectedScheduleName: Signal<String>
         let result: Signal<String>
-        let deleteIndexPath: Signal<IndexPath>
-        let updateFixScheduleId: Signal<String>
-        let updateAutoScheduleId: Signal<String>
-        let selectedSchedule: Signal<DailySchedule>
     }
 
     func transform(input: MainViewModel.Input) -> MainViewModel.Output {
         let api = CalendarAPI()
-        let result = PublishRelay<String>()
-        let bookedSchedules = PublishRelay<BookedSchedules>()
+        let bookedSchedules = PublishRelay<[String: String]>()
         let dailySchedule = PublishRelay<[DailySchedule]>()
-        let deleteIndexPath = PublishRelay<IndexPath>()
-        let updateFixScheduleId = PublishRelay<String>()
-        let updateAutoScheduleId = PublishRelay<String>()
+        let selectedFixScheduleID = PublishRelay<String>()
+        let selectedAutoScheduleID = PublishRelay<String>()
+        let result = PublishSubject<String>()
         let info = Signal.combineLatest(input.selectedScheduleIndexPath, dailySchedule.asSignal()).asObservable()
+        let selectedSchedule = info.filter { !$0.1.isEmpty } .map { $1[$0.row] }
+        let selectedScheduleName = input.selectedScheduleIndexPath.asObservable().withLatestFrom(selectedSchedule).map { $0.scheduleName }
 
-        let selectedSchedule = info.map { $1[$0.row] }
-
-        input.viewDidLoad.asObservable().subscribe(onNext: { [weak self] (_) in
-            guard let strongSelf = self else { return }
+        input.loadData.asObservable().subscribe(onNext: { [weak self] (_) in
+            guard let self = self else { return }
             api.getBookedCalendar().subscribe(onNext: { (response, networkingResult) in
                 switch networkingResult {
                 case .ok:
-                    var result = BookedSchedules()
+                    var result = [String: String]()
                     response!.schedules.forEach { result[$0.date] = $0.category }
                     bookedSchedules.accept(result)
-                case .noContent: result.accept("일정이 없습니다")
-                case .unauthorized: result.accept("유효하지 않은 토큰")
-                case .serverError: result.accept("서버 오류")
-                default: result.accept("일정을 불러올 수 없습니다")
+                case .noContent: result.onNext("일정이 없습니다")
+                case .unauthorized: result.onNext("유효하지 않은 토큰")
+                case .serverError: result.onNext("서버 오류")
+                default: result.onNext("일정을 불러올 수 없습니다")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
         input.selectedDate.asObservable().subscribe(onNext: { [weak self] (date) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             api.getDailyCalendar(date).subscribe(onNext: { (response, networkingResult) in
                 switch networkingResult {
-                case .ok: dailySchedule.accept(strongSelf.makeDailySchedule(response!))
-                case .noContent: result.accept("일정이 없습니다")
-                case .badRequest: result.accept("잘못된 일정")
-                case .unauthorized: result.accept("유효하지 않은 토큰")
-                case .serverError: result.accept("서버 오류")
-                default: result.accept("일정을 불러올 수 없습니다")
+                case .ok: dailySchedule.accept(self.makeDailySchedule(response!))
+                case .noContent: result.onNext("일정이 없습니다")
+                case .badRequest: result.onNext("잘못된 일정")
+                case .unauthorized: result.onNext("유효하지 않은 토큰")
+                case .serverError: result.onNext("서버 오류")
+                default: result.onNext("일정을 불러올 수 없습니다")
                 }
-            }).disposed(by: strongSelf.disposeBag)
+            }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
-        input.doneTaps.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] (indexPath, schedules) in
-            guard let strongSelf = self else { return }
+        input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] (indexPath, schedules) in
+            guard let self = self else { return }
             let schedule = schedules[indexPath.row]
             if schedule.isAuto {
-                api.deleteAutoCalendar(schedule.calendarID).subscribe(onNext: { networkingResult in
+                api.deleteAutoCalendar(String(schedule.calendarID)).subscribe(onNext: { networkingResult in
                     switch networkingResult {
-                    case .ok: deleteIndexPath.accept(indexPath)
-                    case .noContent: result.accept("일정이 없습니다")
-                    case .unauthorized: result.accept("유효하지 않은 토큰")
-                    case .serverError: result.accept("서버 오류")
-                    default: result.accept("일정을 불러올 수 없습니다")
+                    case .ok:
+                        let schedules = schedules
+                        schedules[indexPath.row]
+                        dailySchedule.accept(schedules)
+                        result.onNext("삭제 성공")
+                    case .noContent: result.onNext("일정이 없습니다")
+                    case .unauthorized: result.onNext("유효하지 않은 토큰")
+                    case .serverError: result.onNext("서버 오류")
+                    default: result.onNext("일정을 불러올 수 없습니다")
                     }
-                }).disposed(by: strongSelf.disposeBag)
+                }).disposed(by: self.disposeBag)
             } else {
-                api.deleteFixCalendar(schedule.calendarID).subscribe(onNext: { networkingResult in
+                api.deleteFixCalendar(String(schedule.calendarID)).subscribe(onNext: { networkingResult in
                     switch networkingResult {
-                    case .ok: deleteIndexPath.accept(indexPath)
-                    case .noContent: result.accept("일정이 없습니다")
-                    case .unauthorized: result.accept("유효하지 않은 토큰")
-                    case .serverError: result.accept("서버 오류")
-                    default: result.accept("일정을 불러올 수 없습니다")
+                    case .ok:
+                        let schedules = schedules
+                        schedules[indexPath.row]
+                        dailySchedule.accept(schedules)
+                        result.onNext("삭제 성공")
+                    case .noContent: result.onNext("일정이 없습니다")
+                    case .unauthorized: result.onNext("유효하지 않은 토큰")
+                    case .serverError: result.onNext("서버 오류")
+                    default: result.onNext("일정을 불러올 수 없습니다")
                     }
-                }).disposed(by: strongSelf.disposeBag)
+                }).disposed(by: self.disposeBag)
             }
         }).disposed(by: disposeBag)
 
-        input.updateTaps.asObservable().withLatestFrom(selectedSchedule).subscribe(onNext: { (schedule) in
+        input.updateTap.asObservable().withLatestFrom(selectedSchedule).subscribe(onNext: { (schedule) in
             if schedule.isAuto {
-                 updateAutoScheduleId.accept(schedule.calendarID)
+                selectedAutoScheduleID.accept(String(schedule.calendarID))
             } else {
-                updateFixScheduleId.accept(schedule.calendarID)
+                selectedFixScheduleID.accept(String(schedule.calendarID))
             }
         }).disposed(by: disposeBag)
 
-        return Output(bookedSchedules: bookedSchedules.asDriver(onErrorJustReturn: BookedSchedules()),
+        return Output(bookedSchedules: bookedSchedules.asDriver(onErrorJustReturn: [:]),
                       dailySchedule: dailySchedule.asDriver(onErrorJustReturn: []),
-                      result: result.asSignal(),
-                      deleteIndexPath: deleteIndexPath.asSignal(),
-                      updateFixScheduleId: updateFixScheduleId.asSignal(),
-                      updateAutoScheduleId: updateAutoScheduleId.asSignal(),
-                      selectedSchedule: selectedSchedule.asSignal(onErrorJustReturn: DailySchedule(calendarID: "",
-                                                                                                   category: IrisCategory.Category.purple,
-                                                                                                   scheduleName: "",
-                                                                                                   startTime: "",
-                                                                                                   endTime: "",
-                                                                                                   isAuto: false)))
+                      selectedFixScheduleID: selectedFixScheduleID.asSignal(),
+                      selectedAutoScheduleID: selectedAutoScheduleID.asSignal(),
+                      selectedScheduleName: selectedScheduleName.asSignal(onErrorJustReturn: ""),
+                      result: result.asSignal(onErrorJustReturn: "오류 발생"))
     }
 
     private func makeDailySchedule(_ schedule: DailyScheduleModel) -> [DailySchedule] {
@@ -130,18 +127,16 @@ class MainViewModel: ViewModelType {
         schedule.autoSchedules.forEach { result.append(DailySchedule(calendarID: $0.calendarID,
                                                                      category: IrisCategory.Category.toCategory(category: $0.category),
                                                                      scheduleName: $0.scheduleName,
-                                                                     startTime: $0.startTime,
-                                                                     endTime: $0.endTime,
+                                                                     startTime: IrisDateFormat.toTime(dateAndTime: $0.startTime),
+                                                                     endTime: IrisDateFormat.toTime(dateAndTime: $0.endTime),
                                                                      isAuto: true)) }
         schedule.fixSchedules.forEach { result.append(DailySchedule(calendarID: $0.calendarID,
                                                                     category: IrisCategory.Category.toCategory(category: $0.category),
                                                                     scheduleName: $0.scheduleName,
-                                                                    startTime: $0.startTime,
-                                                                    endTime: $0.endTime,
+                                                                    startTime: IrisDateFormat.toTime(dateAndTime: $0.startTime),
+                                                                    endTime: IrisDateFormat.toTime(dateAndTime: $0.endTime),
                                                                     isAuto: false)) }
-        return result.sorted {
-            $0.startTime.components(separatedBy: ["-",":"]).joined() > $1.startTime.components(separatedBy: ["-", ":"]).joined()
-        }
+        return result.sorted { IrisDateFormat.time.isStartFaster(startTime: $1.startTime, endTime: $0.startTime) }
     }
 
 }
