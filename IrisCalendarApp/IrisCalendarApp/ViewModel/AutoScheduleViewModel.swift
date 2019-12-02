@@ -30,12 +30,12 @@ class AutoScheduleViewModel: ViewModelType {
     }
 
     struct Output {
-        let defaultScheduleName: Single<String>
-        let defaultEndYear: Single<String>
-        let defaultEndMonth: Single<String>
-        let defaultEndDay: Single<String>
-        let defaultTheTimeRequired: Single<String>
-        let defaultIsMoreImportant: Single<Bool>
+        let defaultScheduleName: Driver<String>
+        let defaultEndYear: Driver<String>
+        let defaultEndMonth: Driver<String>
+        let defaultEndDay: Driver<String>
+        let defaultTheTimeRequired: Driver<String>
+        let defaultIsMoreImportant: Driver<Bool>
         let isEnabled: Driver<Bool>
         let purpleSize: Driver<CGFloat>
         let blueSize: Driver<CGFloat>
@@ -144,12 +144,12 @@ class AutoScheduleViewModel: ViewModelType {
             }
         }).disposed(by: disposeBag)
 
-        return Output(defaultScheduleName: defaultScheduleName.asSingle(),
-                      defaultEndYear: defaultEndYear.asSingle(),
-                      defaultEndMonth: defaultEndMonth.asSingle(),
-                      defaultEndDay: defaultEndDay.asSingle(),
-                      defaultTheTimeRequired: defaultTheTimeRequired.asSingle(),
-                      defaultIsMoreImportant: defaultIsMoreImportant.asSingle(),
+        return Output(defaultScheduleName: defaultScheduleName.asDriver(onErrorJustReturn: ""),
+                      defaultEndYear: defaultEndYear.asDriver(onErrorJustReturn: ""),
+                      defaultEndMonth: defaultEndMonth.asDriver(onErrorJustReturn: ""),
+                      defaultEndDay: defaultEndDay.asDriver(onErrorJustReturn: ""),
+                      defaultTheTimeRequired: defaultTheTimeRequired.asDriver(onErrorJustReturn: ""),
+                      defaultIsMoreImportant: defaultIsMoreImportant.asDriver(onErrorJustReturn: false),
                       isEnabled: isEnabled.asDriver(),
                       purpleSize: purpleSize.asDriver(),
                       blueSize: blueSize.asDriver(),

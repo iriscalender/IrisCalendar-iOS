@@ -39,10 +39,10 @@ enum IrisCalendarURL {
             return baseURL + "/calendar/auto"
         case .addFixCalendar:
             return baseURL + "/calendar/manual/"
-        case .autoCalendar(let id):
-            return baseURL + "/calendar/auto/\(id)"
-        case .fixCalendar(let id):
-            return baseURL + "/calendar/manual/\(id)"
+        case .autoCalendar(let calendarID):
+            return baseURL + "/calendar/auto/\(calendarID)"
+        case .fixCalendar(let calendarID):
+            return baseURL + "/calendar/manual/\(calendarID)"
         }
     }
 }

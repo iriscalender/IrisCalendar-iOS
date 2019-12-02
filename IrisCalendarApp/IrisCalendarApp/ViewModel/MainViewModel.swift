@@ -79,8 +79,8 @@ class MainViewModel: ViewModelType {
                 api.deleteAutoCalendar(String(schedule.calendarID)).subscribe(onNext: { networkingResult in
                     switch networkingResult {
                     case .ok:
-                        let schedules = schedules
-                        schedules[indexPath.row]
+                        var schedules = schedules
+                        schedules.remove(at: indexPath.row)
                         dailySchedule.accept(schedules)
                         result.onNext("삭제 성공")
                     case .noContent: result.onNext("일정이 없습니다")
@@ -93,8 +93,8 @@ class MainViewModel: ViewModelType {
                 api.deleteFixCalendar(String(schedule.calendarID)).subscribe(onNext: { networkingResult in
                     switch networkingResult {
                     case .ok:
-                        let schedules = schedules
-                        schedules[indexPath.row]
+                        var schedules = schedules
+                        schedules.remove(at: indexPath.row)
                         dailySchedule.accept(schedules)
                         result.onNext("삭제 성공")
                     case .noContent: result.onNext("일정이 없습니다")
@@ -136,7 +136,7 @@ class MainViewModel: ViewModelType {
                                                                     startTime: IrisDateFormat.toTime(dateAndTime: $0.startTime),
                                                                     endTime: IrisDateFormat.toTime(dateAndTime: $0.endTime),
                                                                     isAuto: false)) }
-        return result.sorted { IrisDateFormat.time.isStartFaster(startTime: $1.startTime, endTime: $0.startTime) }
+        return result.sorted { IrisDateFormat.time.isStartFaster(startTime: $0.startTime, endTime: $1.startTime) }
     }
 
 }

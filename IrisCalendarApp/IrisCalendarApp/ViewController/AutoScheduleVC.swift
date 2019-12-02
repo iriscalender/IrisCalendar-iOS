@@ -37,7 +37,6 @@ class AutoScheduleVC: UIViewController {
     @IBOutlet weak var theTimeRequiredTxtField: UITextField!
     @IBOutlet weak var theTimeRequiredUnderlineView: UIView!
     @IBOutlet weak var moreImportantScheduleBtn: BorderAndRound8Button!
-
     @IBOutlet weak var theTimeRequiredLbl: UILabel!
     @IBOutlet weak var theTimeRequiredView: UIView!
 
@@ -60,6 +59,12 @@ class AutoScheduleVC: UIViewController {
     }
 
     private func configureUI() {
+        scheduleStatus.subscribe(onNext: { [unowned self] (scheduleStatus) in
+            switch scheduleStatus {
+            case .update: self.titleLbl.text = "자동관리일정 수정하기"
+            default: return
+            }
+        }).disposed(by: disposeBag)
         cancelBtn.rx.tap.asObservable().subscribe(cancelObserver).disposed(by: disposeBag)
 
         moreImportantScheduleBtn.rx.tap.asDriver().drive(onNext: { [unowned self] (_) in
@@ -71,6 +76,17 @@ class AutoScheduleVC: UIViewController {
         configureTxtFields(txtFields: [scheduleNameTxtField, endYearTxtField, endMonthTxtField, endDayTxtField, theTimeRequiredTxtField],
                            underlineViews: [scheduleNameUnderlineView, endYearUnderlineView, endMonthUnderlineView, endDayUnderlineView, theTimeRequiredUnderlineView],
                            disposeBag: disposeBag)
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
     private func bindViewModel() {
@@ -96,29 +112,32 @@ class AutoScheduleVC: UIViewController {
             self.updateBtnRadius(btns: [self.purpleBtn, self.blueBtn, self.pinkBtn, self.orangeBtn])
         }).disposed(by: disposeBag)
 
+        output.defaultScheduleName.drive(scheduleNameTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultEndYear.drive(endYearTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultEndMonth.drive(endMonthTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultEndDay.drive(endDayTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultTheTimeRequired.drive(theTimeRequiredTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultIsMoreImportant.drive(onNext: { [unowned self] in self.updateBtnColor(btn: self.doneBtn, isEnabled: $0) }).disposed(by: disposeBag)
+        output.defaultIsMoreImportant.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
+
         output.isEnabled.drive(doneBtn.rx.isEnabled).disposed(by: disposeBag)
         output.isEnabled.drive(onNext: { [unowned self] in self.updateBtnColor(btn: self.doneBtn, isEnabled: $0) }).disposed(by: disposeBag)
 
         output.result.emit(onNext: { [unowned self] in self.showToast(message: $0) },
                            onCompleted: { [unowned self] in self.goPreviousVC() }).disposed(by: disposeBag)
-
-        output.defaultScheduleName.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.scheduleNameTxtField.text = $0 }).disposed(by: disposeBag)
-        output.defaultEndYear.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.endYearTxtField.text = $0 }).disposed(by: disposeBag)
-        output.defaultEndMonth.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.endMonthTxtField.text = $0 }).disposed(by: disposeBag)
-        output.defaultEndDay.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.endDayTxtField.text = $0 }).disposed(by: disposeBag)
-        output.defaultTheTimeRequired.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.theTimeRequiredTxtField.text = $0 }).disposed(by: disposeBag)
-        output.defaultIsMoreImportant.subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.updateMoreImporatnt(isSelcted: $0) }).disposed(by: disposeBag)
     }
 
     private func updateMoreImporatnt(isSelcted: Bool) {
         moreImportantScheduleBtn.update(isSelected: isSelcted)
         isMoreImportant.accept(isSelcted)
         moreImportantScheduleBtn.isSelected = isSelcted
+    }
+
+    @objc func keyboardShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 && !self.theTimeRequiredTxtField.isFirstResponder {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
     }
 }

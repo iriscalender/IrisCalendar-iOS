@@ -72,6 +72,13 @@ class FixScheduleVC: UIViewController {
         datePickerAlert.addAction(okAction)
         datePickerAlert.addAction(cancelAction)
 
+        scheduleStatus.subscribe(onNext: { [unowned self] (scheduleStatus) in
+            switch scheduleStatus {
+            case .update: self.titleLbl.text = "고정일정 수정하기"
+            default: return
+            }
+        }).disposed(by: disposeBag)
+
         setStartTimeBtn.rx.tap.asObservable().subscribe(onNext: { [unowned self] (_) in
             datePickerAlert.title = "시작시간설정\n\n\n\n\n\n\n\n\n"
             self.present(datePickerAlert, animated: true, completion: nil)
@@ -108,6 +115,10 @@ class FixScheduleVC: UIViewController {
         output.purpleSize.delay(RxTimeInterval.milliseconds(1)).drive(onNext: { [unowned self] (_) in
             self.updateBtnRadius(btns: [self.purpleBtn, self.blueBtn, self.pinkBtn, self.orangeBtn])
         }).disposed(by: disposeBag)
+
+        output.defaultScheduleName.drive(scheduleNameTxtField.rx.text).disposed(by: disposeBag)
+        output.defaultStartTime.drive(setStartTimeLbl.rx.text).disposed(by: disposeBag)
+        output.defaultEndTime.drive(setEndTimeLbl.rx.text).disposed(by: disposeBag)
 
         output.result.emit(onNext: { [unowned self] in self.showToast(message: $0) },
                            onCompleted: { [unowned self] in self.goPreviousVC() }).disposed(by: disposeBag)

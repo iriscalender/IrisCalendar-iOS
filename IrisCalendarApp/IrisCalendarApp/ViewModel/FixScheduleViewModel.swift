@@ -28,9 +28,9 @@ class FixScheduleViewModel: ViewModelType {
     }
 
     struct Output {
-        let defaultScheduleName: Single<String>
-        let defaultStartTime: Single<String>
-        let defaultEndTime: Single<String>
+        let defaultScheduleName: Driver<String>
+        let defaultStartTime: Driver<String>
+        let defaultEndTime: Driver<String>
         let isEnabled: Driver<Bool>
         let purpleSize: Driver<CGFloat>
         let blueSize: Driver<CGFloat>
@@ -131,9 +131,9 @@ class FixScheduleViewModel: ViewModelType {
             }
         }).disposed(by: disposeBag)
 
-        return Output(defaultScheduleName: defaultScheduleName.asSingle(),
-                      defaultStartTime: defaultStartTime.asSingle(),
-                      defaultEndTime: defaultEndTime.asSingle(),
+        return Output(defaultScheduleName: defaultScheduleName.asDriver(onErrorJustReturn: ""),
+                      defaultStartTime: defaultStartTime.asDriver(onErrorJustReturn: ""),
+                      defaultEndTime: defaultEndTime.asDriver(onErrorJustReturn: ""),
                       isEnabled: isEnabled.asDriver(),
                       purpleSize: purpleSize.asDriver(),
                       blueSize: blueSize.asDriver(),

@@ -39,6 +39,7 @@ class MainVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         loadData.accept(())
+        irisCalendar.select(irisCalendar.selectedDate)
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,7 +62,7 @@ class MainVC: UIViewController {
         if Token.token == nil {
             self.presentVC(identifier: "AuthNC")
         } else {
-            print(Token.token)
+            print(Token.token as Any)
             print(IrisCategory.shared)
             configureUI()
             bindViewModel()

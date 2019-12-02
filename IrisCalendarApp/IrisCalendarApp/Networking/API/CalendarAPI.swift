@@ -176,6 +176,7 @@ class CalendarAPI: CalendarProvider {
                 switch response.statusCode {
                 case 200:
                     guard let data = try? JSONDecoder().decode(BookedScheduleModel.self, from: data) else { return (nil, .failure) }
+                    print(data)
                     return (data, .ok)
                 case 204: return (nil, .noContent)
                 case 401: return (nil, .unauthorized)

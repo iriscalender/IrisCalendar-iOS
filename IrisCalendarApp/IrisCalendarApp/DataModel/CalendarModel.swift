@@ -52,7 +52,7 @@ struct IdAutoScheduleModel: Codable {
         case scheduleName = "calendarName"
         case endTime
         case requiredTime
-        case isParticularImportant
+        case isParticularImportant = "particularImportant"
     }
 }
 
